@@ -86,5 +86,81 @@
       "sign-up": "Sign up",
       "sign-out": "Sign out"
     }
+  },
+  "profiles": {
+    "navigation": {
+      "profile": "Profile",
+      "my-profile": "My profile"
+    },
+    "my-profile": {
+      "title": "My profile",
+      "subtitle": "Review and manage your account information",
+      "loading": "Loading your profile…",
+      "identity": "Identity",
+      "personal-information": "Personal information",
+      "empty": "You have not registered your personal data yet. Complete it to start using EasyPark.",
+      "complete": "Complete profile",
+      "edit": "Edit information"
+    },
+    "fields": {
+      "first-name": "First name",
+      "last-name": "Last name",
+      "email": "E-mail",
+      "phone": "Phone",
+      "role": "Role",
+      "member-since": "Member since",
+      "company-name": "Company",
+      "job-title": "Job title",
+      "plate-number": "Plate",
+      "vehicle-type": "Type",
+      "color": "Color"
+    },
+    "validation": {
+      "required": "This field is required.",
+      "phone-invalid": "Enter a valid phone number, for example +51 987 654 321."
+    },
+    "form": {
+      "create-title": "Complete your profile",
+      "edit-title": "Edit information",
+      "created": "Your profile was saved.",
+      "updated": "Your information was updated.",
+      "failed": "We could not save your information. Try again in a few minutes."
+    },
+    "vehicle-types": {
+      "CAR": "Car",
+      "SUV": "SUV",
+      "VAN": "Van",
+      "MOTORCYCLE": "Motorcycle"
+    },
+    "vehicles": {
+      "title": "My vehicles",
+      "register": "Register vehicle",
+      "register-title": "Register vehicle",
+      "edit-title": "Edit vehicle",
+      "empty": "You have no vehicles registered yet. Register one to book a parking space.",
+      "status": "Status",
+      "actions": "Actions",
+      "default": "Default",
+      "make-default": "Set as default",
+      "default-updated": "{plate} is now your default vehicle.",
+      "edit": "Edit vehicle {plate}",
+      "edit-tooltip": "Edit",
+      "remove": "Remove",
+      "remove-aria": "Remove vehicle {plate}",
+      "remove-header": "Remove vehicle",
+      "remove-message": "Remove {plate} from your vehicles? Your past reservations will keep their record.",
+      "removed": "{plate} was removed from your vehicles.",
+      "registered": "Your vehicle was registered.",
+      "updated": "Your vehicle was updated.",
+      "plate-hint": "Format ABC-123 for cars or 1234-AB for motorcycles.",
+      "plate-locked": "The plate identifies the vehicle and cannot be changed.",
+      "color-placeholder": "Optional",
+      "errors": {
+        "invalid-plate-number": "Enter a valid plate, for example ABC-123 or 1234-AB.",
+        "plate-taken": "This plate is already registered by another account.",
+        "plate-already-yours": "You already registered this plate.",
+        "failed": "We could not save the vehicle. Try again in a few minutes."
+      }
+    }
   }
 }
