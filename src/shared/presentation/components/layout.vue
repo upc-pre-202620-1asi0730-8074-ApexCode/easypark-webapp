@@ -1,22 +1,35 @@
 <script setup>
-import {computed, ref} from "vue";
+import {computed, ref, watch} from "vue";
 import {useRoute} from "vue-router";
 import {useI18n} from "vue-i18n";
 import LanguageSwitcher from "./language-switcher.vue";
 import AuthenticationSection from "../../../iam/presentation/components/authentication-section.vue";
 import useIamStore from "../../../iam/application/iam.store.js";
+import useProfilesStore from "../../../profiles/application/profiles.store.js";
 
 const { t } = useI18n();
 const route = useRoute();
 const iamStore = useIamStore();
+const profilesStore = useProfilesStore();
 
 const drawer = ref(false);
 
-const driverNavigation = [];
+const myProfileRoute = { name: 'profiles-my-profile' };
+const driverNavigation = [
+  { label: 'profiles.navigation.profile', to: myProfileRoute }
+];
 const operatorNavigation = [];
-const accountItems = [];
-const displayName = computed(() => "");
-const photoUrl = computed(() => "");
+const accountItems = [
+  { label: 'profiles.navigation.my-profile', icon: 'pi pi-user', route: myProfileRoute }
+];
+
+watch(() => iamStore.currentUserId, (userAccountId) => {
+  if (userAccountId) profilesStore.fetchProfile(userAccountId, iamStore.isOperator);
+  else profilesStore.clear();
+}, { immediate: true });
+
+const displayName = computed(() => profilesStore.currentProfile?.shortName ?? '');
+const photoUrl = computed(() => profilesStore.currentProfile?.photoUrl ?? '');
 
 const isStandalone = computed(() => route.matched.some(record => record.meta['standalone']));
 const navigationItems = computed(() => {
