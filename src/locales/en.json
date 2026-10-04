@@ -1,64 +1,90 @@
 {
-  "option": {
-    "home": "Home",
-    "about": "About",
-    "categories": "Categories",
-    "tutorials": "Tutorials"
+  "layout": {
+    "skip-to-content": "Skip to main content",
+    "main-navigation": "Main navigation",
+    "open-menu": "Open navigation menu",
+    "language": "Language"
   },
-  "authoring-phrase": {
-    "intro": "Made with",
-    "use": "using",
-    "author": "by {brand} Developer Team"
+  "common": {
+    "cancel": "Cancel",
+    "save": "Save"
   },
   "about": {
-    "title": "About Us",
-    "content": "ACME Learning Center is an Education Business Platform, part of ACME Corporation."
+    "title": "About EasyPark",
+    "content": "EasyPark is a real-time parking management platform that connects drivers with available spaces and gives parking operators digital control of their facilities."
   },
   "home": {
     "title": "Welcome",
-    "content": "Welcome to ACME Learning Center."
+    "content": "Welcome to EasyPark. Less driving around looking for a space, more control when managing one."
   },
   "page-not-found": {
     "title": "Page Not Found",
     "content": "The path {unavailable-route} is not available.",
     "go-home": "Go Home"
   },
-  "categories": {
-    "title": "Categories",
-    "id": "ID",
-    "name": "Name",
-    "actions": "Actions",
-    "new": "New Category",
-    "confirm-delete": "Are you sure you want to delete {name}?",
-    "delete-header": "Confirm Deletion"
-  },
-  "category": {
-    "new-title": "Create New Category",
-    "edit-title": "Edit Category",
-    "name": "Name",
-    "save": "Save",
-    "cancel": "Cancel"
-  },
-  "tutorials": {
-    "title": "Tutorials",
-    "id": "ID",
-    "summary": "Summary",
-    "category-id": "Category ID",
-    "actions": "Actions",
-    "new": "New Tutorial",
-    "confirm-delete": "Are you sure you want to delete {title}?",
-    "delete-header": "Confirm Deletion"
-  },
-  "tutorial": {
-    "new-title": "Create New Tutorial",
-    "edit-title": "Edit Tutorial",
-    "title": "Title",
-    "summary": "Summary",
-    "category": "Category",
-    "save": "Save",
-    "cancel": "Cancel"
-  },
-  "errors": {
-    "occurred": "Errors occurred"
+  "iam": {
+    "roles": {
+      "DRIVER": "Driver",
+      "OPERATOR_ADMIN": "Administrator",
+      "OPERATOR_STAFF": "Operations staff"
+    },
+    "fields": {
+      "role": "I am a",
+      "email": "E-mail address",
+      "email-placeholder": "name{'@'}example.com",
+      "password": "Password",
+      "confirm-password": "Confirm password"
+    },
+    "validation": {
+      "email-required": "Enter your e-mail address.",
+      "email-invalid": "Enter a valid e-mail address, for example name{'@'}example.com.",
+      "password-required": "Enter your password.",
+      "password-length": "Use at least {length} characters.",
+      "password-mismatch": "The passwords do not match."
+    },
+    "sign-in": {
+      "title": "Sign in",
+      "subtitle": "Access your driver or administrator account",
+      "remember": "Remember me",
+      "submit": "Sign in",
+      "divider": "or",
+      "no-account": "Don't have an account yet?",
+      "sign-up-link": "Sign up here",
+      "registered": "Your account was created. You can sign in now.",
+      "errors": {
+        "invalid-credentials": "The e-mail address or the password is incorrect.",
+        "inactive-account": "This account is not active. Contact EasyPark support.",
+        "failed": "We could not sign you in. Try again in a few minutes."
+      }
+    },
+    "sign-up": {
+      "title": "Create your account",
+      "subtitle": "Sign up as a driver or as a parking administrator",
+      "submit": "Create account",
+      "has-account": "Already have an account?",
+      "sign-in-link": "Sign in",
+      "errors": {
+        "email-taken": "This e-mail address is already registered. Sign in or use another address.",
+        "failed": "We could not create your account. Try again in a few minutes."
+      }
+    },
+    "change-password": {
+      "title": "Change password",
+      "current": "Current password",
+      "new": "New password",
+      "success": "Your password was updated.",
+      "errors": {
+        "wrong-current-password": "The current password is incorrect.",
+        "same-password": "The new password must be different from the current one.",
+        "session-expired": "Your session expired. Sign in again to change your password.",
+        "failed": "We could not update your password. Try again in a few minutes."
+      }
+    },
+    "account": {
+      "menu": "Account menu of {name}",
+      "sign-in": "Sign in",
+      "sign-up": "Sign up",
+      "sign-out": "Sign out"
+    }
   }
 }

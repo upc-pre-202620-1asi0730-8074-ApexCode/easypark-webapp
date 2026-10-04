@@ -1,64 +1,90 @@
 {
-  "option": {
-    "home": "Inicio",
-    "about": "Acerca de",
-    "categories": "Categorías",
-    "tutorials": "Tutoriales"
+  "layout": {
+    "skip-to-content": "Saltar al contenido principal",
+    "main-navigation": "Navegación principal",
+    "open-menu": "Abrir menú de navegación",
+    "language": "Idioma"
   },
-  "authoring-phrase": {
-    "intro": "Hecho con",
-    "use": "utilizando",
-    "author": "por el Equipo de Desarrollo de {brand}"
+  "common": {
+    "cancel": "Cancelar",
+    "save": "Guardar"
   },
   "about": {
-    "title": "Acerca de Nosotros",
-    "content": "ACME Learning Center es una Plataforma educativa, parte de ACME Corporation."
+    "title": "Acerca de EasyPark",
+    "content": "EasyPark es una plataforma de gestión de estacionamientos en tiempo real que conecta a los conductores con espacios disponibles y brinda a los operadores control digital de sus instalaciones."
   },
   "home": {
-    "title": "Inicio",
-    "content": "Bienvenido a ACME Learning Center."
+    "title": "Bienvenido",
+    "content": "Bienvenido a EasyPark. Menos vueltas buscando, más control al administrar."
   },
   "page-not-found": {
     "title": "Página no encontrada",
     "content": "La ruta {unavailable-route} no está disponible.",
-    "go-home": "Ir al Inicio"
+    "go-home": "Ir al inicio"
   },
-  "categories": {
-    "title": "Categorías",
-    "id": "ID",
-    "name": "Nombre",
-    "actions": "Acciones",
-    "new": "Nueva Categoría",
-    "confirm-delete": "¿Estás seguro de que quieres eliminar {name}?",
-    "delete-header": "Confirmar Eliminación"
-  },
-  "category": {
-    "new-title": "Crear Nueva Categoría",
-    "edit-title": "Editar Categoría",
-    "name": "Nombre",
-    "save": "Guardar",
-    "cancel": "Cancelar"
-  },
-  "tutorials": {
-    "title": "Tutoriales",
-    "id": "ID",
-    "summary": "Resumen",
-    "category-id": "ID de Categoría",
-    "actions": "Acciones",
-    "new": "Nuevo Tutorial",
-    "confirm-delete": "¿Estás seguro de que quieres eliminar {title}?",
-    "delete-header": "Confirmar Eliminación"
-  },
-  "tutorial": {
-    "new-title": "Crear Nuevo Tutorial",
-    "edit-title": "Editar Tutorial",
-    "title": "Título",
-    "summary": "Resumen",
-    "category": "Categoría",
-    "save": "Guardar",
-    "cancel": "Cancelar"
-  },
-  "errors": {
-    "occurred": "Ocurrieron errores"
+  "iam": {
+    "roles": {
+      "DRIVER": "Conductor",
+      "OPERATOR_ADMIN": "Administrador",
+      "OPERATOR_STAFF": "Personal operativo"
+    },
+    "fields": {
+      "role": "Soy",
+      "email": "Correo electrónico",
+      "email-placeholder": "correo{'@'}ejemplo.com",
+      "password": "Contraseña",
+      "confirm-password": "Confirmar contraseña"
+    },
+    "validation": {
+      "email-required": "Ingresa tu correo electrónico.",
+      "email-invalid": "Ingresa un correo válido, por ejemplo correo{'@'}ejemplo.com.",
+      "password-required": "Ingresa tu contraseña.",
+      "password-length": "Usa al menos {length} caracteres.",
+      "password-mismatch": "Las contraseñas no coinciden."
+    },
+    "sign-in": {
+      "title": "Inicia sesión",
+      "subtitle": "Accede a tu cuenta de conductor o administrador",
+      "remember": "Recordarme",
+      "submit": "Iniciar sesión",
+      "divider": "o",
+      "no-account": "¿Aún no tienes cuenta?",
+      "sign-up-link": "Regístrate aquí",
+      "registered": "Tu cuenta fue creada. Ya puedes iniciar sesión.",
+      "errors": {
+        "invalid-credentials": "El correo o la contraseña no son correctos.",
+        "inactive-account": "Esta cuenta no está activa. Comunícate con el soporte de EasyPark.",
+        "failed": "No pudimos iniciar tu sesión. Inténtalo de nuevo en unos minutos."
+      }
+    },
+    "sign-up": {
+      "title": "Crea tu cuenta",
+      "subtitle": "Regístrate como conductor o como administrador de estacionamiento",
+      "submit": "Crear cuenta",
+      "has-account": "¿Ya tienes cuenta?",
+      "sign-in-link": "Inicia sesión",
+      "errors": {
+        "email-taken": "Este correo ya está registrado. Inicia sesión o usa otro correo.",
+        "failed": "No pudimos crear tu cuenta. Inténtalo de nuevo en unos minutos."
+      }
+    },
+    "change-password": {
+      "title": "Cambiar contraseña",
+      "current": "Contraseña actual",
+      "new": "Nueva contraseña",
+      "success": "Tu contraseña fue actualizada.",
+      "errors": {
+        "wrong-current-password": "La contraseña actual no es correcta.",
+        "same-password": "La nueva contraseña debe ser distinta de la actual.",
+        "session-expired": "Tu sesión expiró. Vuelve a iniciar sesión para cambiar tu contraseña.",
+        "failed": "No pudimos actualizar tu contraseña. Inténtalo de nuevo en unos minutos."
+      }
+    },
+    "account": {
+      "menu": "Menú de la cuenta de {name}",
+      "sign-in": "Iniciar sesión",
+      "sign-up": "Regístrate",
+      "sign-out": "Cerrar sesión"
+    }
   }
 }
