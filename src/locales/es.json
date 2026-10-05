@@ -162,5 +162,87 @@
         "failed": "No pudimos guardar el vehículo. Inténtalo de nuevo en unos minutos."
       }
     }
+  },
+  "parking-management": {
+    "navigation": {
+      "facilities": "Mis instalaciones"
+    },
+    "facilities": {
+      "title": "Mis instalaciones",
+      "subtitle": "Administra tus estacionamientos y sus espacios",
+      "loading": "Cargando tus instalaciones…",
+      "new": "Nueva instalación",
+      "empty": "Aún no registras instalaciones. Crea la primera para empezar a administrar espacios.",
+      "occupancy": "{occupied}/{total} ocupados",
+      "status": {
+        "ACTIVE": "Activa",
+        "INACTIVE": "Inactiva",
+        "MAINTENANCE": "En mantenimiento"
+      }
+    },
+    "facility-detail": {
+      "back": "Volver a instalaciones",
+      "edit": "Editar instalación",
+      "schedule": "Horario",
+      "rate": "Tarifa por hora",
+      "occupancy": "Ocupación",
+      "not-found": "No encontramos esta instalación."
+    },
+    "facility-form": {
+      "create-title": "Nueva instalación",
+      "edit-title": "Editar instalación",
+      "created": "La instalación fue creada.",
+      "updated": "La instalación fue actualizada.",
+      "failed": "No pudimos guardar la instalación. Inténtalo de nuevo en unos minutos."
+    },
+    "fields": {
+      "name": "Nombre",
+      "address": "Dirección",
+      "latitude": "Latitud",
+      "longitude": "Longitud",
+      "hourly-rate": "Tarifa por hora",
+      "open-time": "Hora de apertura",
+      "close-time": "Hora de cierre",
+      "spot-code": "Código",
+      "spot-level": "Nivel",
+      "spot-type": "Tipo"
+    },
+    "validation": {
+      "required": "Este campo es obligatorio.",
+      "positive-number": "Ingresa un número mayor a 0."
+    },
+    "spots": {
+      "title": "Espacios",
+      "register": "Nuevo espacio",
+      "register-title": "Nuevo espacio",
+      "edit-title": "Editar espacio",
+      "empty": "Aún no registras espacios en esta instalación.",
+      "status": "Estado",
+      "actions": "Acciones",
+      "status-values": {
+        "AVAILABLE": "Disponible",
+        "OCCUPIED": "Ocupado",
+        "RESERVED": "Reservado",
+        "OUT_OF_SERVICE": "Fuera de servicio"
+      },
+      "types": {
+        "CAR": "Auto",
+        "SUV": "SUV",
+        "VAN": "Van",
+        "MOTORCYCLE": "Moto"
+      },
+      "mark-occupied": "Marcar ocupado",
+      "mark-available": "Marcar disponible",
+      "mark-out-of-service": "Fuera de servicio",
+      "return-to-service": "Reactivar",
+      "edit": "Editar espacio {code}",
+      "edit-tooltip": "Editar",
+      "registered": "El espacio fue registrado.",
+      "updated": "El espacio fue actualizado.",
+      "errors": {
+        "code-taken": "Ya existe un espacio con ese código en esta instalación.",
+        "failed": "No pudimos guardar el espacio. Inténtalo de nuevo en unos minutos."
+      }
+    }
   }
 }
