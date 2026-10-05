@@ -16,7 +16,7 @@
       "role": "OPERATOR_ADMIN",
       "status": "ACTIVE",
       "createdAt": "2026-02-03T13:00:00.000Z",
-      "lastLoginAt": null
+      "lastLoginAt": "2026-10-05T08:20:07.964Z"
     }
   ],
   "profiles": [
@@ -68,6 +68,50 @@
       "color": null,
       "isDefault": false,
       "createdAt": "2026-05-20T09:45:00.000Z"
+    }
+  ],
+  "parking-facilities": [
+    {
+      "id": 1,
+      "operatorProfileId": 2,
+      "name": "Estacionamiento Miraflores Centro",
+      "address": "Av. Larco 345, Miraflores",
+      "latitude": -12.1215,
+      "longitude": -77.0297,
+      "hourlyRate": 6.5,
+      "openTime": "06:00",
+      "closeTime": "23:00",
+      "status": "ACTIVE",
+      "createdAt": "2026-02-10T09:00:00.000Z"
+    }
+  ],
+  "parking-spots": [
+    {
+      "id": 1,
+      "facilityId": 1,
+      "code": "A-01",
+      "level": 1,
+      "spotType": "CAR",
+      "status": "AVAILABLE",
+      "createdAt": "2026-02-10T09:05:00.000Z"
+    },
+    {
+      "id": 2,
+      "facilityId": 1,
+      "code": "A-02",
+      "level": 1,
+      "spotType": "CAR",
+      "status": "OCCUPIED",
+      "createdAt": "2026-02-10T09:05:00.000Z"
+    },
+    {
+      "id": 3,
+      "facilityId": 1,
+      "code": "M-01",
+      "level": 1,
+      "spotType": "MOTORCYCLE",
+      "status": "AVAILABLE",
+      "createdAt": "2026-02-10T09:06:00.000Z"
     }
   ]
 }
