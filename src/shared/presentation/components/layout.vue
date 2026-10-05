@@ -18,7 +18,9 @@ const myProfileRoute = { name: 'profiles-my-profile' };
 const driverNavigation = [
   { label: 'profiles.navigation.profile', to: myProfileRoute }
 ];
-const operatorNavigation = [];
+const operatorNavigation = [
+  { label: 'parking-management.navigation.facilities', to: { name: 'parking-management-facilities' } }
+];
 const accountItems = [
   { label: 'profiles.navigation.my-profile', icon: 'pi pi-user', route: myProfileRoute }
 ];
