@@ -7,7 +7,7 @@
       "role": "DRIVER",
       "status": "ACTIVE",
       "createdAt": "2026-03-12T15:20:00.000Z",
-      "lastLoginAt": "2026-10-06T01:56:40.263Z"
+      "lastLoginAt": null
     },
     {
       "id": 2,
@@ -16,7 +16,7 @@
       "role": "OPERATOR_ADMIN",
       "status": "ACTIVE",
       "createdAt": "2026-02-03T13:00:00.000Z",
-      "lastLoginAt": "2026-10-06T01:59:12.829Z"
+      "lastLoginAt": null
     }
   ],
   "profiles": [
@@ -83,85 +83,6 @@
       "closeTime": "23:00",
       "status": "ACTIVE",
       "createdAt": "2026-02-10T09:00:00.000Z"
-    }
-  ],
-  "parking-spots": [
-    {
-      "id": 1,
-      "facilityId": 1,
-      "code": "A-01",
-      "level": 1,
-      "spotType": "CAR",
-      "status": "AVAILABLE",
-      "createdAt": "2026-02-10T09:05:00.000Z"
-    },
-    {
-      "id": 2,
-      "facilityId": 1,
-      "code": "A-02",
-      "level": 1,
-      "spotType": "CAR",
-      "status": "OCCUPIED",
-      "createdAt": "2026-02-10T09:05:00.000Z"
-    },
-    {
-      "id": 3,
-      "facilityId": 1,
-      "code": "M-01",
-      "level": 1,
-      "spotType": "MOTORCYCLE",
-      "status": "AVAILABLE",
-      "createdAt": "2026-02-10T09:06:00.000Z"
-    }
-  ],
-  "reservations": [
-    {
-      "code": "EP-MUW14V4F",
-      "driverProfileId": 1,
-      "vehicleId": 1,
-      "parkingSpotId": 1,
-      "startAt": "2026-10-15T01:58:00.000Z",
-      "durationMinutes": 120,
-      "estimatedAmount": 13,
-      "currency": "PEN",
-      "status": "COMPLETED",
-      "createdAt": "2026-10-06T01:58:24.399Z",
-      "id": 1
-    }
-  ],
-  "access-movements": [
-    {
-      "parkingFacilityId": 1,
-      "vehicleId": 1,
-      "operatorId": 2,
-      "movementType": "ENTRY",
-      "registrationMethod": "MANUAL",
-      "status": "COMPLETED",
-      "occurredAt": "2026-10-06T02:01:28.669Z",
-      "note": null,
-      "id": 1
-    },
-    {
-      "parkingFacilityId": 1,
-      "vehicleId": 1,
-      "operatorId": 2,
-      "movementType": "EXIT",
-      "registrationMethod": "MANUAL",
-      "status": "COMPLETED",
-      "occurredAt": "2026-10-06T02:02:38.165Z",
-      "note": null,
-      "id": 2
-    },
-    {
-      "parkingFacilityId": 1,
-      "vehicleId": 1,
-      "operatorId": 2,
-      "movementType": "EXIT",
-      "registrationMethod": "MANUAL",
-      "status": "REJECTED",
-      "occurredAt": "2026-10-06T02:04:11.284Z",
-      "note": "no-active-stay",
-      "id": 3
     }
   ],
   "parking-spots": [

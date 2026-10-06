@@ -300,74 +300,74 @@
   },
   "access-control": {
     "navigation": {
-      "accesses": "Accesos"
+      "accesses": "Accesses"
     },
-    "title": "Control de accesos",
-    "subtitle": "Registra ingresos y salidas de vehículos y consulta la ocupación actual",
-    "loading": "Cargando información de accesos…",
-    "no-facilities": "No tienes estacionamientos disponibles.",
+    "title": "Access control",
+    "subtitle": "Register vehicle entries and exits and monitor current occupancy",
+    "loading": "Loading access information…",
+    "no-facilities": "You don't have any parking facilities available.",
     "summary": {
-      "total": "Espacios totales",
-      "available": "Disponibles",
-      "occupied": "Ocupados",
-      "active-stays": "Vehículos dentro"
+      "total": "Total spaces",
+      "available": "Available",
+      "occupied": "Occupied",
+      "active-stays": "Vehicles inside"
     },
     "fields": {
-      "type": "Movimiento",
-      "method": "Método de registro",
-      "plate": "Placa",
-      "reservation-code": "Código de reserva",
-      "time": "Fecha y hora",
-      "status": "Estado",
-      "parking-spot": "Espacio"
+      "type": "Movement",
+      "method": "Registration method",
+      "plate": "Plate",
+      "reservation-code": "Reservation code",
+      "time": "Date and time",
+      "status": "Status",
+      "parking-spot": "Parking spot"
     },
     "types": {
-      "ENTRY": "Ingreso",
-      "EXIT": "Salida"
+      "ENTRY": "Entry",
+      "EXIT": "Exit"
     },
     "methods": {
       "MANUAL": "Manual",
-      "QR_CODE": "Código QR",
-      "IOT_SENSOR": "Sensor IoT"
+      "QR_CODE": "QR code",
+      "IOT_SENSOR": "IoT sensor"
     },
     "status": {
-      "IN_PROGRESS": "En proceso",
-      "COMPLETED": "Completado",
-      "UNDER_REVIEW": "En revisión",
-      "REJECTED": "Rechazado"
+      "IN_PROGRESS": "In progress",
+      "COMPLETED": "Completed",
+      "UNDER_REVIEW": "Under review",
+      "REJECTED": "Rejected"
     },
     "form": {
-      "title": "Registrar acceso",
-      "register": "Registrar movimiento",
-      "optional": "Opcional"
+      "title": "Register access",
+      "register": "Register movement",
+      "optional": "Optional"
     },
     "movements": {
-      "title": "Historial de accesos",
-      "empty": "Aún no existen movimientos de acceso registrados."
+      "title": "Access history",
+      "empty": "There are no access movements registered yet."
     },
     "stays": {
-      "title": "Vehículos actualmente estacionados",
-      "empty": "No hay vehículos estacionados actualmente.",
-      "reassign": "Reasignar espacio",
-      "reassign-title": "Reasignar espacio de estacionamiento"
+      "title": "Vehicles currently parked",
+      "empty": "There are no vehicles currently parked.",
+      "reassign": "Reassign space",
+      "reassign-title": "Reassign parking space"
     },
     "validation": {
-      "required": "Este campo es obligatorio."
+      "required": "This field is required."
     },
     "messages": {
-      "entry-recorded": "El ingreso del vehículo fue registrado.",
-      "exit-recorded": "La salida del vehículo fue registrada.",
-      "under-review": "El vehículo fue registrado para revisión.",
-      "reassigned": "El vehículo fue reasignado correctamente."
+      "entry-recorded": "Vehicle entry was registered.",
+      "exit-recorded": "Vehicle exit was registered.",
+      "under-review": "The vehicle was registered for review.",
+      "reassigned": "The vehicle was reassigned successfully."
     },
     "errors": {
-      "invalid-plate-number": "Ingresa una placa válida, por ejemplo ABC-123.",
-      "vehicle-already-inside": "Este vehículo ya posee un ingreso activo.",
-      "no-active-reservation": "No existe una reserva activa para este vehículo.",
-      "no-availability": "No existen espacios disponibles para este vehículo.",
-      "no-active-stay": "Este vehículo no posee un ingreso activo.",
-      "invalid-space": "El espacio seleccionado no está disponible.",
-      "failed": "No pudimos completar la operación. Inténtalo nuevamente."
+      "invalid-plate-number": "Enter a valid plate, for example ABC-123.",
+      "vehicle-already-inside": "This vehicle already has an active entry.",
+      "no-active-reservation": "There is no active reservation for this vehicle.",
+      "no-availability": "There are no available spaces for this vehicle.",
+      "no-active-stay": "This vehicle does not have an active entry.",
+      "invalid-space": "The selected space is not available.",
+      "failed": "We couldn't complete the operation. Please try again."
     }
   }
 }

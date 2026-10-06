@@ -4,10 +4,8 @@ import iamRoutes from "./iam/presentation/iam-routes.js";
 import profilesRoutes from "./profiles/presentation/profiles-routes.js";
 import parkingManagementRoutes from "./parking-management/presentation/parking-management-routes.js";
 import reservationsRoutes from "./reservations/presentation/reservations-routes.js";
-import {authenticationGuard} from "./iam/infrastructure/authentication.guard.js";
 import accessControlRoutes from "./access-control/presentation/access-control-routes.js";
-
-
+import {authenticationGuard} from "./iam/infrastructure/authentication.guard.js";
 
 const about = () => import('./shared/presentation/views/about.vue');
 const pageNotFound = () => import('./shared/presentation/views/page-not-found.vue');
@@ -46,6 +44,11 @@ const routes = [
         children: reservationsRoutes
     },
     {
+        path: '/access-control',
+        name: 'access-control',
+        children: accessControlRoutes
+    },
+    {
         path: '/',
         redirect: '/home'
     },
@@ -54,12 +57,7 @@ const routes = [
         name: 'not-found',
         component: pageNotFound,
         meta: {title: 'Page Not Found', public: true}
-    },
-    {
-        path: '/access-control',
-        name: 'access-control',
-        children: accessControlRoutes
-    },
+    }
 ];
 
 const router = createRouter({
