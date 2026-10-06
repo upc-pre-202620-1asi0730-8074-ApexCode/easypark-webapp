@@ -116,5 +116,7 @@
   ],
   "reservations": [],
   "access-movements": [],
-  "parking-stays": []
+  "parking-stays": [],
+  "reports": [],
+  "occupancy-metrics": []
 }

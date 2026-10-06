@@ -1,10 +1,13 @@
 import {createRouter, createWebHistory} from "vue-router";
 import Home from "./shared/presentation/views/home.vue";
+
 import iamRoutes from "./iam/presentation/iam-routes.js";
 import profilesRoutes from "./profiles/presentation/profiles-routes.js";
 import parkingManagementRoutes from "./parking-management/presentation/parking-management-routes.js";
 import reservationsRoutes from "./reservations/presentation/reservations-routes.js";
 import accessControlRoutes from "./access-control/presentation/access-control-routes.js";
+import analyticsReportingRoutes from "./analytics-reporting/presentation/analytics-reporting-routes.js";
+
 import {authenticationGuard} from "./iam/infrastructure/authentication.guard.js";
 
 const about = () => import('./shared/presentation/views/about.vue');
@@ -47,6 +50,11 @@ const routes = [
         path: '/access-control',
         name: 'access-control',
         children: accessControlRoutes
+    },
+    {
+        path: '/analytics-reporting',
+        name: 'analytics-reporting',
+        children: analyticsReportingRoutes
     },
     {
         path: '/',
