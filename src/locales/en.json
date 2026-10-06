@@ -297,5 +297,77 @@
       "not-cancellable": "This reservation can no longer be cancelled.",
       "failed": "We couldn't complete the operation. Please try again."
     }
+  },
+  "access-control": {
+    "navigation": {
+      "accesses": "Accesos"
+    },
+    "title": "Control de accesos",
+    "subtitle": "Registra ingresos y salidas de vehículos y consulta la ocupación actual",
+    "loading": "Cargando información de accesos…",
+    "no-facilities": "No tienes estacionamientos disponibles.",
+    "summary": {
+      "total": "Espacios totales",
+      "available": "Disponibles",
+      "occupied": "Ocupados",
+      "active-stays": "Vehículos dentro"
+    },
+    "fields": {
+      "type": "Movimiento",
+      "method": "Método de registro",
+      "plate": "Placa",
+      "reservation-code": "Código de reserva",
+      "time": "Fecha y hora",
+      "status": "Estado",
+      "parking-spot": "Espacio"
+    },
+    "types": {
+      "ENTRY": "Ingreso",
+      "EXIT": "Salida"
+    },
+    "methods": {
+      "MANUAL": "Manual",
+      "QR_CODE": "Código QR",
+      "IOT_SENSOR": "Sensor IoT"
+    },
+    "status": {
+      "IN_PROGRESS": "En proceso",
+      "COMPLETED": "Completado",
+      "UNDER_REVIEW": "En revisión",
+      "REJECTED": "Rechazado"
+    },
+    "form": {
+      "title": "Registrar acceso",
+      "register": "Registrar movimiento",
+      "optional": "Opcional"
+    },
+    "movements": {
+      "title": "Historial de accesos",
+      "empty": "Aún no existen movimientos de acceso registrados."
+    },
+    "stays": {
+      "title": "Vehículos actualmente estacionados",
+      "empty": "No hay vehículos estacionados actualmente.",
+      "reassign": "Reasignar espacio",
+      "reassign-title": "Reasignar espacio de estacionamiento"
+    },
+    "validation": {
+      "required": "Este campo es obligatorio."
+    },
+    "messages": {
+      "entry-recorded": "El ingreso del vehículo fue registrado.",
+      "exit-recorded": "La salida del vehículo fue registrada.",
+      "under-review": "El vehículo fue registrado para revisión.",
+      "reassigned": "El vehículo fue reasignado correctamente."
+    },
+    "errors": {
+      "invalid-plate-number": "Ingresa una placa válida, por ejemplo ABC-123.",
+      "vehicle-already-inside": "Este vehículo ya posee un ingreso activo.",
+      "no-active-reservation": "No existe una reserva activa para este vehículo.",
+      "no-availability": "No existen espacios disponibles para este vehículo.",
+      "no-active-stay": "Este vehículo no posee un ingreso activo.",
+      "invalid-space": "El espacio seleccionado no está disponible.",
+      "failed": "No pudimos completar la operación. Inténtalo nuevamente."
+    }
   }
 }
