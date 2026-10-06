@@ -30,6 +30,11 @@ const operatorNavigation = [
   {
     label: 'access-control.navigation.accesses',
     to: {name: 'access-control-accesses'}
+  },
+  {
+    label: 'monitoring-alerts.navigation.alerts',
+    to: {name: 'monitoring-alerts-alerts'},
+    roles: ['OPERATOR_ADMIN']
   }
 ];
 
@@ -73,9 +78,15 @@ const isStandalone = computed(
 const navigationItems = computed(() => {
   if (!iamStore.isSignedIn) return [];
 
-  return iamStore.isOperator
+  const items = iamStore.isOperator
       ? operatorNavigation
       : driverNavigation;
+
+  return items.filter(
+      item =>
+          !item.roles ||
+          item.roles.includes(iamStore.currentRole)
+  );
 });
 
 function toggleDrawer() {
