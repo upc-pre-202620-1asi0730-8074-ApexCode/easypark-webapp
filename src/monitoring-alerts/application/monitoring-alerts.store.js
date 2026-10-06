@@ -7,7 +7,10 @@ import {AlertRuleAssembler} from "../infrastructure/alert-rule.assembler.js";
 
 import {Alert} from "../domain/model/alert.entity.js";
 import {AlertStatus} from "../domain/model/alert-status.js";
+import {ALERT_SEVERITY_BY_TYPE, AlertType} from "../domain/model/alert-type.js";
 import {MonitoringContext} from "../domain/model/monitoring-context.js";
+
+import {MovementStatus} from "../../access-control/domain/model/movement-status.js";
 
 import {FacilityAssembler} from "../../parking-management/infrastructure/facility.assembler.js";
 import {SpotAssembler} from "../../parking-management/infrastructure/spot.assembler.js";
@@ -38,11 +41,44 @@ function sortByNewestFirst(a, b) {
 }
 
 /**
- * Origen de una alerta: la permanencia, el movimiento o el propio estacionamiento.
- * Dos evaluaciones de la misma fuente no deben crear dos alertas.
+ * Source of an alert: a parking stay, an access movement, or the facility itself.
+ * Two evaluations of the same source must never create two alerts.
+ *
+ * The key is namespaced because parkingStayId, accessMovementId and
+ * parkingFacilityId belong to three different id spaces: the raw ids collide
+ * (a movement id of 1 equals a facility id of 1), so an unprefixed key would
+ * make a movement-based alert match a facility-based seed alert and silently
+ * skip its creation. Stay wins over movement, preserving the original
+ * precedence of `stay ?? movement ?? facility`.
+ *
+ * @returns {string} a single, total, kind-prefixed key.
  */
 function sourceKeyOf({parkingFacilityId, parkingStayId, accessMovementId}) {
-    return parkingStayId ?? accessMovementId ?? parkingFacilityId;
+    if (parkingStayId != null) return `stay:${parkingStayId}`;
+    if (accessMovementId != null) return `movement:${accessMovementId}`;
+
+    return `facility:${parkingFacilityId}`;
+}
+
+/**
+ * Alert type implied by an access movement that Access Control has already
+ * classified. Returns null when the movement is not classified as a problem.
+ */
+function accessEventTypeOf(movement) {
+    if (movement.status === MovementStatus.UNDER_REVIEW) {
+        return AlertType.UNRECOGNIZED_PLATE;
+    }
+
+    if (
+        movement.status === MovementStatus.REJECTED &&
+        // 'no-active-reservation' is Access Control's published rejection
+        // reason and has no exported constant: keep it in sync manually.
+        movement.note === 'no-active-reservation'
+    ) {
+        return AlertType.ACCESS_WITHOUT_RESERVATION;
+    }
+
+    return null;
 }
 
 const useMonitoringAlertsStore = defineStore('monitoring-alerts', () => {
@@ -70,21 +106,6 @@ const useMonitoringAlertsStore = defineStore('monitoring-alerts', () => {
                 isToday(alert.resolvedAt)
         )
     );
-
-    const avgResolutionMinutes = computed(() => {
-        const durations = resolvedToday.value
-            .map(alert => alert.resolutionMinutes)
-            .filter(value => value !== null);
-
-        if (!durations.length) return 0;
-
-        return Math.round(
-            durations.reduce(
-                (total, value) => total + value,
-                0
-            ) / durations.length
-        );
-    });
 
     async function fetchFacilities(operatorProfileId) {
         facilitiesLoaded.value = false;
@@ -189,6 +210,7 @@ const useMonitoringAlertsStore = defineStore('monitoring-alerts', () => {
             errors.value = [];
 
             await evaluateRules();
+            await reactToAccessEvents();
         } catch (error) {
             errors.value.push(error);
         } finally {
@@ -229,7 +251,7 @@ const useMonitoringAlertsStore = defineStore('monitoring-alerts', () => {
                             breach.accessMovementId
                     };
 
-                    if (hasAlertFor(rule, candidate)) continue;
+                    if (hasAlertFor(rule.type, candidate)) continue;
 
                     const response =
                         await monitoringAlertsApi.createAlert(
@@ -268,14 +290,76 @@ const useMonitoringAlertsStore = defineStore('monitoring-alerts', () => {
         ].sort(sortByNewestFirst);
     }
 
-    function hasAlertFor(rule, candidate) {
+    function hasAlertFor(type, candidate) {
         const key = sourceKeyOf(candidate);
 
         return alerts.value.some(
             alert =>
-                alert.type === rule.type &&
+                alert.type === type &&
                 sourceKeyOf(alert) === key
         );
+    }
+
+    /**
+     * Monitoring does not validate plates or reservations: Access Control
+     * classifies the movement and Monitoring reacts to that classification.
+     * No threshold is involved, so these alerts come from a rule-free path.
+     * Idempotent by (type, sourceKey): an already registered alert for the
+     * same access movement is never created twice.
+     */
+    async function reactToAccessEvents() {
+        if (!currentFacility.value) return;
+
+        const created = [];
+
+        try {
+            for (const movement of movements.value) {
+                const type = accessEventTypeOf(movement);
+
+                if (!type) continue;
+
+                const candidate = {
+                    parkingFacilityId:
+                        currentFacility.value.id,
+                    parkingStayId: null,
+                    accessMovementId: movement.id
+                };
+
+                if (hasAlertFor(type, candidate)) continue;
+
+                const response =
+                    await monitoringAlertsApi.createAlert(
+                        AlertAssembler
+                            .toResourceFromEntity(
+                                new Alert({
+                                    ...candidate,
+                                    type,
+                                    severity:
+                                    ALERT_SEVERITY_BY_TYPE[type],
+                                    contextValue: null,
+                                    createdAt:
+                                    new Date().toISOString()
+                                })
+                            )
+                    );
+
+                created.push(
+                    AlertAssembler
+                        .toEntityFromResource(
+                            response.data
+                        )
+                );
+            }
+        } catch (error) {
+            errors.value.push(error);
+        }
+
+        if (!created.length) return;
+
+        alerts.value = [
+            ...created,
+            ...alerts.value
+        ].sort(sortByNewestFirst);
     }
 
     async function resolveAlert(command) {
@@ -294,7 +378,7 @@ const useMonitoringAlertsStore = defineStore('monitoring-alerts', () => {
             note: alert.note
         };
 
-        if (!alert.resolve(command.operatorId, command.note)) {
+        if (!alert.resolve(command.resolvedBy, command.note)) {
             return outcome(false, 'already-resolved');
         }
 
@@ -342,7 +426,6 @@ const useMonitoringAlertsStore = defineStore('monitoring-alerts', () => {
         errors,
         activeAlerts,
         resolvedToday,
-        avgResolutionMinutes,
         fetchFacilities,
         selectFacility,
         resolveAlert,

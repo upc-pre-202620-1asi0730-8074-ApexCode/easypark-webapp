@@ -53,10 +53,4 @@ export class MonitoringContext {
                 entry => entry.durationMinutes > allowedStayMinutes
             );
     }
-
-    movementsMatching(predicate, minimumCount = 1) {
-        const matches = this.movements.filter(predicate);
-
-        return matches.length >= minimumCount ? matches : [];
-    }
 }

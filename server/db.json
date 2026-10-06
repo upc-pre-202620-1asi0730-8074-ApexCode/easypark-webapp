@@ -144,24 +144,6 @@
       "threshold": 0.75,
       "enabled": true,
       "updatedAt": "2026-02-10T09:15:00.000Z"
-    },
-    {
-      "id": 4,
-      "parkingFacilityId": 1,
-      "alertType": "UNRECOGNIZED_PLATE",
-      "severity": "LOW",
-      "threshold": 1,
-      "enabled": true,
-      "updatedAt": "2026-02-10T09:15:00.000Z"
-    },
-    {
-      "id": 5,
-      "parkingFacilityId": 1,
-      "alertType": "ACCESS_WITHOUT_RESERVATION",
-      "severity": "MEDIUM",
-      "threshold": 1,
-      "enabled": true,
-      "updatedAt": "2026-02-10T09:15:00.000Z"
     }
   ],
   "alerts": [
@@ -174,11 +156,9 @@
       "contextValue": 512,
       "parkingStayId": null,
       "accessMovementId": null,
-      "operatorId": 2,
       "createdAt": "2026-10-05T08:20:00.000Z",
       "resolvedAt": null,
       "resolvedBy": null,
-      "dismissedAt": null,
       "note": null
     },
     {
@@ -190,11 +170,9 @@
       "contextValue": 0.95,
       "parkingStayId": null,
       "accessMovementId": null,
-      "operatorId": 2,
       "createdAt": "2026-10-05T09:40:00.000Z",
       "resolvedAt": null,
       "resolvedBy": null,
-      "dismissedAt": null,
       "note": null
     },
     {
@@ -206,11 +184,9 @@
       "contextValue": null,
       "parkingStayId": null,
       "accessMovementId": null,
-      "operatorId": 2,
       "createdAt": "2026-10-05T10:05:00.000Z",
       "resolvedAt": null,
       "resolvedBy": null,
-      "dismissedAt": null,
       "note": null
     },
     {
@@ -222,11 +198,9 @@
       "contextValue": 0.78,
       "parkingStayId": null,
       "accessMovementId": null,
-      "operatorId": 2,
       "createdAt": "2026-10-05T06:30:00.000Z",
       "resolvedAt": "2026-10-05T07:42:00.000Z",
       "resolvedBy": 2,
-      "dismissedAt": null,
       "note": null
     },
     {
@@ -238,11 +212,9 @@
       "contextValue": null,
       "parkingStayId": null,
       "accessMovementId": null,
-      "operatorId": 2,
       "createdAt": "2026-10-05T05:45:00.000Z",
       "resolvedAt": "2026-10-05T06:30:00.000Z",
       "resolvedBy": 2,
-      "dismissedAt": null,
       "note": null
     },
     {
@@ -254,11 +226,9 @@
       "contextValue": 640,
       "parkingStayId": null,
       "accessMovementId": null,
-      "operatorId": 2,
       "createdAt": "2026-10-04T21:10:00.000Z",
       "resolvedAt": null,
       "resolvedBy": null,
-      "dismissedAt": "2026-10-04T21:45:00.000Z",
       "note": null
     }
   ]

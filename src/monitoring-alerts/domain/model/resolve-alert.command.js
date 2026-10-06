@@ -1,11 +1,11 @@
 export class ResolveAlertCommand {
     constructor({
                     alertId,
-                    operatorId = null,
+                    resolvedBy = null,
                     note = null
                 }) {
         this.alertId = alertId;
-        this.operatorId = operatorId;
+        this.resolvedBy = resolvedBy;
         this.note = note || null;
     }
 }

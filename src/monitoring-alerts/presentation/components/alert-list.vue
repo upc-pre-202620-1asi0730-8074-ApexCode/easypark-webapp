@@ -72,7 +72,7 @@ async function resolve(alert) {
       await store.resolveAlert(
           new ResolveAlertCommand({
             alertId: alert.id,
-            operatorId: iamStore.currentUserId
+            resolvedBy: iamStore.currentUserId
           })
       );
 

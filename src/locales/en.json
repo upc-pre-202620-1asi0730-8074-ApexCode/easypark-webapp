@@ -383,9 +383,7 @@
     },
     "summary": {
       "active": "Active alerts",
-      "resolved-today": "Resolved today",
-      "avg-resolution": "Average resolution (today)",
-      "minutes": "min"
+      "resolved-today": "Resolved today"
     },
     "fields": {
       "time": "Date and time",

@@ -383,9 +383,7 @@
     },
     "summary": {
       "active": "Alertas activas",
-      "resolved-today": "Resueltas hoy",
-      "avg-resolution": "Resolución promedio (hoy)",
-      "minutes": "min"
+      "resolved-today": "Resueltas hoy"
     },
     "fields": {
       "time": "Fecha y hora",

@@ -10,11 +10,9 @@ export class Alert {
                     contextValue = null,
                     parkingStayId = null,
                     accessMovementId = null,
-                    operatorId = null,
                     createdAt,
                     resolvedAt = null,
                     resolvedBy = null,
-                    dismissedAt = null,
                     note = null
                 }) {
         this.id = id;
@@ -25,11 +23,9 @@ export class Alert {
         this.contextValue = contextValue;
         this.parkingStayId = parkingStayId;
         this.accessMovementId = accessMovementId;
-        this.operatorId = operatorId;
         this.createdAt = createdAt;
         this.resolvedAt = resolvedAt;
         this.resolvedBy = resolvedBy;
-        this.dismissedAt = dismissedAt;
         this.note = note;
     }
 
@@ -65,17 +61,6 @@ export class Alert {
         this.status = AlertStatus.RESOLVED;
         this.resolvedAt = this.#toIso(now);
         this.resolvedBy = resolvedBy;
-        this.note = note;
-
-        return true;
-    }
-
-    dismiss(operatorId, note = null, now = new Date()) {
-        if (!this.isActive) return false;
-
-        this.status = AlertStatus.DISMISSED;
-        this.dismissedAt = this.#toIso(now);
-        this.operatorId = operatorId;
         this.note = note;
 
         return true;

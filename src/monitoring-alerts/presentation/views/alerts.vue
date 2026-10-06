@@ -109,17 +109,6 @@ watch(
             {{ store.resolvedToday.length }}
           </strong>
         </article>
-
-        <article class="panel alerts-summary__card">
-          <span>
-            {{ t('monitoring-alerts.summary.avg-resolution') }}
-          </span>
-
-          <strong>
-            {{ store.avgResolutionMinutes }}
-            {{ t('monitoring-alerts.summary.minutes') }}
-          </strong>
-        </article>
       </div>
 
       <div
@@ -139,7 +128,7 @@ watch(
 .alerts-summary {
   display: grid;
   grid-template-columns:
-      repeat(3, minmax(0, 1fr));
+      repeat(2, minmax(0, 1fr));
   gap: 16px;
 }
 

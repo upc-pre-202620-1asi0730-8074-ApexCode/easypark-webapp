@@ -11,11 +11,9 @@ export class AlertAssembler {
             contextValue: resource.contextValue ?? null,
             parkingStayId: resource.parkingStayId ?? null,
             accessMovementId: resource.accessMovementId ?? null,
-            operatorId: resource.operatorId ?? null,
             createdAt: resource.createdAt,
             resolvedAt: resource.resolvedAt ?? null,
             resolvedBy: resource.resolvedBy ?? null,
-            dismissedAt: resource.dismissedAt ?? null,
             note: resource.note ?? null
         });
     }
@@ -41,11 +39,9 @@ export class AlertAssembler {
             contextValue: alert.contextValue,
             parkingStayId: alert.parkingStayId,
             accessMovementId: alert.accessMovementId,
-            operatorId: alert.operatorId,
             createdAt: alert.createdAt,
             resolvedAt: alert.resolvedAt,
             resolvedBy: alert.resolvedBy,
-            dismissedAt: alert.dismissedAt,
             note: alert.note
         };
     }

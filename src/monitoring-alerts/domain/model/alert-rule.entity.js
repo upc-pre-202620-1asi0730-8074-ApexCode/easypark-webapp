@@ -1,8 +1,13 @@
 import {AlertType} from "./alert-type.js";
 
 /**
- * Regla de alerta de un estacionamiento. La unicidad es (parkingFacilityId, alertType):
- * no existen dos reglas del mismo tipo para el mismo estacionamiento.
+ * Configurable alert rule of a parking facility. It holds only configurable
+ * rules: capacity thresholds and the maximum stay minutes. The uniqueness is
+ * (parkingFacilityId, alertType): there are no two rules of the same type for
+ * the same parking facility.
+ *
+ * Alert types produced by reacting to Access Control events (for example,
+ * UNRECOGNIZED_PLATE or ACCESS_WITHOUT_RESERVATION) are not configured here.
  */
 export class AlertRule {
     constructor({
@@ -67,33 +72,6 @@ export class AlertRule {
                         contextValue: context.occupancyRate
                     }]
                     : [];
-
-            case AlertType.UNRECOGNIZED_PLATE:
-                return context
-                    .movementsMatching(
-                        movement =>
-                            movement.status === 'UNDER_REVIEW',
-                        this.threshold
-                    )
-                    .map(movement => ({
-                        parkingStayId: null,
-                        accessMovementId: movement.id,
-                        contextValue: null
-                    }));
-
-            case AlertType.ACCESS_WITHOUT_RESERVATION:
-                return context
-                    .movementsMatching(
-                        movement =>
-                            movement.status === 'REJECTED' &&
-                            movement.note === 'no-active-reservation',
-                        this.threshold
-                    )
-                    .map(movement => ({
-                        parkingStayId: null,
-                        accessMovementId: movement.id,
-                        contextValue: null
-                    }));
 
             default:
                 return [];
