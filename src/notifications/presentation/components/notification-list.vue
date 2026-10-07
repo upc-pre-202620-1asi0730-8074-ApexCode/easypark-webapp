@@ -20,21 +20,8 @@ defineProps({
   }
 });
 
-/**
- * Icon of every notification type. The mockup shows five of them; the two it
- * does not show follow the three tone groups the report documents
- * (STAY_EXPIRED joins the amber time-limit group, ALERT_RAISED is amber too -
- * no red group exists). Every name ships with the primeicons package this
- * project already uses.
- */
 const NOTIFICATION_ICON_BY_TYPE = Object.freeze({
-  [NotificationType.TIME_REMAINING]: 'pi-clock',
-  [NotificationType.STAY_EXPIRED]: 'pi-exclamation-circle',
-  [NotificationType.ALERT_RAISED]: 'pi-exclamation-triangle',
-  [NotificationType.CHECK_IN_CONFIRMED]: 'pi-check-circle',
-  [NotificationType.CHECK_OUT_CONFIRMED]: 'pi-car',
-  [NotificationType.RESERVATION_CONFIRMED]: 'pi-calendar',
-  [NotificationType.RESERVATION_REMINDER]: 'pi-bell'
+
 });
 
 const {t, locale} = useI18n();
