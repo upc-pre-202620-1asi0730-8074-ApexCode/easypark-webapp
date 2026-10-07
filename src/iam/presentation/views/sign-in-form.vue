@@ -339,7 +339,7 @@ async function performSignIn() {
   align-items: center;
   gap: 8px;
   color: var(--ep-text-secondary);
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .sign-in__forgot {
@@ -353,14 +353,12 @@ async function performSignIn() {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin: 20px 0 16px;
+  margin: 24px 0 16px;
   color: var(--ep-text-tertiary);
-  font-size: 11px;
+  font-size: 12px;
 }
 
-.sign-in__divider::before,
-.sign-in__divider::after {
-  content: "";
+.sign-in__divider-line {
   flex: 1;
   height: 1px;
   background: var(--ep-border);
@@ -369,7 +367,7 @@ async function performSignIn() {
 .sign-in__footer {
   margin: 0;
   text-align: center;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--ep-text-secondary);
 }
 
