@@ -8,6 +8,7 @@ import reservationsRoutes from "./reservations/presentation/reservations-routes.
 import accessControlRoutes from "./access-control/presentation/access-control-routes.js";
 import analyticsReportingRoutes from "./analytics-reporting/presentation/analytics-reporting-routes.js";
 
+import monitoringAlertsRoutes from "./monitoring-alerts/presentation/monitoring-alerts-routes.js";
 import {authenticationGuard} from "./iam/infrastructure/authentication.guard.js";
 
 const about = () => import('./shared/presentation/views/about.vue');
@@ -55,6 +56,11 @@ const routes = [
         path: '/analytics-reporting',
         name: 'analytics-reporting',
         children: analyticsReportingRoutes
+    },
+    {
+        path: '/monitoring-alerts',
+        name: 'monitoring-alerts',
+        children: monitoringAlertsRoutes
     },
     {
         path: '/',

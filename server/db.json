@@ -7,7 +7,7 @@
       "role": "DRIVER",
       "status": "ACTIVE",
       "createdAt": "2026-03-12T15:20:00.000Z",
-      "lastLoginAt": null
+      "lastLoginAt": "2026-10-06T04:03:05.883Z"
     },
     {
       "id": 2,
@@ -16,7 +16,7 @@
       "role": "OPERATOR_ADMIN",
       "status": "ACTIVE",
       "createdAt": "2026-02-03T13:00:00.000Z",
-      "lastLoginAt": null
+      "lastLoginAt": "2026-10-07T01:35:50.327Z"
     }
   ],
   "profiles": [
@@ -118,5 +118,120 @@
   "access-movements": [],
   "parking-stays": [],
   "reports": [],
-  "occupancy-metrics": []
+  "occupancy-metrics": [],
+  "alert-rules": [
+    {
+      "id": 1,
+      "parkingFacilityId": 1,
+      "alertType": "STAY_EXCEEDED",
+      "severity": "HIGH",
+      "threshold": 480,
+      "enabled": true,
+      "updatedAt": "2026-02-10T09:15:00.000Z"
+    },
+    {
+      "id": 2,
+      "parkingFacilityId": 1,
+      "alertType": "CAPACITY_CRITICAL",
+      "severity": "HIGH",
+      "threshold": 0.9,
+      "enabled": true,
+      "updatedAt": "2026-02-10T09:15:00.000Z"
+    },
+    {
+      "id": 3,
+      "parkingFacilityId": 1,
+      "alertType": "CAPACITY_NEAR_LIMIT",
+      "severity": "MEDIUM",
+      "threshold": 0.75,
+      "enabled": true,
+      "updatedAt": "2026-02-10T09:15:00.000Z"
+    }
+  ],
+  "alerts": [
+    {
+      "id": 1,
+      "parkingFacilityId": 1,
+      "alertType": "STAY_EXCEEDED",
+      "severity": "HIGH",
+      "status": "ACTIVE",
+      "contextValue": 512,
+      "parkingStayId": null,
+      "accessMovementId": null,
+      "createdAt": "2026-10-05T08:20:00.000Z",
+      "resolvedAt": null,
+      "resolvedBy": null,
+      "note": null
+    },
+    {
+      "id": 2,
+      "parkingFacilityId": 1,
+      "alertType": "CAPACITY_CRITICAL",
+      "severity": "HIGH",
+      "status": "RESOLVED",
+      "contextValue": 0.95,
+      "parkingStayId": null,
+      "accessMovementId": null,
+      "createdAt": "2026-10-05T09:40:00.000Z",
+      "resolvedAt": "2026-10-07T01:37:20.192Z",
+      "resolvedBy": 2,
+      "note": null
+    },
+    {
+      "id": 3,
+      "parkingFacilityId": 1,
+      "alertType": "UNRECOGNIZED_PLATE",
+      "severity": "LOW",
+      "status": "ACTIVE",
+      "contextValue": null,
+      "parkingStayId": null,
+      "accessMovementId": null,
+      "createdAt": "2026-10-05T10:05:00.000Z",
+      "resolvedAt": null,
+      "resolvedBy": null,
+      "note": null
+    },
+    {
+      "id": 4,
+      "parkingFacilityId": 1,
+      "alertType": "CAPACITY_NEAR_LIMIT",
+      "severity": "MEDIUM",
+      "status": "RESOLVED",
+      "contextValue": 0.78,
+      "parkingStayId": null,
+      "accessMovementId": null,
+      "createdAt": "2026-10-05T06:30:00.000Z",
+      "resolvedAt": "2026-10-05T07:42:00.000Z",
+      "resolvedBy": 2,
+      "note": null
+    },
+    {
+      "id": 5,
+      "parkingFacilityId": 1,
+      "alertType": "ACCESS_WITHOUT_RESERVATION",
+      "severity": "MEDIUM",
+      "status": "RESOLVED",
+      "contextValue": null,
+      "parkingStayId": null,
+      "accessMovementId": null,
+      "createdAt": "2026-10-05T05:45:00.000Z",
+      "resolvedAt": "2026-10-05T06:30:00.000Z",
+      "resolvedBy": 2,
+      "note": null
+    },
+    {
+      "id": 6,
+      "parkingFacilityId": 1,
+      "alertType": "STAY_EXCEEDED",
+      "severity": "HIGH",
+      "status": "DISMISSED",
+      "contextValue": 640,
+      "parkingStayId": null,
+      "accessMovementId": null,
+      "createdAt": "2026-10-04T21:10:00.000Z",
+      "resolvedAt": null,
+      "resolvedBy": null,
+      "note": null
+    }
+  ]
 }

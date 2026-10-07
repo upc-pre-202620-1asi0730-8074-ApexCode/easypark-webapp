@@ -252,7 +252,6 @@ const useReservationsStore = defineStore('reservations', () => {
                         .toResourceFromEntity(reservation)
                 );
             } catch {
-                // The original error is kept in the store.
             }
 
             errors.value.push(error);

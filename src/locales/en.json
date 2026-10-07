@@ -435,5 +435,59 @@
       "invalid-period": "Select a valid date range.",
       "failed": "We couldn't generate the report. Please try again."
     }
+  },
+  "monitoring-alerts": {
+    "navigation": {
+      "alerts": "Alerts"
+    },
+    "title": "Monitoring and alerts",
+    "subtitle": "Track occupancy and handle alerts across your parking facilities",
+    "loading": "Loading monitoring information…",
+    "no-facilities": "You don't have any parking facilities available.",
+    "filter": {
+      "zone": "Zone"
+    },
+    "summary": {
+      "active": "Active alerts",
+      "resolved-today": "Resolved today"
+    },
+    "fields": {
+      "time": "Date and time",
+      "type": "Type",
+      "severity": "Severity",
+      "value": "Value",
+      "status": "Status",
+      "resolution-time": "Resolution time",
+      "minutes": "min"
+    },
+    "types": {
+      "CAPACITY_CRITICAL": "Critical capacity",
+      "CAPACITY_NEAR_LIMIT": "Capacity near limit",
+      "STAY_EXCEEDED": "Stay exceeded",
+      "UNRECOGNIZED_PLATE": "Unrecognized plate",
+      "ACCESS_WITHOUT_RESERVATION": "Access without reservation"
+    },
+    "severity": {
+      "HIGH": "High",
+      "MEDIUM": "Medium",
+      "LOW": "Low"
+    },
+    "status": {
+      "ACTIVE": "Active",
+      "RESOLVED": "Resolved",
+      "DISMISSED": "Dismissed"
+    },
+    "list": {
+      "title": "Alerts",
+      "empty": "There are no alerts registered for this facility.",
+      "resolve": "Resolve"
+    },
+    "messages": {
+      "resolved": "The alert was resolved."
+    },
+    "errors": {
+      "already-resolved": "This alert has already been resolved.",
+      "failed": "We couldn't complete the operation. Please try again."
+    }
   }
 }

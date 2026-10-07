@@ -55,6 +55,12 @@ const operatorNavigation = [
     }
   },
   {
+    label: 'monitoring-alerts.navigation.alerts',
+    to: {
+      name: 'monitoring-alerts-alerts'
+    }
+  },
+  {
     label: 'analytics-reporting.navigation.reports',
     to: {
       name: 'analytics-reporting-reports'

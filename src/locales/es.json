@@ -435,5 +435,59 @@
       "invalid-period": "Selecciona un rango de fechas válido.",
       "failed": "No pudimos generar el reporte. Inténtalo nuevamente."
     }
+  },
+  "monitoring-alerts": {
+    "navigation": {
+      "alerts": "Alertas"
+    },
+    "title": "Monitoreo y alertas",
+    "subtitle": "Supervisa la ocupación y atiende las alertas de tus estacionamientos",
+    "loading": "Cargando información de monitoreo…",
+    "no-facilities": "No tienes estacionamientos disponibles.",
+    "filter": {
+      "zone": "Zona"
+    },
+    "summary": {
+      "active": "Alertas activas",
+      "resolved-today": "Resueltas hoy"
+    },
+    "fields": {
+      "time": "Fecha y hora",
+      "type": "Tipo",
+      "severity": "Severidad",
+      "value": "Valor",
+      "status": "Estado",
+      "resolution-time": "Tiempo de resolución",
+      "minutes": "min"
+    },
+    "types": {
+      "CAPACITY_CRITICAL": "Capacidad crítica",
+      "CAPACITY_NEAR_LIMIT": "Capacidad al límite",
+      "STAY_EXCEEDED": "Permanencia excedida",
+      "UNRECOGNIZED_PLATE": "Placa no reconocida",
+      "ACCESS_WITHOUT_RESERVATION": "Acceso sin reserva"
+    },
+    "severity": {
+      "HIGH": "Alta",
+      "MEDIUM": "Media",
+      "LOW": "Baja"
+    },
+    "status": {
+      "ACTIVE": "Activa",
+      "RESOLVED": "Resuelta",
+      "DISMISSED": "Descartada"
+    },
+    "list": {
+      "title": "Alertas",
+      "empty": "No existen alertas registradas para este estacionamiento.",
+      "resolve": "Resolver"
+    },
+    "messages": {
+      "resolved": "La alerta fue resuelta."
+    },
+    "errors": {
+      "already-resolved": "Esta alerta ya fue resuelta.",
+      "failed": "No pudimos completar la operación. Inténtalo nuevamente."
+    }
   }
 }

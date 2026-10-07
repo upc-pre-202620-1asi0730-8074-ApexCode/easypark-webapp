@@ -17,9 +17,7 @@ export class Vehicle {
         this.profileId = profileId;
     }
 
-    /**
-     * Desvincula el vehículo de su propietario sin eliminarlo del registro.
-     */
+
     releaseOwner() {
         this.profileId = null;
         this.isDefault = false;
