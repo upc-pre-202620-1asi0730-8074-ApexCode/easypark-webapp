@@ -153,7 +153,7 @@
       "registered": "Tu vehículo fue registrado.",
       "updated": "Tu vehículo fue actualizado.",
       "plate-hint": "Formato ABC-123 para autos o 1234-AB para motos.",
-      "plate-locked": "La placa identifica al vehículo y no se puede cambiar.",
+      "plate-locked": "La placa identifica el vehículo y no se puede cambiar.",
       "color-placeholder": "Opcional",
       "errors": {
         "invalid-plate-number": "Ingresa una placa válida, por ejemplo ABC-123 o 1234-AB.",
@@ -243,6 +243,59 @@
         "code-taken": "Ya existe un espacio con ese código en esta instalación.",
         "failed": "No pudimos guardar el espacio. Inténtalo de nuevo en unos minutos."
       }
+    }
+  },
+  "reservations": {
+    "navigation": {
+      "reserve": "Reservar",
+      "my-reservations": "Mis reservas"
+    },
+    "create": {
+      "title": "Reservar un espacio",
+      "subtitle": "Elige el estacionamiento, horario y vehículo para tu reserva",
+      "loading": "Cargando estacionamientos disponibles…",
+      "action": "Nueva reserva"
+    },
+    "my-reservations": {
+      "title": "Mis reservas",
+      "subtitle": "Consulta y administra tus reservas de estacionamiento"
+    },
+    "fields": {
+      "facility": "Estacionamiento",
+      "start": "Fecha y hora",
+      "duration": "Duración",
+      "vehicle": "Vehículo",
+      "estimated-amount": "Costo estimado"
+    },
+    "form": {
+      "confirm": "Confirmar reserva",
+      "created": "Tu reserva fue registrada correctamente."
+    },
+    "list": {
+      "loading": "Cargando tus reservas…",
+      "empty": "Aún no tienes reservas registradas.",
+      "unknown-facility": "Estacionamiento no disponible"
+    },
+    "status": {
+      "PENDING": "Pendiente",
+      "CONFIRMED": "Confirmada",
+      "ACTIVE": "Activa",
+      "COMPLETED": "Finalizada",
+      "CANCELLED": "Cancelada",
+      "EXPIRED": "Expirada"
+    },
+    "cancel": {
+      "button": "Cancelar reserva",
+      "title": "Cancelar reserva",
+      "message": "¿Deseas cancelar la reserva {code}?",
+      "accept": "Sí, cancelar",
+      "success": "La reserva fue cancelada."
+    },
+    "errors": {
+      "no-availability": "No hay espacios disponibles para el vehículo seleccionado.",
+      "invalid-start": "Selecciona una fecha y hora futuras.",
+      "not-cancellable": "Esta reserva ya no puede cancelarse.",
+      "failed": "No pudimos completar la operación. Inténtalo nuevamente."
     }
   }
 }

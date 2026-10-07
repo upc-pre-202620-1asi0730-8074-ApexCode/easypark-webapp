@@ -244,5 +244,58 @@
         "failed": "We couldn't save the spot. Please try again in a few minutes."
       }
     }
+  },
+  "reservations": {
+    "navigation": {
+      "reserve": "Reserve",
+      "my-reservations": "My reservations"
+    },
+    "create": {
+      "title": "Reserve a space",
+      "subtitle": "Choose the parking facility, time and vehicle for your reservation",
+      "loading": "Loading available parking facilities…",
+      "action": "New reservation"
+    },
+    "my-reservations": {
+      "title": "My reservations",
+      "subtitle": "Review and manage your parking reservations"
+    },
+    "fields": {
+      "facility": "Parking facility",
+      "start": "Date and time",
+      "duration": "Duration",
+      "vehicle": "Vehicle",
+      "estimated-amount": "Estimated cost"
+    },
+    "form": {
+      "confirm": "Confirm reservation",
+      "created": "Your reservation was created successfully."
+    },
+    "list": {
+      "loading": "Loading your reservations…",
+      "empty": "You don't have any reservations yet.",
+      "unknown-facility": "Parking facility unavailable"
+    },
+    "status": {
+      "PENDING": "Pending",
+      "CONFIRMED": "Confirmed",
+      "ACTIVE": "Active",
+      "COMPLETED": "Completed",
+      "CANCELLED": "Cancelled",
+      "EXPIRED": "Expired"
+    },
+    "cancel": {
+      "button": "Cancel reservation",
+      "title": "Cancel reservation",
+      "message": "Do you want to cancel reservation {code}?",
+      "accept": "Yes, cancel",
+      "success": "The reservation was cancelled."
+    },
+    "errors": {
+      "no-availability": "There are no available spaces for the selected vehicle.",
+      "invalid-start": "Select a future date and time.",
+      "not-cancellable": "This reservation can no longer be cancelled.",
+      "failed": "We couldn't complete the operation. Please try again."
+    }
   }
 }

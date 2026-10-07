@@ -7,7 +7,7 @@
       "role": "DRIVER",
       "status": "ACTIVE",
       "createdAt": "2026-03-12T15:20:00.000Z",
-      "lastLoginAt": null
+      "lastLoginAt": "2026-10-05T23:21:33.485Z"
     },
     {
       "id": 2,
@@ -112,6 +112,21 @@
       "spotType": "MOTORCYCLE",
       "status": "AVAILABLE",
       "createdAt": "2026-02-10T09:06:00.000Z"
+    }
+  ],
+  "reservations": [
+    {
+      "id": 1,
+      "code": "EP-MUVVMWZ9",
+      "driverProfileId": 1,
+      "vehicleId": 1,
+      "parkingSpotId": 1,
+      "startAt": "2026-10-08T03:24:00.000Z",
+      "durationMinutes": 120,
+      "estimatedAmount": 13,
+      "currency": "PEN",
+      "status": "CANCELLED",
+      "createdAt": "2026-10-05T23:24:28.917Z"
     }
   ]
 }
