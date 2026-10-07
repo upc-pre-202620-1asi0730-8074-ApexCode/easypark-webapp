@@ -62,6 +62,7 @@ async function performChangePassword() {
     <pv-message v-if="failureReason && failureReason !== 'wrong-current-password'" severity="error" class="mb-4" role="alert">
       {{ t(`iam.change-password.errors.${failureReason}`) }}
     </pv-message>
+    <p class="change-password__description">{{ t('iam.change-password.description') }}</p>
     <form id="change-password-form" novalidate @submit.prevent="performChangePassword">
       <div class="form-field">
         <label for="current-password" class="form-label">{{ t('iam.change-password.current') }}</label>
@@ -94,3 +95,11 @@ async function performChangePassword() {
     </template>
   </pv-dialog>
 </template>
+
+<style scoped>
+.change-password__description {
+  margin: 0 0 20px;
+  font-size: 13px;
+  color: var(--ep-text-secondary);
+}
+</style>

@@ -1,93 +1,326 @@
 <script setup>
-import {computed, reactive, ref} from "vue";
-import {useRoute, useRouter} from "vue-router";
+import {
+  computed,
+  reactive,
+  ref
+} from "vue";
+
+import {
+  useRoute,
+  useRouter
+} from "vue-router";
+
 import {useI18n} from "vue-i18n";
+
 import useIamStore from "../../application/iam.store.js";
+
 import {SignInCommand} from "../../domain/model/sign-in.command.js";
+
 import AuthenticationCard from "../components/authentication-card.vue";
 
-const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+import {easyParkUiLabels} from "../../../shared/presentation/easypark-ui-labels.js";
 
-const { t } = useI18n();
-const route = useRoute();
-const router = useRouter();
-const store = useIamStore();
+const emailPattern =
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const {t, locale} =
+    useI18n();
+
+const route =
+    useRoute();
+
+const router =
+    useRouter();
+
+const store =
+    useIamStore();
+
+const labels = computed(() =>
+    easyParkUiLabels(locale.value)
+);
 
 const form = reactive({
-  email: typeof route.query.email === 'string' ? route.query.email : '',
-  password: '',
-  remember: false
-});
-const submitted = ref(false);
-const loading = ref(false);
-const failureReason = ref(null);
-const justRegistered = computed(() => route.query.registered === 'true' && !failureReason.value);
+  email:
+      typeof route.query.email ===
+      'string'
+          ? route.query.email
+          : '',
 
-const emailError = computed(() => {
-  if (!form.email.trim()) return t('iam.validation.email-required');
-  if (!emailPattern.test(form.email.trim())) return t('iam.validation.email-invalid');
-  return null;
-});
-const passwordError = computed(() => form.password ? null : t('iam.validation.password-required'));
+  password:
+      '',
 
-/**
- * Valida el formulario y ejecuta el inicio de sesión. Ante un error conserva el correo y no indica cuál credencial falló.
- */
+  remember:
+      false
+});
+
+const submitted =
+    ref(false);
+
+const loading =
+    ref(false);
+
+const failureReason =
+    ref(null);
+
+const justRegistered =
+    computed(
+        () =>
+            route.query.registered ===
+            'true' &&
+            !failureReason.value
+    );
+
+const emailError =
+    computed(() => {
+      if (!form.email.trim()) {
+        return t(
+            'iam.validation.email-required'
+        );
+      }
+
+      if (
+          !emailPattern.test(
+              form.email.trim()
+          )
+      ) {
+        return t(
+            'iam.validation.email-invalid'
+        );
+      }
+
+      return null;
+    });
+
+const passwordError =
+    computed(
+        () =>
+            form.password
+                ? null
+                : t(
+                    'iam.validation.password-required'
+                )
+    );
+
 async function performSignIn() {
   submitted.value = true;
   failureReason.value = null;
-  if (emailError.value || passwordError.value) return;
+
+  if (
+      emailError.value ||
+      passwordError.value
+  ) {
+    return;
+  }
+
   loading.value = true;
-  const signInCommand = new SignInCommand({email: form.email, password: form.password});
-  const result = await store.signIn(signInCommand, form.remember, router, route.query.redirect);
+
+  const signInCommand =
+      new SignInCommand({
+        email:
+        form.email,
+
+        password:
+        form.password
+      });
+
+  const result =
+      await store.signIn(
+          signInCommand,
+          form.remember,
+          router,
+          route.query.redirect
+      );
+
   loading.value = false;
+
   if (!result.success) {
-    failureReason.value = result.reason;
+    failureReason.value =
+        result.reason;
+
     form.password = '';
+
     submitted.value = false;
   }
 }
 </script>
 
 <template>
-  <authentication-card :title="t('iam.sign-in.title')" :subtitle="t('iam.sign-in.subtitle')">
-    <pv-message v-if="justRegistered" severity="success" class="mb-4" role="status">
+  <authentication-card
+      :title="t('iam.sign-in.title')"
+      :subtitle="t('iam.sign-in.subtitle')">
+
+    <pv-message
+        v-if="justRegistered"
+        severity="success"
+        class="mb-4"
+        role="status">
+
       {{ t('iam.sign-in.registered') }}
     </pv-message>
-    <pv-message v-if="failureReason" severity="error" class="mb-4" role="alert">
-      {{ t(`iam.sign-in.errors.${failureReason}`) }}
+
+    <pv-message
+        v-if="failureReason"
+        severity="error"
+        class="mb-4"
+        role="alert">
+
+      {{
+        t(
+            `iam.sign-in.errors.${failureReason}`
+        )
+      }}
     </pv-message>
-    <form novalidate @submit.prevent="performSignIn">
+
+    <form
+        novalidate
+        @submit.prevent="performSignIn">
+
       <div class="form-field">
-        <label for="email" class="form-label">{{ t('iam.fields.email') }}</label>
-        <pv-input-text id="email" v-model="form.email" type="email" autocomplete="email"
-                       :placeholder="t('iam.fields.email-placeholder')"
-                       :invalid="submitted && !!emailError" :aria-describedby="submitted && emailError ? 'email-error' : undefined"/>
-        <small v-if="submitted && emailError" id="email-error" class="form-error">
-          <i class="pi pi-exclamation-circle" aria-hidden="true"></i>{{ emailError }}
+        <label
+            for="email"
+            class="form-label">
+
+          {{ t('iam.fields.email') }}
+        </label>
+
+        <pv-input-text
+            id="email"
+            v-model="form.email"
+            type="email"
+            autocomplete="email"
+            :placeholder="
+              t(
+                  'iam.fields.email-placeholder'
+              )
+            "
+            :invalid="
+              submitted &&
+              !!emailError
+            "
+            :aria-describedby="
+              submitted &&
+              emailError
+                ? 'email-error'
+                : undefined
+            "/>
+
+        <small
+            v-if="
+              submitted &&
+              emailError
+            "
+            id="email-error"
+            class="form-error">
+
+          <i
+              class="pi pi-exclamation-circle"
+              aria-hidden="true">
+          </i>
+
+          {{ emailError }}
         </small>
       </div>
+
       <div class="form-field">
-        <label for="password" class="form-label">{{ t('iam.fields.password') }}</label>
-        <pv-password input-id="password" v-model="form.password" :feedback="false" toggle-mask fluid
-                     :invalid="submitted && !!passwordError"
-                     :input-props="{ autocomplete: 'current-password', 'aria-describedby': submitted && passwordError ? 'password-error' : undefined }"/>
-        <small v-if="submitted && passwordError" id="password-error" class="form-error">
-          <i class="pi pi-exclamation-circle" aria-hidden="true"></i>{{ passwordError }}
+        <label
+            for="password"
+            class="form-label">
+
+          {{ t('iam.fields.password') }}
+        </label>
+
+        <pv-password
+            input-id="password"
+            v-model="form.password"
+            :feedback="false"
+            toggle-mask
+            fluid
+            :invalid="
+              submitted &&
+              !!passwordError
+            "
+            :input-props="{
+              autocomplete:
+                'current-password',
+              'aria-describedby':
+                submitted &&
+                passwordError
+                  ? 'password-error'
+                  : undefined
+            }"/>
+
+        <small
+            v-if="
+              submitted &&
+              passwordError
+            "
+            id="password-error"
+            class="form-error">
+
+          <i
+              class="pi pi-exclamation-circle"
+              aria-hidden="true">
+          </i>
+
+          {{ passwordError }}
         </small>
       </div>
+
       <div class="sign-in__options">
         <div class="sign-in__remember">
-          <pv-checkbox v-model="form.remember" input-id="remember" binary/>
-          <label for="remember">{{ t('iam.sign-in.remember') }}</label>
+          <pv-checkbox
+              v-model="form.remember"
+              input-id="remember"
+              binary/>
+
+          <label for="remember">
+            {{ t('iam.sign-in.remember') }}
+          </label>
         </div>
+
+        <a
+            class="sign-in__forgot"
+            href="mailto:support@easypark.pe">
+
+          {{ labels.signIn.forgot }}
+        </a>
       </div>
-      <pv-button type="submit" :label="t('iam.sign-in.submit')" :loading="loading" fluid/>
+
+      <pv-button
+          type="submit"
+          :label="
+            t(
+                'iam.sign-in.submit'
+            )
+          "
+          :loading="loading"
+          fluid/>
     </form>
-    <div class="sign-in__divider" aria-hidden="true"><span>{{ t('iam.sign-in.divider') }}</span></div>
+
+    <div
+        class="sign-in__divider"
+        aria-hidden="true">
+
+      <span>
+        {{ t('iam.sign-in.divider') }}
+      </span>
+    </div>
+
     <p class="sign-in__footer">
       {{ t('iam.sign-in.no-account') }}
-      <router-link :to="{ name: 'iam-sign-up' }">{{ t('iam.sign-in.sign-up-link') }}</router-link>
+
+      <router-link
+          :to="{
+            name:
+              'iam-sign-up'
+          }">
+
+        {{
+          t(
+              'iam.sign-in.sign-up-link'
+          )
+        }}
+      </router-link>
     </p>
   </authentication-card>
 </template>
@@ -97,6 +330,7 @@ async function performSignIn() {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 14px;
   margin: -4px 0 20px;
 }
 
@@ -105,21 +339,26 @@ async function performSignIn() {
   align-items: center;
   gap: 8px;
   color: var(--ep-text-secondary);
+  font-size: 13px;
+}
+
+.sign-in__forgot {
+  color: var(--ep-primary);
   font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
 }
 
 .sign-in__divider {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin: 20px 0 16px;
+  margin: 24px 0 16px;
   color: var(--ep-text-tertiary);
-  font-size: 11px;
+  font-size: 12px;
 }
 
-.sign-in__divider::before,
-.sign-in__divider::after {
-  content: "";
+.sign-in__divider-line {
   flex: 1;
   height: 1px;
   background: var(--ep-border);
@@ -128,12 +367,19 @@ async function performSignIn() {
 .sign-in__footer {
   margin: 0;
   text-align: center;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--ep-text-secondary);
 }
 
 .sign-in__footer a {
   font-weight: 700;
   text-decoration: none;
+}
+
+@media (max-width: 420px) {
+  .sign-in__options {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 }
 </style>

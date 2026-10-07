@@ -1,16 +1,24 @@
 <script setup>
-import {onMounted} from "vue";
+import {computed, onMounted} from "vue";
 import {useRouter} from "vue-router";
 import {useI18n} from "vue-i18n";
+
 import useReservationsStore from "../../application/reservations.store.js";
 import ReservationForm from "../components/reservation-form.vue";
+import {easyParkUiLabels} from "../../../shared/presentation/easypark-ui-labels.js";
 
-const {t} = useI18n();
+const {locale} = useI18n();
 const router = useRouter();
 const store = useReservationsStore();
 
+const labels = computed(() =>
+    easyParkUiLabels(locale.value)
+);
+
 onMounted(() => {
-  store.fetchFacilities();
+  if (!store.facilitiesLoaded) {
+    store.fetchFacilities();
+  }
 });
 
 function handleCreated() {
@@ -25,29 +33,26 @@ function handleCreated() {
     <div class="page-header">
       <div>
         <h1 class="page-title">
-          {{ t('reservations.create.title') }}
+          {{ labels.reservation.title }}
         </h1>
 
         <p class="page-subtitle">
-          {{ t('reservations.create.subtitle') }}
+          {{ labels.reservation.subtitle }}
         </p>
       </div>
-
-      <pv-button
-          :label="t('reservations.navigation.my-reservations')"
-          severity="secondary"
-          outlined
-          @click="router.push({name: 'reservations-my'})"/>
     </div>
 
     <div
         v-if="!store.facilitiesLoaded"
         class="panel">
+
       <p class="empty-state">
-        {{ t('reservations.create.loading') }}
+        Loading...
       </p>
     </div>
 
-    <reservation-form v-else @created="handleCreated"/>
+    <reservation-form
+        v-else
+        @created="handleCreated"/>
   </section>
 </template>
