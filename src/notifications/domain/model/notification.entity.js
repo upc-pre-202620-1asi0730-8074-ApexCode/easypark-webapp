@@ -1,5 +1,10 @@
 import {NotificationStatus} from "./notification-status.js";
 
+function toIso(value) {
+    return value instanceof Date
+        ? value.toISOString()
+        : value;
+}
 
 export class Notification {
     constructor({
@@ -46,17 +51,16 @@ export class Notification {
         if (this.status !== NotificationStatus.PENDING) return false;
 
         this.status = NotificationStatus.SENT;
-        this.sentAt = this.#toIso(now);
+        this.sentAt = toIso(now);
 
         return true;
     }
-
 
     markAsRead(now = new Date()) {
         if (this.isRead) return false;
 
         this.status = NotificationStatus.READ;
-        this.readAt = this.#toIso(now);
+        this.readAt = toIso(now);
 
         return true;
     }
@@ -68,11 +72,5 @@ export class Notification {
         this.status = NotificationStatus.FAILED;
 
         return true;
-    }
-
-    #toIso(value) {
-        return value instanceof Date
-            ? value.toISOString()
-            : value;
     }
 }
