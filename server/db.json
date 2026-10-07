@@ -1,0 +1,22 @@
+{
+  "user-accounts": [
+    {
+      "id": 1,
+      "email": "camila.soto@gmail.com",
+      "passwordHash": "8fd22cb4cb4b07195ab099b9abc9f757fcae208d9a4577318268f1bab155791a",
+      "role": "DRIVER",
+      "status": "ACTIVE",
+      "createdAt": "2026-03-12T15:20:00.000Z",
+      "lastLoginAt": null
+    },
+    {
+      "id": 2,
+      "email": "diego.ramos@easypark.pe",
+      "passwordHash": "8fd22cb4cb4b07195ab099b9abc9f757fcae208d9a4577318268f1bab155791a",
+      "role": "OPERATOR_ADMIN",
+      "status": "ACTIVE",
+      "createdAt": "2026-02-03T13:00:00.000Z",
+      "lastLoginAt": null
+    }
+  ]
+}

@@ -1,52 +1,164 @@
 <script setup>
-
-import LanguageSwitcher from "./language-switcher.vue";
-import {ref} from "vue";
+import {computed, ref} from "vue";
+import {useRoute} from "vue-router";
 import {useI18n} from "vue-i18n";
-import FooterContent from "./footer-content.vue";
-// To import when IAM is implemented:
-// import AuthenticationSection from "../../../iam/presentation/components/authentication-section.vue";
+import LanguageSwitcher from "./language-switcher.vue";
+import AuthenticationSection from "../../../iam/presentation/components/authentication-section.vue";
+import useIamStore from "../../../iam/application/iam.store.js";
+
 const { t } = useI18n();
+const route = useRoute();
+const iamStore = useIamStore();
 
 const drawer = ref(false);
-const toggleDrawer = () => {
-  /**
-   * Toggles the state of the drawer between open and closed.
-   */
+
+const driverNavigation = [];
+const operatorNavigation = [];
+const accountItems = [];
+const displayName = computed(() => "");
+const photoUrl = computed(() => "");
+
+const isStandalone = computed(() => route.matched.some(record => record.meta['standalone']));
+const navigationItems = computed(() => {
+  if (!iamStore.isSignedIn) return [];
+  return iamStore.isOperator ? operatorNavigation : driverNavigation;
+});
+
+function toggleDrawer() {
   drawer.value = !drawer.value;
 }
-const items = [
-  {label: 'option.home', to: '/home'},
-  {label: 'option.about', to: '/about'},
-  {label: 'option.categories', to: '/publishing/categories'},
-  {label: 'option.tutorials', to: '/publishing/tutorials'}
-];
 </script>
 
 <template>
-  <pv-toast/>
+  <pv-toast position="top-right"/>
   <pv-confirm-dialog/>
-  <header class="absolute top-0 left-0 w-full">
-    <pv-toolbar class="bg-primary">
-      <template #start>
-        <pv-button class="p-button-text" icon="pi pi-bars" @click="toggleDrawer"/>
-        <h3>ACME Learning Center</h3>
-      </template>
-      <template #end>
-        <div class="flex-column mr-3">
-          <pv-button v-for="item in items" :key="item.label" as-child v-slot="slotProps">
-            <router-link :to="item.to" :class="slotProps['class']">{{ t(item.label) }}</router-link>
-          </pv-button>
-        </div>
-        <!-- To add when IAM is implemented -->
-        <!--<authentication-section/>-->
+  <router-view v-if="isStandalone"/>
+  <template v-else>
+    <a class="skip-link" href="#main-content">{{ t('layout.skip-to-content') }}</a>
+    <header class="app-header">
+      <div class="app-header__start">
+        <pv-button v-if="navigationItems.length" class="app-header__menu" icon="pi pi-bars" text rounded
+                   :aria-label="t('layout.open-menu')" @click="toggleDrawer"/>
+        <router-link :to="{ name: 'home' }" class="brand">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>EasyPark<template v-if="iamStore.isOperator"> · Admin</template></span>
+        </router-link>
+      </div>
+      <nav class="app-nav" :aria-label="t('layout.main-navigation')">
+        <router-link v-for="item in navigationItems" :key="item.label" :to="item.to" class="app-nav__link"
+                     active-class="app-nav__link--active">
+          {{ t(item.label) }}
+        </router-link>
+      </nav>
+      <div class="app-header__end">
         <language-switcher/>
-      </template>
-    </pv-toolbar>
-    <pv-drawer v-model:visible="drawer"/>
-  </header>
-  <main class="mt-7">
-    <router-view/>
-  </main>
-  <footer-content/>
+        <authentication-section :display-name="displayName" :photo-url="photoUrl" :items="accountItems"/>
+      </div>
+    </header>
+    <pv-drawer v-model:visible="drawer" :header="t('layout.main-navigation')">
+      <nav class="app-drawer-nav">
+        <router-link v-for="item in navigationItems" :key="item.label" :to="item.to" class="app-drawer-nav__link"
+                     active-class="app-nav__link--active" @click="drawer = false">
+          {{ t(item.label) }}
+        </router-link>
+      </nav>
+    </pv-drawer>
+    <main id="main-content" class="app-main">
+      <router-view/>
+    </main>
+  </template>
 </template>
+
+<style scoped>
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 16px 40px;
+  background: var(--ep-surface);
+  border-bottom: 1px solid var(--ep-border);
+}
+
+.app-header__start,
+.app-header__end {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 16px;
+}
+
+.app-header__end {
+  justify-content: flex-end;
+}
+
+.app-header__menu {
+  display: none;
+}
+
+.app-nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.app-nav__link {
+  color: var(--ep-text-secondary);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.app-nav__link:hover {
+  color: var(--ep-text);
+}
+
+.app-nav__link--active {
+  color: var(--ep-primary);
+  font-weight: 600;
+}
+
+.app-drawer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.app-drawer-nav__link {
+  padding: 12px 8px;
+  border-radius: 8px;
+  color: var(--ep-text);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.app-drawer-nav__link:hover {
+  background: var(--ep-page);
+}
+
+@media (max-width: 1279px) {
+  .app-header {
+    padding: 16px 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  .app-header {
+    padding: 12px 16px;
+    gap: 12px;
+  }
+
+  .app-header__menu {
+    display: inline-flex;
+  }
+
+  .app-nav {
+    display: none;
+  }
+}
+</style>
