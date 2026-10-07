@@ -15,6 +15,10 @@ const dialogVisible = ref(false);
 const selectedVehicle = ref(null);
 const busyVehicleId = ref(null);
 
+function vehicleIcon(vehicle) {
+  return vehicle.type === 'VAN' ? 'pi pi-truck' : 'pi pi-car';
+}
+
 function openRegister() {
   selectedVehicle.value = null;
   dialogVisible.value = true;
@@ -57,133 +61,116 @@ function confirmRemove(vehicle) {
 <template>
   <section class="panel" aria-labelledby="vehicles-title">
     <div class="panel-header">
-      <h2 id="vehicles-title" class="panel-title">{{ t('profiles.vehicles.title') }}</h2>
+      <div>
+        <h2 id="vehicles-title" class="panel-title">{{ t('profiles.vehicles.title') }}</h2>
+        <p class="panel-description">{{ t('profiles.vehicles.description') }}</p>
+      </div>
       <pv-button :label="t('profiles.vehicles.register')" icon="pi pi-plus" size="small" @click="openRegister"/>
     </div>
-    <p v-if="!store.vehicles.length" class="empty-state">{{ t('profiles.vehicles.empty') }}</p>
-    <table v-else class="vehicle-table">
-      <thead>
-        <tr>
-          <th scope="col">{{ t('profiles.fields.plate-number') }}</th>
-          <th scope="col">{{ t('profiles.fields.vehicle-type') }}</th>
-          <th scope="col">{{ t('profiles.fields.color') }}</th>
-          <th scope="col">{{ t('profiles.vehicles.status') }}</th>
-          <th scope="col"><span class="sr-only">{{ t('profiles.vehicles.actions') }}</span></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="vehicle in store.vehicles" :key="vehicle.id">
-          <td :data-label="t('profiles.fields.plate-number')" class="vehicle-table__plate">{{ vehicle.plateNumber.value }}</td>
-          <td :data-label="t('profiles.fields.vehicle-type')">{{ vehicle.type ? t(`profiles.vehicle-types.${vehicle.type}`) : '—' }}</td>
-          <td :data-label="t('profiles.fields.color')">{{ vehicle.color || '—' }}</td>
-          <td :data-label="t('profiles.vehicles.status')">
-            <span v-if="vehicle.isDefault" class="status-badge status-badge--info">{{ t('profiles.vehicles.default') }}</span>
-            <pv-button v-else :label="t('profiles.vehicles.make-default')" text size="small"
-                       :loading="busyVehicleId === vehicle.id" class="vehicle-table__default" @click="markAsDefault(vehicle)"/>
-          </td>
-          <td class="vehicle-table__actions">
-            <pv-button icon="pi pi-pencil" text rounded severity="secondary" :disabled="busyVehicleId === vehicle.id"
+
+    <div v-if="!store.vehicles.length" class="empty">
+      <span class="icon-chip icon-chip--lg icon-chip--muted" aria-hidden="true"><i class="pi pi-car"></i></span>
+      <p class="empty__text">{{ t('profiles.vehicles.empty') }}</p>
+    </div>
+
+    <ul v-else class="vehicle-grid">
+      <li v-for="vehicle in store.vehicles" :key="vehicle.id" class="vehicle-card"
+          :class="{ 'vehicle-card--default': vehicle.isDefault }">
+        <div class="vehicle-card__head">
+          <span class="icon-chip" :class="vehicle.isDefault ? 'icon-chip--info' : 'icon-chip--muted'" aria-hidden="true">
+            <i :class="vehicleIcon(vehicle)"></i>
+          </span>
+          <div class="vehicle-card__identity">
+            <span class="plate">{{ vehicle.plateNumber.value }}</span>
+            <span class="vehicle-card__meta">
+              {{ vehicle.type ? t(`profiles.vehicle-types.${vehicle.type}`) : '—' }}
+              <template v-if="vehicle.color"> · {{ vehicle.color }}</template>
+            </span>
+          </div>
+          <div class="vehicle-card__actions">
+            <pv-button icon="pi pi-pencil" text rounded severity="secondary" size="small" :disabled="busyVehicleId === vehicle.id"
                        :aria-label="t('profiles.vehicles.edit', { plate: vehicle.plateNumber.value })"
                        v-tooltip.top="t('profiles.vehicles.edit-tooltip')" @click="openEdit(vehicle)"/>
-            <pv-button icon="pi pi-trash" text rounded severity="danger" :disabled="busyVehicleId === vehicle.id"
+            <pv-button icon="pi pi-trash" text rounded severity="danger" size="small" :disabled="busyVehicleId === vehicle.id"
                        :aria-label="t('profiles.vehicles.remove-aria', { plate: vehicle.plateNumber.value })"
                        v-tooltip.top="t('profiles.vehicles.remove')" @click="confirmRemove(vehicle)"/>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+          </div>
+        </div>
+        <div class="vehicle-card__foot">
+          <span v-if="vehicle.isDefault" class="status-badge status-badge--info">
+            <i class="pi pi-star-fill" aria-hidden="true"></i>{{ t('profiles.vehicles.default') }}
+          </span>
+          <pv-button v-else :label="t('profiles.vehicles.make-default')" text size="small"
+                     :loading="busyVehicleId === vehicle.id" class="vehicle-card__default" @click="markAsDefault(vehicle)"/>
+        </div>
+      </li>
+    </ul>
   </section>
   <vehicle-form-dialog v-model:visible="dialogVisible" :vehicle="selectedVehicle"/>
 </template>
 
 <style scoped>
-.vehicle-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 13px;
+.vehicle-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.vehicle-table th {
-  padding: 10px 12px;
-  background: var(--ep-page);
+.vehicle-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--ep-border);
+  border-radius: 12px;
+  background: var(--ep-surface);
+}
+
+.vehicle-card--default {
+  border-color: #bfdbfe;
+  background: var(--ep-primary-tint);
+}
+
+.vehicle-card__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.vehicle-card__identity {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  min-width: 0;
+}
+
+.vehicle-card__meta {
   color: var(--ep-text-secondary);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  text-align: left;
-  text-transform: uppercase;
+  font-size: 12px;
 }
 
-.vehicle-table td {
-  padding: 10px 12px;
-  border-top: 1px solid var(--ep-border);
-  color: var(--ep-text);
-  vertical-align: middle;
+.vehicle-card__actions {
+  display: flex;
+  flex-shrink: 0;
 }
 
-.vehicle-table__plate {
-  font-weight: 700;
-  letter-spacing: 0.04em;
+.vehicle-card__foot {
+  display: flex;
+  align-items: center;
+  min-height: 28px;
 }
 
-.vehicle-table__default {
+.vehicle-card__foot .status-badge i {
+  font-size: 10px;
+}
+
+.vehicle-card__default {
   padding-left: 0;
   padding-right: 0;
-}
-
-.vehicle-table__actions {
-  text-align: right;
-  white-space: nowrap;
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-}
-
-@media (max-width: 767px) {
-  .vehicle-table thead {
-    display: none;
-  }
-
-  .vehicle-table,
-  .vehicle-table tbody,
-  .vehicle-table tr,
-  .vehicle-table td {
-    display: block;
-    width: 100%;
-  }
-
-  .vehicle-table tr {
-    margin-bottom: 12px;
-    padding: 8px 12px;
-    border: 1px solid var(--ep-border);
-    border-radius: 10px;
-  }
-
-  .vehicle-table td {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 6px 0;
-    border-top: 0;
-  }
-
-  .vehicle-table td[data-label]::before {
-    content: attr(data-label);
-    color: var(--ep-text-secondary);
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-  }
-
-  .vehicle-table__actions {
-    justify-content: flex-end;
-  }
 }
 </style>
