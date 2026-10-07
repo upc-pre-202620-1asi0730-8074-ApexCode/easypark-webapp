@@ -62,12 +62,7 @@ function iconOf(notification) {
       : 'pi pi-bell';
 }
 
-/**
- * The mockup renders every row time as "6:15 PM" in a Spanish interface, but
- * `toLocaleTimeString('es', …)` yields "6:15 p. m.". The parts are taken
- * locale-aware and only the day period is normalized, so es and en both land
- * on the shape the mockup shows.
- */
+
 function formatTime(value) {
   if (!value) return '—';
 
@@ -90,11 +85,7 @@ function formatTime(value) {
   return `${partOf('hour')}:${partOf('minute')} ${dayPeriod}`;
 }
 
-/**
- * The mockup has no visible status pill or type badge, but a screen reader
- * cannot perceive the unread state from the title weight alone: type, status
- * and channel are announced as one hidden line instead.
- */
+
 function metadataOf(notification) {
   const type = typeOf(notification);
 
