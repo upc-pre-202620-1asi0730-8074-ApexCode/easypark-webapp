@@ -26,6 +26,10 @@ const operatorNavigation = [
   {
     label: 'parking-management.navigation.facilities',
     to: {name: 'parking-management-facilities'}
+  },
+  {
+    label: 'access-control.navigation.accesses',
+    to: {name: 'access-control-accesses'}
   }
 ];
 
