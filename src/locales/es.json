@@ -1,493 +1,493 @@
-﻿{
-    "layout":  {
-                   "skip-to-content":  "Saltar al contenido principal",
-                   "main-navigation":  "NavegaciÃ³n principal",
-                   "open-menu":  "Abrir menÃº de navegaciÃ³n",
-                   "language":  "Idioma"
-               },
-    "common":  {
-                   "cancel":  "Cancelar",
-                   "save":  "Guardar"
-               },
-    "about":  {
-                  "title":  "Acerca de EasyPark",
-                  "content":  "EasyPark es una plataforma de gestiÃ³n de estacionamientos en tiempo real que conecta a los conductores con espacios disponibles y brinda a los operadores control digital de sus instalaciones."
-              },
-    "home":  {
-                 "title":  "Bienvenido",
-                 "content":  "Bienvenido a EasyPark. Menos vueltas buscando, mÃ¡s control al administrar."
-             },
-    "page-not-found":  {
-                           "title":  "PÃ¡gina no encontrada",
-                           "content":  "La ruta {unavailable-route} no estÃ¡ disponible.",
-                           "go-home":  "Ir al inicio"
-                       },
-    "iam":  {
-                "roles":  {
-                              "DRIVER":  "Conductor",
-                              "OPERATOR_ADMIN":  "Administrador",
-                              "OPERATOR_STAFF":  "Personal operativo"
-                          },
-                "fields":  {
-                               "role":  "Soy",
-                               "email":  "Correo electrÃ³nico",
-                               "email-placeholder":  "correo{\u0027@\u0027}ejemplo.com",
-                               "password":  "ContraseÃ±a",
-                               "confirm-password":  "Confirmar contraseÃ±a"
-                           },
-                "validation":  {
-                                   "email-required":  "Ingresa tu correo electrÃ³nico.",
-                                   "email-invalid":  "Ingresa un correo vÃ¡lido, por ejemplo correo{\u0027@\u0027}ejemplo.com.",
-                                   "password-required":  "Ingresa tu contraseÃ±a.",
-                                   "password-length":  "Usa al menos {length} caracteres.",
-                                   "password-mismatch":  "Las contraseÃ±as no coinciden."
-                               },
-                "sign-in":  {
-                                "title":  "Inicia sesiÃ³n",
-                                "subtitle":  "Accede a tu cuenta de conductor o administrador",
-                                "remember":  "Recordarme",
-                                "submit":  "Iniciar sesiÃ³n",
-                                "divider":  "o",
-                                "no-account":  "Â¿AÃºn no tienes cuenta?",
-                                "sign-up-link":  "RegÃ­strate aquÃ­",
-                                "registered":  "Tu cuenta fue creada. Ya puedes iniciar sesiÃ³n.",
-                                "errors":  {
-                                               "invalid-credentials":  "El correo o la contraseÃ±a no son correctos.",
-                                               "inactive-account":  "Esta cuenta no estÃ¡ activa. ComunÃ­cate con el soporte de EasyPark.",
-                                               "failed":  "No pudimos iniciar tu sesiÃ³n. IntÃ©ntalo de nuevo en unos minutos."
-                                           }
-                            },
-                "sign-up":  {
-                                "title":  "Crea tu cuenta",
-                                "subtitle":  "RegÃ­strate como conductor o como administrador de estacionamiento",
-                                "submit":  "Crear cuenta",
-                                "has-account":  "Â¿Ya tienes cuenta?",
-                                "sign-in-link":  "Inicia sesiÃ³n",
-                                "errors":  {
-                                               "email-taken":  "Este correo ya estÃ¡ registrado. Inicia sesiÃ³n o usa otro correo.",
-                                               "failed":  "No pudimos crear tu cuenta. IntÃ©ntalo de nuevo en unos minutos."
-                                           }
-                            },
-                "change-password":  {
-                                        "title":  "Cambiar contraseÃ±a",
-                                        "current":  "ContraseÃ±a actual",
-                                        "new":  "Nueva contraseÃ±a",
-                                        "success":  "Tu contraseÃ±a fue actualizada.",
-                                        "errors":  {
-                                                       "wrong-current-password":  "La contraseÃ±a actual no es correcta.",
-                                                       "same-password":  "La nueva contraseÃ±a debe ser distinta de la actual.",
-                                                       "session-expired":  "Tu sesiÃ³n expirÃ³. Vuelve a iniciar sesiÃ³n para cambiar tu contraseÃ±a.",
-                                                       "failed":  "No pudimos actualizar tu contraseÃ±a. IntÃ©ntalo de nuevo en unos minutos."
-                                                   }
-                                    },
-                "account":  {
-                                "menu":  "MenÃº de la cuenta de {name}",
-                                "sign-in":  "Iniciar sesiÃ³n",
-                                "sign-up":  "RegÃ­strate",
-                                "sign-out":  "Cerrar sesiÃ³n"
-                            }
-            },
-    "profiles":  {
-                     "navigation":  {
-                                        "profile":  "Perfil",
-                                        "my-profile":  "Mi perfil"
-                                    },
-                     "my-profile":  {
-                                        "title":  "Mi perfil",
-                                        "subtitle":  "Consulta y administra tu informaciÃ³n de cuenta",
-                                        "loading":  "Cargando tu perfilâ€¦",
-                                        "identity":  "Identidad",
-                                        "personal-information":  "InformaciÃ³n personal",
-                                        "empty":  "AÃºn no registras tus datos personales. ComplÃ©talos para empezar a usar EasyPark.",
-                                        "complete":  "Completar perfil",
-                                        "edit":  "Editar informaciÃ³n"
-                                    },
-                     "fields":  {
-                                    "first-name":  "Nombre",
-                                    "last-name":  "Apellidos",
-                                    "email":  "Correo",
-                                    "phone":  "TelÃ©fono",
-                                    "role":  "Rol",
-                                    "member-since":  "Miembro desde",
-                                    "company-name":  "Empresa",
-                                    "job-title":  "Cargo",
-                                    "plate-number":  "Placa",
-                                    "vehicle-type":  "Tipo",
-                                    "color":  "Color"
-                                },
-                     "validation":  {
-                                        "required":  "Este campo es obligatorio.",
-                                        "phone-invalid":  "Ingresa un telÃ©fono vÃ¡lido, por ejemplo +51 987 654 321."
-                                    },
-                     "form":  {
-                                  "create-title":  "Completa tu perfil",
-                                  "edit-title":  "Editar informaciÃ³n",
-                                  "created":  "Tu perfil fue guardado.",
-                                  "updated":  "Tu informaciÃ³n fue actualizada.",
-                                  "failed":  "No pudimos guardar tu informaciÃ³n. IntÃ©ntalo de nuevo en unos minutos."
-                              },
-                     "vehicle-types":  {
-                                           "CAR":  "Auto",
-                                           "SUV":  "SUV",
-                                           "VAN":  "Van",
-                                           "MOTORCYCLE":  "Moto"
-                                       },
-                     "vehicles":  {
-                                      "title":  "Mis vehÃ­culos",
-                                      "register":  "Registrar vehÃ­culo",
-                                      "register-title":  "Registrar vehÃ­culo",
-                                      "edit-title":  "Editar vehÃ­culo",
-                                      "empty":  "AÃºn no tienes vehÃ­culos registrados. Registra uno para poder reservar un espacio.",
-                                      "status":  "Estado",
-                                      "actions":  "Acciones",
-                                      "default":  "Predeterminado",
-                                      "make-default":  "Definir como predeterminado",
-                                      "default-updated":  "{plate} es ahora tu vehÃ­culo predeterminado.",
-                                      "edit":  "Editar vehÃ­culo {plate}",
-                                      "edit-tooltip":  "Editar",
-                                      "remove":  "Quitar",
-                                      "remove-aria":  "Quitar vehÃ­culo {plate}",
-                                      "remove-header":  "Quitar vehÃ­culo",
-                                      "remove-message":  "Â¿Quitar {plate} de tus vehÃ­culos? Tus reservas anteriores conservarÃ¡n su registro.",
-                                      "removed":  "{plate} fue quitado de tus vehÃ­culos.",
-                                      "registered":  "Tu vehÃ­culo fue registrado.",
-                                      "updated":  "Tu vehÃ­culo fue actualizado.",
-                                      "plate-hint":  "Formato ABC-123 para autos o 1234-AB para motos.",
-                                      "plate-locked":  "La placa identifica el vehÃ­culo y no se puede cambiar.",
-                                      "color-placeholder":  "Opcional",
-                                      "errors":  {
-                                                     "invalid-plate-number":  "Ingresa una placa vÃ¡lida, por ejemplo ABC-123 o 1234-AB.",
-                                                     "plate-taken":  "Esta placa ya estÃ¡ registrada por otra cuenta.",
-                                                     "plate-already-yours":  "Ya registraste esta placa.",
-                                                     "failed":  "No pudimos guardar el vehÃ­culo. IntÃ©ntalo de nuevo en unos minutos."
-                                                 }
-                                  }
-                 },
-    "parking-management":  {
-                               "navigation":  {
-                                                  "facilities":  "Zonas y espacios"
-                                              },
-                               "facilities":  {
-                                                  "title":  "Mis instalaciones",
-                                                  "subtitle":  "Administra tus estacionamientos y sus espacios",
-                                                  "loading":  "Cargando tus instalacionesâ€¦",
-                                                  "new":  "Nueva instalaciÃ³n",
-                                                  "empty":  "AÃºn no registras instalaciones. Crea la primera para empezar a administrar espacios.",
-                                                  "occupancy":  "{occupied}/{total} ocupados",
-                                                  "status":  {
-                                                                 "ACTIVE":  "Activa",
-                                                                 "INACTIVE":  "Inactiva",
-                                                                 "MAINTENANCE":  "En mantenimiento"
-                                                             }
-                                              },
-                               "facility-detail":  {
-                                                       "back":  "Volver a instalaciones",
-                                                       "edit":  "Editar instalaciÃ³n",
-                                                       "schedule":  "Horario",
-                                                       "rate":  "Tarifa por hora",
-                                                       "occupancy":  "OcupaciÃ³n",
-                                                       "not-found":  "No encontramos esta instalaciÃ³n."
-                                                   },
-                               "facility-form":  {
-                                                     "create-title":  "Nueva instalaciÃ³n",
-                                                     "edit-title":  "Editar instalaciÃ³n",
-                                                     "created":  "La instalaciÃ³n fue creada.",
-                                                     "updated":  "La instalaciÃ³n fue actualizada.",
-                                                     "failed":  "No pudimos guardar la instalaciÃ³n. IntÃ©ntalo de nuevo en unos minutos."
-                                                 },
-                               "fields":  {
-                                              "name":  "Nombre",
-                                              "address":  "DirecciÃ³n",
-                                              "latitude":  "Latitud",
-                                              "longitude":  "Longitud",
-                                              "hourly-rate":  "Tarifa por hora",
-                                              "open-time":  "Hora de apertura",
-                                              "close-time":  "Hora de cierre",
-                                              "spot-code":  "CÃ³digo",
-                                              "spot-level":  "Nivel",
-                                              "spot-type":  "Tipo"
-                                          },
-                               "validation":  {
-                                                  "required":  "Este campo es obligatorio.",
-                                                  "positive-number":  "Ingresa un nÃºmero mayor a 0."
-                                              },
-                               "spots":  {
-                                             "title":  "Espacios",
-                                             "register":  "Nuevo espacio",
-                                             "register-title":  "Nuevo espacio",
-                                             "edit-title":  "Editar espacio",
-                                             "empty":  "AÃºn no registras espacios en esta instalaciÃ³n.",
-                                             "status":  "Estado",
-                                             "actions":  "Acciones",
-                                             "status-values":  {
-                                                                   "AVAILABLE":  "Disponible",
-                                                                   "OCCUPIED":  "Ocupado",
-                                                                   "RESERVED":  "Reservado",
-                                                                   "OUT_OF_SERVICE":  "Fuera de servicio"
-                                                               },
-                                             "types":  {
-                                                           "CAR":  "Auto",
-                                                           "SUV":  "SUV",
-                                                           "VAN":  "Van",
-                                                           "MOTORCYCLE":  "Moto"
-                                                       },
-                                             "mark-occupied":  "Marcar ocupado",
-                                             "mark-available":  "Marcar disponible",
-                                             "mark-out-of-service":  "Fuera de servicio",
-                                             "return-to-service":  "Reactivar",
-                                             "edit":  "Editar espacio {code}",
-                                             "edit-tooltip":  "Editar",
-                                             "registered":  "El espacio fue registrado.",
-                                             "updated":  "El espacio fue actualizado.",
-                                             "errors":  {
-                                                            "code-taken":  "Ya existe un espacio con ese cÃ³digo en esta instalaciÃ³n.",
-                                                            "failed":  "No pudimos guardar el espacio. IntÃ©ntalo de nuevo en unos minutos."
-                                                        }
-                                         }
-                           },
-    "reservations":  {
-                         "navigation":  {
-                                            "reserve":  "Reservar",
-                                            "my-reservations":  "Mis reservas"
-                                        },
-                         "create":  {
-                                        "title":  "Reservar un espacio",
-                                        "subtitle":  "Elige el estacionamiento, horario y vehÃ­culo para tu reserva",
-                                        "loading":  "Cargando estacionamientos disponiblesâ€¦",
-                                        "action":  "Nueva reserva"
-                                    },
-                         "my-reservations":  {
-                                                 "title":  "Mis reservas",
-                                                 "subtitle":  "Consulta y administra tus reservas de estacionamiento"
-                                             },
-                         "fields":  {
-                                        "facility":  "Estacionamiento",
-                                        "start":  "Fecha y hora",
-                                        "duration":  "DuraciÃ³n",
-                                        "vehicle":  "VehÃ­culo",
-                                        "estimated-amount":  "Costo estimado"
-                                    },
-                         "form":  {
-                                      "confirm":  "Confirmar reserva",
-                                      "created":  "Tu reserva fue registrada correctamente."
-                                  },
-                         "list":  {
-                                      "loading":  "Cargando tus reservasâ€¦",
-                                      "empty":  "AÃºn no tienes reservas registradas.",
-                                      "unknown-facility":  "Estacionamiento no disponible"
-                                  },
-                         "status":  {
-                                        "PENDING":  "Pendiente",
-                                        "CONFIRMED":  "Confirmada",
-                                        "ACTIVE":  "Activa",
-                                        "COMPLETED":  "Finalizada",
-                                        "CANCELLED":  "Cancelada",
-                                        "EXPIRED":  "Expirada"
-                                    },
-                         "cancel":  {
-                                        "button":  "Cancelar reserva",
-                                        "title":  "Cancelar reserva",
-                                        "message":  "Â¿Deseas cancelar la reserva {code}?",
-                                        "accept":  "SÃ­, cancelar",
-                                        "success":  "La reserva fue cancelada."
-                                    },
-                         "errors":  {
-                                        "no-availability":  "No hay espacios disponibles para el vehÃ­culo seleccionado.",
-                                        "invalid-start":  "Selecciona una fecha y hora futuras.",
-                                        "not-cancellable":  "Esta reserva ya no puede cancelarse.",
-                                        "failed":  "No pudimos completar la operaciÃ³n. IntÃ©ntalo nuevamente."
-                                    }
-                     },
-    "access-control":  {
-                           "navigation":  {
-                                              "accesses":  "Accesos"
-                                          },
-                           "title":  "Control de accesos",
-                           "subtitle":  "Registra ingresos y salidas de vehÃ­culos y consulta la ocupaciÃ³n actual",
-                           "loading":  "Cargando informaciÃ³n de accesosâ€¦",
-                           "no-facilities":  "No tienes estacionamientos disponibles.",
-                           "summary":  {
-                                           "total":  "Espacios totales",
-                                           "available":  "Disponibles",
-                                           "occupied":  "Ocupados",
-                                           "active-stays":  "VehÃ­culos dentro"
-                                       },
-                           "fields":  {
-                                          "type":  "Movimiento",
-                                          "method":  "MÃ©todo de registro",
-                                          "plate":  "Placa",
-                                          "reservation-code":  "CÃ³digo de reserva",
-                                          "time":  "Fecha y hora",
-                                          "status":  "Estado",
-                                          "parking-spot":  "Espacio"
-                                      },
-                           "types":  {
-                                         "ENTRY":  "Ingreso",
-                                         "EXIT":  "Salida"
-                                     },
-                           "methods":  {
-                                           "MANUAL":  "Manual",
-                                           "QR_CODE":  "CÃ³digo QR",
-                                           "IOT_SENSOR":  "Sensor IoT"
-                                       },
-                           "status":  {
-                                          "IN_PROGRESS":  "En proceso",
-                                          "COMPLETED":  "Completado",
-                                          "UNDER_REVIEW":  "En revisiÃ³n",
-                                          "REJECTED":  "Rechazado"
-                                      },
-                           "form":  {
-                                        "title":  "Registrar acceso",
-                                        "register":  "Registrar movimiento",
-                                        "optional":  "Opcional"
-                                    },
-                           "movements":  {
-                                             "title":  "Historial de accesos",
-                                             "empty":  "AÃºn no existen movimientos de acceso registrados."
-                                         },
-                           "stays":  {
-                                         "title":  "VehÃ­culos actualmente estacionados",
-                                         "empty":  "No hay vehÃ­culos estacionados actualmente.",
-                                         "reassign":  "Reasignar espacio",
-                                         "reassign-title":  "Reasignar espacio de estacionamiento"
-                                     },
-                           "validation":  {
-                                              "required":  "Este campo es obligatorio."
-                                          },
-                           "messages":  {
-                                            "entry-recorded":  "El ingreso del vehÃ­culo fue registrado.",
-                                            "exit-recorded":  "La salida del vehÃ­culo fue registrada.",
-                                            "under-review":  "El vehÃ­culo fue registrado para revisiÃ³n.",
-                                            "reassigned":  "El vehÃ­culo fue reasignado correctamente."
-                                        },
-                           "errors":  {
-                                          "invalid-plate-number":  "Ingresa una placa vÃ¡lida, por ejemplo ABC-123.",
-                                          "vehicle-already-inside":  "Este vehÃ­culo ya posee un ingreso activo.",
-                                          "no-active-reservation":  "No existe una reserva activa para este vehÃ­culo.",
-                                          "no-availability":  "No existen espacios disponibles para este vehÃ­culo.",
-                                          "no-active-stay":  "Este vehÃ­culo no posee un ingreso activo.",
-                                          "invalid-space":  "El espacio seleccionado no estÃ¡ disponible.",
-                                          "failed":  "No pudimos completar la operaciÃ³n. IntÃ©ntalo nuevamente."
-                                      }
-                       },
-    "analytics-reporting":  {
-                                "navigation":  {
-                                                   "reports":  "Reportes"
-                                               },
-                                "title":  "Reportes y analÃ­tica",
-                                "subtitle":  "Analiza la ocupaciÃ³n, los movimientos de vehÃ­culos y las permanencias",
-                                "loading":  "Cargando informaciÃ³n analÃ­ticaâ€¦",
-                                "no-facilities":  "No tienes estacionamientos disponibles.",
-                                "select-period":  "Selecciona un tipo de reporte y un periodo para generar el reporte.",
-                                "empty":  "No existe informaciÃ³n disponible para el periodo seleccionado.",
-                                "types":  {
-                                              "OCCUPANCY":  "OcupaciÃ³n",
-                                              "MOVEMENTS":  "Movimientos",
-                                              "REVENUE":  "Ingresos",
-                                              "STAY_TIME":  "Tiempos de permanencia"
-                                          },
-                                "fields":  {
-                                               "report-type":  "Tipo de reporte",
-                                               "start-date":  "Fecha inicial",
-                                               "end-date":  "Fecha final",
-                                               "entries":  "Ingresos",
-                                               "exits":  "Salidas",
-                                               "average-stay":  "Permanencia promedio",
-                                               "revenue":  "Ingresos",
-                                               "date":  "Fecha y hora",
-                                               "plate":  "Placa",
-                                               "movement":  "Movimiento",
-                                               "method":  "MÃ©todo de registro",
-                                               "status":  "Estado",
-                                               "entry":  "Ingreso",
-                                               "exit":  "Salida",
-                                               "duration":  "DuraciÃ³n"
-                                           },
-                                "summary":  {
-                                                "movements":  "Movimientos",
-                                                "occupancy":  "OcupaciÃ³n promedio",
-                                                "stays":  "Permanencias",
-                                                "revenue":  "Ingresos"
-                                            },
-                                "actions":  {
-                                                "generate":  "Generar reporte",
-                                                "export":  "Exportar CSV"
-                                            },
-                                "occupancy":  {
-                                                  "title":  "Reporte de ocupaciÃ³n"
-                                              },
-                                "movements":  {
-                                                  "title":  "Reporte de movimientos",
-                                                  "empty":  "No existen movimientos para el periodo seleccionado."
-                                              },
-                                "stays":  {
-                                              "title":  "Tiempos de permanencia",
-                                              "empty":  "No existen permanencias para el periodo seleccionado."
-                                          },
-                                "movement-types":  {
-                                                       "ENTRY":  "Ingreso",
-                                                       "EXIT":  "Salida"
-                                                   },
-                                "messages":  {
-                                                 "generated":  "El reporte fue generado correctamente."
-                                             },
-                                "errors":  {
-                                               "invalid-period":  "Selecciona un rango de fechas vÃ¡lido.",
-                                               "failed":  "No pudimos generar el reporte. IntÃ©ntalo nuevamente."
-                                           }
-                            },
-    "monitoring-alerts":  {
-                              "navigation":  {
-                                                 "alerts":  "Alertas"
-                                             },
-                              "title":  "Monitoreo y alertas",
-                              "subtitle":  "Supervisa la ocupaciÃ³n y atiende las alertas de tus estacionamientos",
-                              "loading":  "Cargando informaciÃ³n de monitoreoâ€¦",
-                              "no-facilities":  "No tienes estacionamientos disponibles.",
-                              "filter":  {
-                                             "zone":  "Zona"
-                                         },
-                              "summary":  {
-                                              "active":  "Alertas activas",
-                                              "resolved-today":  "Resueltas hoy"
-                                          },
-                              "fields":  {
-                                             "time":  "Fecha y hora",
-                                             "type":  "Tipo",
-                                             "severity":  "Severidad",
-                                             "value":  "Valor",
-                                             "status":  "Estado",
-                                             "resolution-time":  "Tiempo de resoluciÃ³n",
-                                             "minutes":  "min"
-                                         },
-                              "types":  {
-                                            "CAPACITY_CRITICAL":  "Capacidad crÃ­tica",
-                                            "CAPACITY_NEAR_LIMIT":  "Capacidad al lÃ­mite",
-                                            "STAY_EXCEEDED":  "Permanencia excedida",
-                                            "UNRECOGNIZED_PLATE":  "Placa no reconocida",
-                                            "ACCESS_WITHOUT_RESERVATION":  "Acceso sin reserva"
-                                        },
-                              "severity":  {
-                                               "HIGH":  "Alta",
-                                               "MEDIUM":  "Media",
-                                               "LOW":  "Baja"
-                                           },
-                              "status":  {
-                                             "ACTIVE":  "Activa",
-                                             "RESOLVED":  "Resuelta",
-                                             "DISMISSED":  "Descartada"
-                                         },
-                              "list":  {
-                                           "title":  "Alertas",
-                                           "empty":  "No existen alertas registradas para este estacionamiento.",
-                                           "resolve":  "Resolver"
-                                       },
-                              "messages":  {
-                                               "resolved":  "La alerta fue resuelta."
-                                           },
-                              "errors":  {
-                                             "already-resolved":  "Esta alerta ya fue resuelta.",
-                                             "failed":  "No pudimos completar la operaciÃ³n. IntÃ©ntalo nuevamente."
-                                         }
-                          }
+{
+  "layout": {
+    "skip-to-content": "Saltar al contenido principal",
+    "main-navigation": "Navegación principal",
+    "open-menu": "Abrir menú de navegación",
+    "language": "Idioma"
+  },
+  "common": {
+    "cancel": "Cancelar",
+    "save": "Guardar"
+  },
+  "about": {
+    "title": "Acerca de EasyPark",
+    "content": "EasyPark es una plataforma de gestión de estacionamientos en tiempo real que conecta a los conductores con espacios disponibles y brinda a los operadores control digital de sus instalaciones."
+  },
+  "home": {
+    "title": "Bienvenido",
+    "content": "Bienvenido a EasyPark. Menos vueltas buscando, más control al administrar."
+  },
+  "page-not-found": {
+    "title": "Página no encontrada",
+    "content": "La ruta {unavailable-route} no está disponible.",
+    "go-home": "Ir al inicio"
+  },
+  "iam": {
+    "roles": {
+      "DRIVER": "Conductor",
+      "OPERATOR_ADMIN": "Administrador",
+      "OPERATOR_STAFF": "Personal operativo"
+    },
+    "fields": {
+      "role": "Soy",
+      "email": "Correo electrónico",
+      "email-placeholder": "correo{'@'}ejemplo.com",
+      "password": "Contraseña",
+      "confirm-password": "Confirmar contraseña"
+    },
+    "validation": {
+      "email-required": "Ingresa tu correo electrónico.",
+      "email-invalid": "Ingresa un correo válido, por ejemplo correo{'@'}ejemplo.com.",
+      "password-required": "Ingresa tu contraseña.",
+      "password-length": "Usa al menos {length} caracteres.",
+      "password-mismatch": "Las contraseñas no coinciden."
+    },
+    "sign-in": {
+      "title": "Inicia sesión",
+      "subtitle": "Accede a tu cuenta de conductor o administrador",
+      "remember": "Recordarme",
+      "submit": "Iniciar sesión",
+      "divider": "o",
+      "no-account": "¿Aún no tienes cuenta?",
+      "sign-up-link": "Regístrate aquí",
+      "registered": "Tu cuenta fue creada. Ya puedes iniciar sesión.",
+      "errors": {
+        "invalid-credentials": "El correo o la contraseña no son correctos.",
+        "inactive-account": "Esta cuenta no está activa. Comunícate con el soporte de EasyPark.",
+        "failed": "No pudimos iniciar tu sesión. Inténtalo de nuevo en unos minutos."
+      }
+    },
+    "sign-up": {
+      "title": "Crea tu cuenta",
+      "subtitle": "Regístrate como conductor o como administrador de estacionamiento",
+      "submit": "Crear cuenta",
+      "has-account": "¿Ya tienes cuenta?",
+      "sign-in-link": "Inicia sesión",
+      "errors": {
+        "email-taken": "Este correo ya está registrado. Inicia sesión o usa otro correo.",
+        "failed": "No pudimos crear tu cuenta. Inténtalo de nuevo en unos minutos."
+      }
+    },
+    "change-password": {
+      "title": "Cambiar contraseña",
+      "current": "Contraseña actual",
+      "new": "Nueva contraseña",
+      "success": "Tu contraseña fue actualizada.",
+      "errors": {
+        "wrong-current-password": "La contraseña actual no es correcta.",
+        "same-password": "La nueva contraseña debe ser distinta de la actual.",
+        "session-expired": "Tu sesión expiró. Vuelve a iniciar sesión para cambiar tu contraseña.",
+        "failed": "No pudimos actualizar tu contraseña. Inténtalo de nuevo en unos minutos."
+      }
+    },
+    "account": {
+      "menu": "Menú de la cuenta de {name}",
+      "sign-in": "Iniciar sesión",
+      "sign-up": "Regístrate",
+      "sign-out": "Cerrar sesión"
+    }
+  },
+  "profiles": {
+    "navigation": {
+      "profile": "Perfil",
+      "my-profile": "Mi perfil"
+    },
+    "my-profile": {
+      "title": "Mi perfil",
+      "subtitle": "Consulta y administra tu información de cuenta",
+      "loading": "Cargando tu perfil…",
+      "identity": "Identidad",
+      "personal-information": "Información personal",
+      "empty": "Aún no registras tus datos personales. Complétalos para empezar a usar EasyPark.",
+      "complete": "Completar perfil",
+      "edit": "Editar información"
+    },
+    "fields": {
+      "first-name": "Nombre",
+      "last-name": "Apellidos",
+      "email": "Correo",
+      "phone": "Teléfono",
+      "role": "Rol",
+      "member-since": "Miembro desde",
+      "company-name": "Empresa",
+      "job-title": "Cargo",
+      "plate-number": "Placa",
+      "vehicle-type": "Tipo",
+      "color": "Color"
+    },
+    "validation": {
+      "required": "Este campo es obligatorio.",
+      "phone-invalid": "Ingresa un teléfono válido, por ejemplo +51 987 654 321."
+    },
+    "form": {
+      "create-title": "Completa tu perfil",
+      "edit-title": "Editar información",
+      "created": "Tu perfil fue guardado.",
+      "updated": "Tu información fue actualizada.",
+      "failed": "No pudimos guardar tu información. Inténtalo de nuevo en unos minutos."
+    },
+    "vehicle-types": {
+      "CAR": "Auto",
+      "SUV": "SUV",
+      "VAN": "Van",
+      "MOTORCYCLE": "Moto"
+    },
+    "vehicles": {
+      "title": "Mis vehículos",
+      "register": "Registrar vehículo",
+      "register-title": "Registrar vehículo",
+      "edit-title": "Editar vehículo",
+      "empty": "Aún no tienes vehículos registrados. Registra uno para poder reservar un espacio.",
+      "status": "Estado",
+      "actions": "Acciones",
+      "default": "Predeterminado",
+      "make-default": "Definir como predeterminado",
+      "default-updated": "{plate} es ahora tu vehículo predeterminado.",
+      "edit": "Editar vehículo {plate}",
+      "edit-tooltip": "Editar",
+      "remove": "Quitar",
+      "remove-aria": "Quitar vehículo {plate}",
+      "remove-header": "Quitar vehículo",
+      "remove-message": "¿Quitar {plate} de tus vehículos? Tus reservas anteriores conservarán su registro.",
+      "removed": "{plate} fue quitado de tus vehículos.",
+      "registered": "Tu vehículo fue registrado.",
+      "updated": "Tu vehículo fue actualizado.",
+      "plate-hint": "Formato ABC-123 para autos o 1234-AB para motos.",
+      "plate-locked": "La placa identifica el vehículo y no se puede cambiar.",
+      "color-placeholder": "Opcional",
+      "errors": {
+        "invalid-plate-number": "Ingresa una placa válida, por ejemplo ABC-123 o 1234-AB.",
+        "plate-taken": "Esta placa ya está registrada por otra cuenta.",
+        "plate-already-yours": "Ya registraste esta placa.",
+        "failed": "No pudimos guardar el vehículo. Inténtalo de nuevo en unos minutos."
+      }
+    }
+  },
+  "parking-management": {
+    "navigation": {
+      "facilities": "Zonas y espacios"
+    },
+    "facilities": {
+      "title": "Mis instalaciones",
+      "subtitle": "Administra tus estacionamientos y sus espacios",
+      "loading": "Cargando tus instalaciones…",
+      "new": "Nueva instalación",
+      "empty": "Aún no registras instalaciones. Crea la primera para empezar a administrar espacios.",
+      "occupancy": "{occupied}/{total} ocupados",
+      "status": {
+        "ACTIVE": "Activa",
+        "INACTIVE": "Inactiva",
+        "MAINTENANCE": "En mantenimiento"
+      }
+    },
+    "facility-detail": {
+      "back": "Volver a instalaciones",
+      "edit": "Editar instalación",
+      "schedule": "Horario",
+      "rate": "Tarifa por hora",
+      "occupancy": "Ocupación",
+      "not-found": "No encontramos esta instalación."
+    },
+    "facility-form": {
+      "create-title": "Nueva instalación",
+      "edit-title": "Editar instalación",
+      "created": "La instalación fue creada.",
+      "updated": "La instalación fue actualizada.",
+      "failed": "No pudimos guardar la instalación. Inténtalo de nuevo en unos minutos."
+    },
+    "fields": {
+      "name": "Nombre",
+      "address": "Dirección",
+      "latitude": "Latitud",
+      "longitude": "Longitud",
+      "hourly-rate": "Tarifa por hora",
+      "open-time": "Hora de apertura",
+      "close-time": "Hora de cierre",
+      "spot-code": "Código",
+      "spot-level": "Nivel",
+      "spot-type": "Tipo"
+    },
+    "validation": {
+      "required": "Este campo es obligatorio.",
+      "positive-number": "Ingresa un número mayor a 0."
+    },
+    "spots": {
+      "title": "Espacios",
+      "register": "Nuevo espacio",
+      "register-title": "Nuevo espacio",
+      "edit-title": "Editar espacio",
+      "empty": "Aún no registras espacios en esta instalación.",
+      "status": "Estado",
+      "actions": "Acciones",
+      "status-values": {
+        "AVAILABLE": "Disponible",
+        "OCCUPIED": "Ocupado",
+        "RESERVED": "Reservado",
+        "OUT_OF_SERVICE": "Fuera de servicio"
+      },
+      "types": {
+        "CAR": "Auto",
+        "SUV": "SUV",
+        "VAN": "Van",
+        "MOTORCYCLE": "Moto"
+      },
+      "mark-occupied": "Marcar ocupado",
+      "mark-available": "Marcar disponible",
+      "mark-out-of-service": "Fuera de servicio",
+      "return-to-service": "Reactivar",
+      "edit": "Editar espacio {code}",
+      "edit-tooltip": "Editar",
+      "registered": "El espacio fue registrado.",
+      "updated": "El espacio fue actualizado.",
+      "errors": {
+        "code-taken": "Ya existe un espacio con ese código en esta instalación.",
+        "failed": "No pudimos guardar el espacio. Inténtalo de nuevo en unos minutos."
+      }
+    }
+  },
+  "reservations": {
+    "navigation": {
+      "reserve": "Reservar",
+      "my-reservations": "Mis reservas"
+    },
+    "create": {
+      "title": "Reservar un espacio",
+      "subtitle": "Elige el estacionamiento, horario y vehículo para tu reserva",
+      "loading": "Cargando estacionamientos disponibles…",
+      "action": "Nueva reserva"
+    },
+    "my-reservations": {
+      "title": "Mis reservas",
+      "subtitle": "Consulta y administra tus reservas de estacionamiento"
+    },
+    "fields": {
+      "facility": "Estacionamiento",
+      "start": "Fecha y hora",
+      "duration": "Duración",
+      "vehicle": "Vehículo",
+      "estimated-amount": "Costo estimado"
+    },
+    "form": {
+      "confirm": "Confirmar reserva",
+      "created": "Tu reserva fue registrada correctamente."
+    },
+    "list": {
+      "loading": "Cargando tus reservas…",
+      "empty": "Aún no tienes reservas registradas.",
+      "unknown-facility": "Estacionamiento no disponible"
+    },
+    "status": {
+      "PENDING": "Pendiente",
+      "CONFIRMED": "Confirmada",
+      "ACTIVE": "Activa",
+      "COMPLETED": "Finalizada",
+      "CANCELLED": "Cancelada",
+      "EXPIRED": "Expirada"
+    },
+    "cancel": {
+      "button": "Cancelar reserva",
+      "title": "Cancelar reserva",
+      "message": "¿Deseas cancelar la reserva {code}?",
+      "accept": "Sí, cancelar",
+      "success": "La reserva fue cancelada."
+    },
+    "errors": {
+      "no-availability": "No hay espacios disponibles para el vehículo seleccionado.",
+      "invalid-start": "Selecciona una fecha y hora futuras.",
+      "not-cancellable": "Esta reserva ya no puede cancelarse.",
+      "failed": "No pudimos completar la operación. Inténtalo nuevamente."
+    }
+  },
+  "access-control": {
+    "navigation": {
+      "accesses": "Accesos"
+    },
+    "title": "Control de accesos",
+    "subtitle": "Registra ingresos y salidas de vehículos y consulta la ocupación actual",
+    "loading": "Cargando información de accesos…",
+    "no-facilities": "No tienes estacionamientos disponibles.",
+    "summary": {
+      "total": "Espacios totales",
+      "available": "Disponibles",
+      "occupied": "Ocupados",
+      "active-stays": "Vehículos dentro"
+    },
+    "fields": {
+      "type": "Movimiento",
+      "method": "Método de registro",
+      "plate": "Placa",
+      "reservation-code": "Código de reserva",
+      "time": "Fecha y hora",
+      "status": "Estado",
+      "parking-spot": "Espacio"
+    },
+    "types": {
+      "ENTRY": "Ingreso",
+      "EXIT": "Salida"
+    },
+    "methods": {
+      "MANUAL": "Manual",
+      "QR_CODE": "Código QR",
+      "IOT_SENSOR": "Sensor IoT"
+    },
+    "status": {
+      "IN_PROGRESS": "En proceso",
+      "COMPLETED": "Completado",
+      "UNDER_REVIEW": "En revisión",
+      "REJECTED": "Rechazado"
+    },
+    "form": {
+      "title": "Registrar acceso",
+      "register": "Registrar movimiento",
+      "optional": "Opcional"
+    },
+    "movements": {
+      "title": "Historial de accesos",
+      "empty": "Aún no existen movimientos de acceso registrados."
+    },
+    "stays": {
+      "title": "Vehículos actualmente estacionados",
+      "empty": "No hay vehículos estacionados actualmente.",
+      "reassign": "Reasignar espacio",
+      "reassign-title": "Reasignar espacio de estacionamiento"
+    },
+    "validation": {
+      "required": "Este campo es obligatorio."
+    },
+    "messages": {
+      "entry-recorded": "El ingreso del vehículo fue registrado.",
+      "exit-recorded": "La salida del vehículo fue registrada.",
+      "under-review": "El vehículo fue registrado para revisión.",
+      "reassigned": "El vehículo fue reasignado correctamente."
+    },
+    "errors": {
+      "invalid-plate-number": "Ingresa una placa válida, por ejemplo ABC-123.",
+      "vehicle-already-inside": "Este vehículo ya posee un ingreso activo.",
+      "no-active-reservation": "No existe una reserva activa para este vehículo.",
+      "no-availability": "No existen espacios disponibles para este vehículo.",
+      "no-active-stay": "Este vehículo no posee un ingreso activo.",
+      "invalid-space": "El espacio seleccionado no está disponible.",
+      "failed": "No pudimos completar la operación. Inténtalo nuevamente."
+    }
+  },
+  "analytics-reporting": {
+    "navigation": {
+      "reports": "Reportes"
+    },
+    "title": "Reportes y analítica",
+    "subtitle": "Analiza la ocupación, los movimientos de vehículos y las permanencias",
+    "loading": "Cargando información analítica…",
+    "no-facilities": "No tienes estacionamientos disponibles.",
+    "select-period": "Selecciona un tipo de reporte y un periodo para generar el reporte.",
+    "empty": "No existe información disponible para el periodo seleccionado.",
+    "types": {
+      "OCCUPANCY": "Ocupación",
+      "MOVEMENTS": "Movimientos",
+      "REVENUE": "Ingresos",
+      "STAY_TIME": "Tiempos de permanencia"
+    },
+    "fields": {
+      "report-type": "Tipo de reporte",
+      "start-date": "Fecha inicial",
+      "end-date": "Fecha final",
+      "entries": "Ingresos",
+      "exits": "Salidas",
+      "average-stay": "Permanencia promedio",
+      "revenue": "Ingresos",
+      "date": "Fecha y hora",
+      "plate": "Placa",
+      "movement": "Movimiento",
+      "method": "Método de registro",
+      "status": "Estado",
+      "entry": "Ingreso",
+      "exit": "Salida",
+      "duration": "Duración"
+    },
+    "summary": {
+      "movements": "Movimientos",
+      "occupancy": "Ocupación promedio",
+      "stays": "Permanencias",
+      "revenue": "Ingresos"
+    },
+    "actions": {
+      "generate": "Generar reporte",
+      "export": "Exportar CSV"
+    },
+    "occupancy": {
+      "title": "Reporte de ocupación"
+    },
+    "movements": {
+      "title": "Reporte de movimientos",
+      "empty": "No existen movimientos para el periodo seleccionado."
+    },
+    "stays": {
+      "title": "Tiempos de permanencia",
+      "empty": "No existen permanencias para el periodo seleccionado."
+    },
+    "movement-types": {
+      "ENTRY": "Ingreso",
+      "EXIT": "Salida"
+    },
+    "messages": {
+      "generated": "El reporte fue generado correctamente."
+    },
+    "errors": {
+      "invalid-period": "Selecciona un rango de fechas válido.",
+      "failed": "No pudimos generar el reporte. Inténtalo nuevamente."
+    }
+  },
+  "monitoring-alerts": {
+    "navigation": {
+      "alerts": "Alertas"
+    },
+    "title": "Monitoreo y alertas",
+    "subtitle": "Supervisa la ocupación y atiende las alertas de tus estacionamientos",
+    "loading": "Cargando información de monitoreo…",
+    "no-facilities": "No tienes estacionamientos disponibles.",
+    "filter": {
+      "zone": "Zona"
+    },
+    "summary": {
+      "active": "Alertas activas",
+      "resolved-today": "Resueltas hoy"
+    },
+    "fields": {
+      "time": "Fecha y hora",
+      "type": "Tipo",
+      "severity": "Severidad",
+      "value": "Valor",
+      "status": "Estado",
+      "resolution-time": "Tiempo de resolución",
+      "minutes": "min"
+    },
+    "types": {
+      "CAPACITY_CRITICAL": "Capacidad crítica",
+      "CAPACITY_NEAR_LIMIT": "Capacidad al límite",
+      "STAY_EXCEEDED": "Permanencia excedida",
+      "UNRECOGNIZED_PLATE": "Placa no reconocida",
+      "ACCESS_WITHOUT_RESERVATION": "Acceso sin reserva"
+    },
+    "severity": {
+      "HIGH": "Alta",
+      "MEDIUM": "Media",
+      "LOW": "Baja"
+    },
+    "status": {
+      "ACTIVE": "Activa",
+      "RESOLVED": "Resuelta",
+      "DISMISSED": "Descartada"
+    },
+    "list": {
+      "title": "Alertas",
+      "empty": "No existen alertas registradas para este estacionamiento.",
+      "resolve": "Resolver"
+    },
+    "messages": {
+      "resolved": "La alerta fue resuelta."
+    },
+    "errors": {
+      "already-resolved": "Esta alerta ya fue resuelta.",
+      "failed": "No pudimos completar la operación. Inténtalo nuevamente."
+    }
+  }
 }
