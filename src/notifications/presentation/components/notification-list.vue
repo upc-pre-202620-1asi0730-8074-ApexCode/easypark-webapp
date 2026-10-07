@@ -21,13 +21,13 @@ defineProps({
 });
 
 const NOTIFICATION_ICON_BY_TYPE = Object.freeze({
-  [NotificationType.TIME_REMAINING]: 'pi-clock',
-  [NotificationType.STAY_EXPIRED]: 'pi-exclamation-circle',
-  [NotificationType.ALERT_RAISED]: 'pi-exclamation-triangle',
-  [NotificationType.CHECK_IN_CONFIRMED]: 'pi-check-circle',
-  [NotificationType.CHECK_OUT_CONFIRMED]: 'pi-car',
-  [NotificationType.RESERVATION_CONFIRMED]: 'pi-calendar',
-  [NotificationType.RESERVATION_REMINDER]: 'pi-bell'
+  [NotificationType.TIME_REMAINING]: 'pi pi-clock',
+  [NotificationType.STAY_EXPIRED]: 'pi pi-exclamation-circle',
+  [NotificationType.ALERT_RAISED]: 'pi pi-exclamation-triangle',
+  [NotificationType.CHECK_IN_CONFIRMED]: 'pi pi-check-circle',
+  [NotificationType.CHECK_OUT_CONFIRMED]: 'pi pi-car',
+  [NotificationType.RESERVATION_CONFIRMED]: 'pi pi-calendar',
+  [NotificationType.RESERVATION_REMINDER]: 'pi pi-bell'
 
 });
 
@@ -58,8 +58,8 @@ function iconOf(notification) {
   const type = typeOf(notification);
 
   return type
-    ? NOTIFICATION_ICON_BY_TYPE[type] ?? 'pi-bell'
-    : 'pi-bell';
+    ? NOTIFICATION_ICON_BY_TYPE[type] ?? 'pi pi-bell'
+    : 'pi pi-bell';
 }
 
 /**
