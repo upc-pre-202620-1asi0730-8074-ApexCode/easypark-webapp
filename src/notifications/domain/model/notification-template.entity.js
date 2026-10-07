@@ -2,11 +2,7 @@ import {Notification} from "./notification.entity.js";
 import {NotificationChannel} from "./notification-channel.js";
 import {NotificationStatus} from "./notification-status.js";
 
-/**
- * Text of a notification type in one locale. The notification row stores its
- * own copy of the already-rendered `title`/`message`, so the template only
- * documents which text was sent and lets the UI recover the type.
- */
+
 export class NotificationTemplate {
     constructor({
                     id = null,

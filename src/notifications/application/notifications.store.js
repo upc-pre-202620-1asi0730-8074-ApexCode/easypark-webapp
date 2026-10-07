@@ -19,18 +19,7 @@ import {AlertRuleAssembler} from "../../monitoring-alerts/infrastructure/alert-r
 import {FacilityAssembler} from "../../parking-management/infrastructure/facility.assembler.js";
 import {SpotAssembler} from "../../parking-management/infrastructure/spot.assembler.js";
 
-/**
- * The class diagram models a NotificationDispatcher plus INotificationRepository,
- * INotificationTemplateRepository and IEmailGateway. This application has no
- * bounded context implementing repository interfaces or gateways: the local
- * equivalent is NotificationsApi + assemblers, exactly as in IAM, Reservations
- * or Monitoring Alerts. So this store is the dispatcher (reactToSourceEvents,
- * markAllAsRead, unreadCount), NotificationsApi + NotificationAssembler is the
- * notification repository, NotificationsApi + NotificationTemplateAssembler is
- * the template repository, and there is no email gateway to implement in a
- * mock-backed front end (the EMAIL channel and Notification.markAsFailed stay
- * in the model because the diagram declares them).
- */
+
 const notificationsApi = new NotificationsApi();
 
 function outcome(success, reason) {
@@ -53,19 +42,7 @@ function isSameLocalDay(value, now) {
     );
 }
 
-/**
- * Source of a notification: a reservation, a parking stay or an alert. Two
- * evaluations of the same source must never create two notifications.
- *
- * The key is namespaced because reservationId, parkingStayId and alertId
- * belong to three different id spaces: the raw ids collide (a reservation id
- * of 1 equals a stay id of 1), so an unprefixed key would make a
- * reservation-based notification match a stay-based one and silently skip its
- * creation. Exactly one foreign key is set on a notification, so the
- * precedence below is only a tie-breaker for legacy rows.
- *
- * @returns {string} a single, total, kind-prefixed key.
- */
+
 function sourceKeyOf({reservationId, parkingStayId, alertId}) {
     if (reservationId != null) return `reservation:${reservationId}`;
     if (parkingStayId != null) return `stay:${parkingStayId}`;
@@ -78,11 +55,7 @@ function dedupeKeyOf(type, source) {
     return `${type}|${sourceKeyOf(source)}`;
 }
 
-/**
- * Type of a stored notification. The notification row keeps the text that was
- * delivered plus its template, and the template owns the type: it is resolved
- * through `notificationTemplateId` instead of being duplicated as a column.
- */
+
 function typeOf(notification, templates) {
     return templates.find(
         template => template.id === notification.notificationTemplateId
@@ -126,12 +99,7 @@ const useNotificationsStore = defineStore('notifications', () => {
                 .toEntitiesFromResponse(response);
     }
 
-    /**
-     * Inbox read path: the driver's notifications plus every template. The
-     * reaction path needs the templates of any locale (the type behind a
-     * stored notification is recovered from its template), so `locale` is part
-     * of the contract with the view but does not narrow this read.
-     */
+
     async function fetchNotifications(recipientId, locale) {
         notificationsLoaded.value = false;
 
@@ -157,14 +125,7 @@ const useNotificationsStore = defineStore('notifications', () => {
         }
     }
 
-    /**
-     * Reaction to source events (`+Dispatch(type, payload)` of the diagram):
-     * reads what the driver did in the other bounded contexts, renders a
-     * notification through the matching template and creates only those that
-     * do not exist yet. It is idempotent by (type, source key): the same
-     * reservation, stay or alert never produces two notifications. Empty
-     * source collections are normal and simply create nothing.
-     */
+
     async function reactToSourceEvents(recipientId, locale) {
         const created = [];
 
@@ -284,10 +245,7 @@ const useNotificationsStore = defineStore('notifications', () => {
         ].sort(sortByNewestFirst);
     }
 
-    /**
-     * One candidate per rule that fired, each carrying exactly one source
-     * foreign key so the dedupe key stays total across collections.
-     */
+
     function buildCandidates(context) {
         const onlySource = (type, source) => ({
             type,

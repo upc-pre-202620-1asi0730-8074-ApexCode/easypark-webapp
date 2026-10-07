@@ -5,12 +5,7 @@ import {AlertType} from "../../../monitoring-alerts/domain/model/alert-type.js";
 
 import {NotificationPayload} from "./notification-payload.js";
 
-/**
- * Minutes before the configured stay limit at which TIME_REMAINING is
- * raised, and the look-ahead window of RESERVATION_REMINDER. The report
- * requires a "configured condition" for US36/US40 but never localizes it nor
- * exposes it as an editable value, so both windows live here for now.
- */
+
 export const TIME_REMAINING_NOTICE_MINUTES = 30;
 export const RESERVATION_REMINDER_WINDOW_MINUTES = 60;
 
@@ -21,11 +16,7 @@ const NOTIFIED_RESERVATION_STATUSES = Object.freeze([
     ReservationStatus.ACTIVE
 ]);
 
-/**
- * Everything the driver's notification rules need to decide, observed at a
- * single instant. Pure data and queries: no IO, no persistence, no side
- * effects. The store turns the returned rows into notifications.
- */
+
 export class NotificationContext {
     constructor({
                     recipientId,
@@ -53,10 +44,7 @@ export class NotificationContext {
         this.now = now instanceof Date ? now : new Date(now);
     }
 
-    /**
-     * Vehicles of the driver. Movements belong to the driver through
-     * `vehicleId`, so every movement and stay query is filtered by this set.
-     */
+
     driverVehicleIds() {
         return this.vehicles.map(vehicle => vehicle.id);
     }
@@ -105,7 +93,7 @@ export class NotificationContext {
         );
     }
 
-    /** CHECK_IN_CONFIRMED: a driver's stay whose entry movement completed. */
+
     staysWithCompletedEntry() {
         return this.driverStays().filter(
             stay =>
@@ -114,15 +102,11 @@ export class NotificationContext {
         );
     }
 
-    /** CHECK_OUT_CONFIRMED: a driver's stay that is already closed. */
+
     closedStays() {
         return this.driverStays().filter(stay => !stay.isOpen);
     }
 
-    /**
-     * ALERT_RAISED: an alert that points at one of the driver's stays. Alerts
-     * without a stay (or pointing at somebody else's stay) are not ours.
-     */
     driverAlerts() {
         const stayIds = new Set(
             this.driverStays().map(stay => stay.id)
@@ -136,11 +120,7 @@ export class NotificationContext {
         );
     }
 
-    /**
-     * Maximum stay minutes of the facility the driver is parking at, taken
-     * from the configured STAY_EXCEEDED rule and falling back to the default
-     * of 480 minutes (8 hours) when no rule is configured.
-     */
+
     allowedStayMinutes() {
         const rule = this.alertRules.find(
             item => item.type === AlertType.STAY_EXCEEDED
@@ -149,10 +129,7 @@ export class NotificationContext {
         return rule?.threshold ?? 480;
     }
 
-    /**
-     * TIME_REMAINING: open stays whose duration reached the notice window but
-     * is still strictly below the limit: the "time is running out" notice.
-     */
+
     openStaysApproachingLimit() {
         const allowed = this.allowedStayMinutes();
         const noticeFrom = allowed - TIME_REMAINING_NOTICE_MINUTES;
@@ -166,7 +143,7 @@ export class NotificationContext {
             .map(({stay}) => stay);
     }
 
-    /** STAY_EXPIRED: open stays already at or past the configured limit. */
+
     openStaysOverLimit() {
         const allowed = this.allowedStayMinutes();
 
@@ -175,16 +152,7 @@ export class NotificationContext {
             .map(({stay}) => stay);
     }
 
-    /**
-     * Values a template can interpolate for one candidate source, resolved
-     * from the collections the candidate belongs to. Foreign keys come from
-     * the candidate itself, so the payload can never point at a collection the
-     * rule did not fire on.
-     *
-     * `zoneName` is the name of the parking facility that owns the spot: this
-     * application has no "zone" entity anywhere, and the facility name is the
-     * closest documented value for the mockup's "Zona A".
-     */
+
     payloadFor({reservationId = null, parkingStayId = null, alertId = null}) {
         const reservation = reservationId === null
             ? null
@@ -198,8 +166,7 @@ export class NotificationContext {
             ? null
             : this.alerts.find(item => item.id === alertId) ?? null;
 
-        // Display values of an alert travel through its stay; the payload
-        // foreign key stays `alertId` alone so the source remains unambiguous.
+
         const stayForDisplay = stay ?? (alert
             ? this.stays.find(item => item.id === alert.parkingStayId) ?? null
             : null);
@@ -233,10 +200,7 @@ export class NotificationContext {
         });
     }
 
-    /**
-     * Template of a type in a locale, falling back to the default locale and
-     * then to any locale so a notification is never delivered without text.
-     */
+
     templateFor(type, locale) {
         return this.templates.find(
                 template =>
