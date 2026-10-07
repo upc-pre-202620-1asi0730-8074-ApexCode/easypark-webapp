@@ -2,9 +2,7 @@ import {DriverProfile} from "../domain/model/driver-profile.entity.js";
 import {OperatorProfile} from "../domain/model/operator-profile.entity.js";
 
 export class ProfileAssembler {
-    /**
-     * Construye la especialización del perfil según el rol de la cuenta: operador o conductor.
-     */
+
     static toEntityFromResource(resource, isOperator) {
         const attributes = {
             id: resource.id,

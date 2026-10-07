@@ -18,24 +18,6 @@ const facilityId = computed(() => Number(route.params.facilityId));
 const operatorProfileId = computed(() => profilesStore.currentProfile?.id ?? null);
 const facility = computed(() => store.currentFacility);
 
-const occupiedSpots = computed(() => store.spots.filter(spot => spot.status === 'OCCUPIED').length);
-
-/**
- * Share of spaces with a vehicle inside, the same figure the access control view reports.
- */
-const occupancyRate = computed(() =>
-    store.spots.length ? Math.round((occupiedSpots.value / store.spots.length) * 100) : 0);
-
-const occupancyTone = computed(() => {
-  if (occupancyRate.value >= 90) return 'danger';
-  if (occupancyRate.value >= 75) return 'warning';
-  return 'success';
-});
-
-const coordinates = computed(() => {
-  const {latitude, longitude} = facility.value ?? {};
-  return latitude == null || longitude == null ? '—' : `${latitude}, ${longitude}`;
-});
 
 watch([operatorProfileId, facilityId], async ([id]) => {
   if (!id) return;
