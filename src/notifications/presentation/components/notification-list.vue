@@ -26,6 +26,8 @@ const NOTIFICATION_ICON_BY_TYPE = Object.freeze({
   [NotificationType.ALERT_RAISED]: 'pi pi-exclamation-triangle',
   [NotificationType.CHECK_IN_CONFIRMED]: 'pi pi-check-circle',
   [NotificationType.CHECK_OUT_CONFIRMED]: 'pi pi-car',
+  [NotificationType.RESERVATION_CONFIRMED]: 'pi pi-calendar',
+
 
 
 });
