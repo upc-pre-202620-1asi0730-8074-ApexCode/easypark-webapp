@@ -423,5 +423,49 @@
       "already-resolved": "This alert has already been resolved.",
       "failed": "We couldn't complete the operation. Please try again."
     }
+  },
+  "notifications": {
+    "navigation": {
+      "inbox": "Notifications"
+    },
+    "title": "Notifications",
+    "subtitle": "Stay on top of your reservations and parking stay",
+    "loading": "Loading notifications…",
+    "empty": "You have no notifications right now.",
+    "unreadCount": "{count} unread",
+    "actions": {
+      "markAllRead": "Mark all as read"
+    },
+    "groups": {
+      "today": "Today",
+      "yesterday": "Yesterday"
+    },
+    "status": {
+      "PENDING": "Pending",
+      "SENT": "Sent",
+      "READ": "Read",
+      "FAILED": "Failed"
+    },
+    "types": {
+      "RESERVATION_CONFIRMED": "Reservation confirmed",
+      "RESERVATION_REMINDER": "Reservation reminder",
+      "TIME_REMAINING": "Time remaining",
+      "STAY_EXPIRED": "Parking time expired",
+      "CHECK_IN_CONFIRMED": "Check-in successful",
+      "CHECK_OUT_CONFIRMED": "Exit confirmation",
+      "ALERT_RAISED": "Stay alert"
+    },
+    "channels": {
+      "IN_APP": "In app",
+      "EMAIL": "Email"
+    },
+    "errors": {
+      "already-read": "This notification has already been read.",
+      "failed": "We couldn't complete the operation. Please try again."
+    },
+    "messages": {
+      "markedRead": "The notification was marked as read.",
+      "allMarkedRead": "All notifications were marked as read."
+    }
   }
 }

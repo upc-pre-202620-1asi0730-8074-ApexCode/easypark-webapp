@@ -6,6 +6,7 @@ import parkingManagementRoutes from "./parking-management/presentation/parking-m
 import reservationsRoutes from "./reservations/presentation/reservations-routes.js";
 import accessControlRoutes from "./access-control/presentation/access-control-routes.js";
 import monitoringAlertsRoutes from "./monitoring-alerts/presentation/monitoring-alerts-routes.js";
+import notificationsRoutes from "./notifications/presentation/notifications-routes.js";
 import {authenticationGuard} from "./iam/infrastructure/authentication.guard.js";
 
 const about = () => import('./shared/presentation/views/about.vue');
@@ -53,6 +54,11 @@ const routes = [
         path: '/monitoring-alerts',
         name: 'monitoring-alerts',
         children: monitoringAlertsRoutes
+    },
+    {
+        path: '/notifications',
+        name: 'notifications',
+        children: notificationsRoutes
     },
     {
         path: '/',
