@@ -5,10 +5,12 @@ const { t } = useI18n();
 </script>
 
 <template>
-  <section class="pt-6 p-4 md:p-5">
-    <div class="flex flex-column gap-3">
-      <h1 class="text-4xl font-bold text-color">{{ t('home.title') }}</h1>
-      <p class="m-0 line-height-3 text-color-secondary">{{ t('home.content') }}</p>
+  <section class="page">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">{{ t('home.title') }}</h1>
+        <p class="page-subtitle">{{ t('home.content') }}</p>
+      </div>
     </div>
   </section>
 </template>
