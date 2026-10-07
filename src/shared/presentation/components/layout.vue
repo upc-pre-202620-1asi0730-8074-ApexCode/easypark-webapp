@@ -1,28 +1,125 @@
 <script setup>
-import {computed, ref} from "vue";
+import {computed, ref, watch} from "vue";
 import {useRoute} from "vue-router";
 import {useI18n} from "vue-i18n";
+
 import LanguageSwitcher from "./language-switcher.vue";
 import AuthenticationSection from "../../../iam/presentation/components/authentication-section.vue";
-import useIamStore from "../../../iam/application/iam.store.js";
+import {easyParkUiLabels} from "../easypark-ui-labels.js";
 
-const { t } = useI18n();
+import useIamStore from "../../../iam/application/iam.store.js";
+import useProfilesStore from "../../../profiles/application/profiles.store.js";
+
+const {t, locale} = useI18n();
 const route = useRoute();
+
 const iamStore = useIamStore();
+const profilesStore = useProfilesStore();
 
 const drawer = ref(false);
 
-const driverNavigation = [];
-const operatorNavigation = [];
-const accountItems = [];
-const displayName = computed(() => "");
-const photoUrl = computed(() => "");
+const labels = computed(() =>
+    easyParkUiLabels(locale.value)
+);
 
-const isStandalone = computed(() => route.matched.some(record => record.meta['standalone']));
+const myProfileRoute = {
+  name: 'profiles-my-profile'
+};
+
+watch(
+    () => iamStore.currentUserId,
+    userAccountId => {
+      if (userAccountId) {
+        profilesStore.fetchProfile(
+            userAccountId,
+            iamStore.isOperator
+        );
+      } else {
+        profilesStore.clear();
+      }
+    },
+    {
+      immediate: true
+    }
+);
+
+const displayName = computed(
+    () =>
+        profilesStore.currentProfile
+            ?.shortName ?? ''
+);
+
+const photoUrl = computed(
+    () =>
+        profilesStore.currentProfile
+            ?.photoUrl ?? ''
+);
+
+const isStandalone = computed(
+    () =>
+        route.matched.some(
+            record =>
+                record.meta['standalone']
+        )
+);
+
 const navigationItems = computed(() => {
-  if (!iamStore.isSignedIn) return [];
-  return iamStore.isOperator ? operatorNavigation : driverNavigation;
+  if (!iamStore.isSignedIn) {
+    return [];
+  }
+
+  if (iamStore.isOperator) {
+    return [
+      {
+        label: labels.value.navigation.dashboard,
+        to: {name: 'home'}
+      },
+      {
+        label: t('access-control.navigation.accesses'),
+        to: {name: 'access-control-accesses'}
+      },
+      {
+        label: t('parking-management.navigation.facilities'),
+        to: {name: 'parking-management-facilities'}
+      },
+      {
+        label: t('monitoring-alerts.navigation.alerts'),
+        to: {name: 'monitoring-alerts-alerts'}
+      },
+      {
+        label: t('analytics-reporting.navigation.reports'),
+        to: {name: 'analytics-reporting-reports'}
+      }
+    ];
+  }
+
+  return [
+    {
+      label: labels.value.navigation.search,
+      to: {name: 'home'}
+    },
+    {
+      label: t('reservations.navigation.my-reservations'),
+      to: {name: 'reservations-my'}
+    },
+    {
+      label: t('notifications.navigation.inbox'),
+      to: {name: 'notifications-inbox'}
+    },
+    {
+      label: t('profiles.navigation.profile'),
+      to: myProfileRoute
+    }
+  ];
 });
+
+const accountItems = [
+  {
+    label: 'profiles.navigation.my-profile',
+    icon: 'pi pi-user',
+    route: myProfileRoute
+  }
+];
 
 function toggleDrawer() {
   drawer.value = !drawer.value;
@@ -31,39 +128,88 @@ function toggleDrawer() {
 
 <template>
   <pv-toast position="top-right"/>
+
   <pv-confirm-dialog/>
+
   <router-view v-if="isStandalone"/>
+
   <template v-else>
-    <a class="skip-link" href="#main-content">{{ t('layout.skip-to-content') }}</a>
+    <a
+        class="skip-link"
+        href="#main-content">
+      {{ t('layout.skip-to-content') }}
+    </a>
+
     <header class="app-header">
       <div class="app-header__start">
-        <pv-button v-if="navigationItems.length" class="app-header__menu" icon="pi pi-bars" text rounded
-                   :aria-label="t('layout.open-menu')" @click="toggleDrawer"/>
-        <router-link :to="{ name: 'home' }" class="brand">
-          <span class="brand-mark" aria-hidden="true"></span>
-          <span>EasyPark<template v-if="iamStore.isOperator"> · Admin</template></span>
+        <pv-button
+            v-if="navigationItems.length"
+            class="app-header__menu"
+            icon="pi pi-bars"
+            text
+            rounded
+            :aria-label="t('layout.open-menu')"
+            @click="toggleDrawer"/>
+
+        <router-link
+            :to="{name: 'home'}"
+            class="brand">
+          <span
+              class="brand-mark"
+              aria-hidden="true">
+          </span>
+
+          <span>
+            EasyPark
+            <template v-if="iamStore.isOperator">
+              · Admin
+            </template>
+          </span>
         </router-link>
       </div>
-      <nav class="app-nav" :aria-label="t('layout.main-navigation')">
-        <router-link v-for="item in navigationItems" :key="item.label" :to="item.to" class="app-nav__link"
-                     active-class="app-nav__link--active">
-          {{ t(item.label) }}
+
+      <nav
+          class="app-nav"
+          :aria-label="t('layout.main-navigation')">
+        <router-link
+            v-for="item in navigationItems"
+            :key="item.label"
+            :to="item.to"
+            class="app-nav__link"
+            active-class="app-nav__link--active">
+          {{ item.label }}
         </router-link>
       </nav>
+
       <div class="app-header__end">
         <language-switcher/>
-        <authentication-section :display-name="displayName" :photo-url="photoUrl" :items="accountItems"/>
+
+        <authentication-section
+            :display-name="displayName"
+            :photo-url="photoUrl"
+            :items="accountItems"/>
       </div>
     </header>
-    <pv-drawer v-model:visible="drawer" :header="t('layout.main-navigation')">
+
+    <pv-drawer
+        v-model:visible="drawer"
+        :header="t('layout.main-navigation')">
       <nav class="app-drawer-nav">
-        <router-link v-for="item in navigationItems" :key="item.label" :to="item.to" class="app-drawer-nav__link"
-                     active-class="app-nav__link--active" @click="drawer = false">
-          {{ t(item.label) }}
+        <router-link
+            v-for="item in navigationItems"
+            :key="item.label"
+            :to="item.to"
+            class="app-drawer-nav__link"
+            active-class="app-nav__link--active"
+            @click="drawer = false">
+          {{ item.label }}
         </router-link>
       </nav>
     </pv-drawer>
-    <main id="main-content" class="app-main">
+
+    <main
+        id="main-content"
+        class="app-main">
       <router-view/>
     </main>
   </template>
@@ -102,6 +248,7 @@ function toggleDrawer() {
 .app-nav {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 32px;
 }
 
@@ -119,7 +266,7 @@ function toggleDrawer() {
 
 .app-nav__link--active {
   color: var(--ep-primary);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .app-drawer-nav {
@@ -145,20 +292,26 @@ function toggleDrawer() {
   .app-header {
     padding: 16px 24px;
   }
+
+  .app-nav {
+    gap: 18px;
+  }
 }
 
-@media (max-width: 767px) {
-  .app-header {
-    padding: 12px 16px;
-    gap: 12px;
-  }
-
+@media (max-width: 900px) {
   .app-header__menu {
     display: inline-flex;
   }
 
   .app-nav {
     display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .app-header {
+    padding: 12px 16px;
+    gap: 12px;
   }
 }
 </style>

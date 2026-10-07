@@ -7,7 +7,7 @@
       "role": "DRIVER",
       "status": "ACTIVE",
       "createdAt": "2026-03-12T15:20:00.000Z",
-      "lastLoginAt": null
+      "lastLoginAt": "2026-10-06T23:53:12.564Z"
     },
     {
       "id": 2,
@@ -16,7 +16,414 @@
       "role": "OPERATOR_ADMIN",
       "status": "ACTIVE",
       "createdAt": "2026-02-03T13:00:00.000Z",
-      "lastLoginAt": null
+      "lastLoginAt": "2026-10-07T01:35:50.327Z"
+    }
+  ],
+  "profiles": [
+    {
+      "id": 1,
+      "userAccountId": 1,
+      "firstName": "Camila",
+      "lastName": "Soto Reyes",
+      "phone": "+51 987 654 321",
+      "photoUrl": null,
+      "createdAt": "2026-03-12T15:21:00.000Z"
+    },
+    {
+      "id": 2,
+      "userAccountId": 2,
+      "firstName": "Diego",
+      "lastName": "Ramos Vega",
+      "phone": "+51 912 345 678",
+      "photoUrl": null,
+      "companyName": "Estacionamientos Miraflores S.A.C.",
+      "jobTitle": "Administrador de sede",
+      "createdAt": "2026-02-03T13:05:00.000Z"
+    }
+  ],
+  "vehicles": [
+    {
+      "id": 1,
+      "profileId": 1,
+      "plateNumber": "ABC-123",
+      "vehicleType": "CAR",
+      "color": "Gris",
+      "isDefault": true,
+      "createdAt": "2026-03-12T15:30:00.000Z"
+    },
+    {
+      "id": 2,
+      "profileId": 1,
+      "plateNumber": "B7K-482",
+      "vehicleType": "SUV",
+      "color": "Blanco",
+      "isDefault": false,
+      "createdAt": "2026-04-02T18:10:00.000Z"
+    },
+    {
+      "id": 3,
+      "profileId": null,
+      "plateNumber": "XYZ-987",
+      "vehicleType": null,
+      "color": null,
+      "isDefault": false,
+      "createdAt": "2026-05-20T09:45:00.000Z"
+    }
+  ],
+  "parking-facilities": [
+    {
+      "id": 1,
+      "operatorProfileId": 2,
+      "name": "Estacionamiento Miraflores Centro",
+      "address": "Av. Larco 345, Miraflores",
+      "latitude": -12.1215,
+      "longitude": -77.0297,
+      "hourlyRate": 6.5,
+      "openTime": "06:00",
+      "closeTime": "23:00",
+      "status": "ACTIVE",
+      "createdAt": "2026-02-10T09:00:00.000Z"
+    }
+  ],
+  "parking-spots": [
+    {
+      "id": 1,
+      "facilityId": 1,
+      "code": "A-01",
+      "level": 1,
+      "spotType": "CAR",
+      "status": "AVAILABLE",
+      "createdAt": "2026-02-10T09:05:00.000Z"
+    },
+    {
+      "id": 2,
+      "facilityId": 1,
+      "code": "A-02",
+      "level": 1,
+      "spotType": "CAR",
+      "status": "OCCUPIED",
+      "createdAt": "2026-02-10T09:05:00.000Z"
+    },
+    {
+      "id": 3,
+      "facilityId": 1,
+      "code": "M-01",
+      "level": 1,
+      "spotType": "MOTORCYCLE",
+      "status": "AVAILABLE",
+      "createdAt": "2026-02-10T09:06:00.000Z"
+    }
+  ],
+  "reservations": [],
+  "access-movements": [],
+  "parking-stays": [],
+  "reports": [],
+  "occupancy-metrics": [],
+  "alert-rules": [
+    {
+      "id": 1,
+      "parkingFacilityId": 1,
+      "alertType": "STAY_EXCEEDED",
+      "severity": "HIGH",
+      "threshold": 480,
+      "enabled": true,
+      "updatedAt": "2026-02-10T09:15:00.000Z"
+    },
+    {
+      "id": 2,
+      "parkingFacilityId": 1,
+      "alertType": "CAPACITY_CRITICAL",
+      "severity": "HIGH",
+      "threshold": 0.9,
+      "enabled": true,
+      "updatedAt": "2026-02-10T09:15:00.000Z"
+    },
+    {
+      "id": 3,
+      "parkingFacilityId": 1,
+      "alertType": "CAPACITY_NEAR_LIMIT",
+      "severity": "MEDIUM",
+      "threshold": 0.75,
+      "enabled": true,
+      "updatedAt": "2026-02-10T09:15:00.000Z"
+    }
+  ],
+  "alerts": [
+    {
+      "id": 1,
+      "parkingFacilityId": 1,
+      "alertType": "STAY_EXCEEDED",
+      "severity": "HIGH",
+      "status": "ACTIVE",
+      "contextValue": 512,
+      "parkingStayId": null,
+      "accessMovementId": null,
+      "createdAt": "2026-10-05T08:20:00.000Z",
+      "resolvedAt": null,
+      "resolvedBy": null,
+      "note": null
+    },
+    {
+      "id": 2,
+      "parkingFacilityId": 1,
+      "alertType": "CAPACITY_CRITICAL",
+      "severity": "HIGH",
+      "status": "RESOLVED",
+      "contextValue": 0.95,
+      "parkingStayId": null,
+      "accessMovementId": null,
+      "createdAt": "2026-10-05T09:40:00.000Z",
+      "resolvedAt": "2026-10-07T01:37:20.192Z",
+      "resolvedBy": 2,
+      "note": null
+    },
+    {
+      "id": 3,
+      "parkingFacilityId": 1,
+      "alertType": "UNRECOGNIZED_PLATE",
+      "severity": "LOW",
+      "status": "ACTIVE",
+      "contextValue": null,
+      "parkingStayId": null,
+      "accessMovementId": null,
+      "createdAt": "2026-10-05T10:05:00.000Z",
+      "resolvedAt": null,
+      "resolvedBy": null,
+      "note": null
+    },
+    {
+      "id": 4,
+      "parkingFacilityId": 1,
+      "alertType": "CAPACITY_NEAR_LIMIT",
+      "severity": "MEDIUM",
+      "status": "RESOLVED",
+      "contextValue": 0.78,
+      "parkingStayId": null,
+      "accessMovementId": null,
+      "createdAt": "2026-10-05T06:30:00.000Z",
+      "resolvedAt": "2026-10-05T07:42:00.000Z",
+      "resolvedBy": 2,
+      "note": null
+    },
+    {
+      "id": 5,
+      "parkingFacilityId": 1,
+      "alertType": "ACCESS_WITHOUT_RESERVATION",
+      "severity": "MEDIUM",
+      "status": "RESOLVED",
+      "contextValue": null,
+      "parkingStayId": null,
+      "accessMovementId": null,
+      "createdAt": "2026-10-05T05:45:00.000Z",
+      "resolvedAt": "2026-10-05T06:30:00.000Z",
+      "resolvedBy": 2,
+      "note": null
+    },
+    {
+      "id": 6,
+      "parkingFacilityId": 1,
+      "alertType": "STAY_EXCEEDED",
+      "severity": "HIGH",
+      "status": "DISMISSED",
+      "contextValue": 640,
+      "parkingStayId": null,
+      "accessMovementId": null,
+      "createdAt": "2026-10-04T21:10:00.000Z",
+      "resolvedAt": null,
+      "resolvedBy": null,
+      "note": null
+    }
+  ],
+  "notification-templates": [
+    {
+      "id": 1,
+      "type": "RESERVATION_CONFIRMED",
+      "locale": "es",
+      "titleTemplate": "Reserva confirmada",
+      "bodyTemplate": "Tu espacio en {zoneName} quedó reservado para las {scheduledFor}."
+    },
+    {
+      "id": 2,
+      "type": "RESERVATION_REMINDER",
+      "locale": "es",
+      "titleTemplate": "Recordatorio de reserva",
+      "bodyTemplate": "Tu reserva en {zoneName} está por comenzar."
+    },
+    {
+      "id": 3,
+      "type": "TIME_REMAINING",
+      "locale": "es",
+      "titleTemplate": "Tiempo restante",
+      "bodyTemplate": "Tu periodo en {zoneName} · {spaceCode} finaliza pronto."
+    },
+    {
+      "id": 4,
+      "type": "STAY_EXPIRED",
+      "locale": "es",
+      "titleTemplate": "Permanencia vencida",
+      "bodyTemplate": "Tu permanencia en {zoneName} · {spaceCode} superó el tiempo permitido."
+    },
+    {
+      "id": 5,
+      "type": "CHECK_IN_CONFIRMED",
+      "locale": "es",
+      "titleTemplate": "Check-in exitoso",
+      "bodyTemplate": "Ingresaste a {zoneName} · {spaceCode}."
+    },
+    {
+      "id": 6,
+      "type": "CHECK_OUT_CONFIRMED",
+      "locale": "es",
+      "titleTemplate": "Confirmación de salida",
+      "bodyTemplate": "Saliste de {zoneName} · {spaceCode}."
+    },
+    {
+      "id": 7,
+      "type": "ALERT_RAISED",
+      "locale": "es",
+      "titleTemplate": "Alerta de permanencia",
+      "bodyTemplate": "Se registró una alerta relacionada con tu permanencia en {zoneName}."
+    },
+    {
+      "id": 8,
+      "type": "RESERVATION_CONFIRMED",
+      "locale": "en",
+      "titleTemplate": "Reservation confirmed",
+      "bodyTemplate": "Your space at {zoneName} is reserved for {scheduledFor}."
+    },
+    {
+      "id": 9,
+      "type": "RESERVATION_REMINDER",
+      "locale": "en",
+      "titleTemplate": "Reservation reminder",
+      "bodyTemplate": "Your reservation at {zoneName} is about to start."
+    },
+    {
+      "id": 10,
+      "type": "TIME_REMAINING",
+      "locale": "en",
+      "titleTemplate": "Time remaining",
+      "bodyTemplate": "Your period at {zoneName} · {spaceCode} is about to end."
+    },
+    {
+      "id": 11,
+      "type": "STAY_EXPIRED",
+      "locale": "en",
+      "titleTemplate": "Parking time expired",
+      "bodyTemplate": "Your stay at {zoneName} · {spaceCode} exceeded the allowed time."
+    },
+    {
+      "id": 12,
+      "type": "CHECK_IN_CONFIRMED",
+      "locale": "en",
+      "titleTemplate": "Check-in successful",
+      "bodyTemplate": "You entered {zoneName} · {spaceCode}."
+    },
+    {
+      "id": 13,
+      "type": "CHECK_OUT_CONFIRMED",
+      "locale": "en",
+      "titleTemplate": "Exit confirmation",
+      "bodyTemplate": "You left {zoneName} · {spaceCode}."
+    },
+    {
+      "id": 14,
+      "type": "ALERT_RAISED",
+      "locale": "en",
+      "titleTemplate": "Stay alert",
+      "bodyTemplate": "An alert related to your stay was registered at {zoneName}."
+    }
+  ],
+  "notifications": [
+    {
+      "id": 1,
+      "recipientId": 1,
+      "notificationTemplateId": 4,
+      "reservationId": null,
+      "parkingStayId": null,
+      "alertId": null,
+      "title": "Permanencia vencida",
+      "message": "Tu permanencia en Zona A · Espacio P-14 superó el tiempo permitido.",
+      "channel": "IN_APP",
+      "status": "READ",
+      "createdAt": "2026-10-05T17:00:00.000Z",
+      "sentAt": "2026-10-05T17:00:00.000Z",
+      "readAt": "2026-10-05T17:04:00.000Z"
+    },
+    {
+      "id": 2,
+      "recipientId": 1,
+      "notificationTemplateId": 2,
+      "reservationId": null,
+      "parkingStayId": null,
+      "alertId": null,
+      "title": "Recordatorio de reserva",
+      "message": "Tu reserva en Zona B empieza en 30 minutos.",
+      "channel": "IN_APP",
+      "status": "READ",
+      "createdAt": "2026-10-05T18:00:00.000Z",
+      "sentAt": "2026-10-05T18:00:00.000Z",
+      "readAt": "2026-10-05T18:03:00.000Z"
+    },
+    {
+      "id": 3,
+      "recipientId": 1,
+      "notificationTemplateId": 6,
+      "reservationId": null,
+      "parkingStayId": null,
+      "alertId": null,
+      "title": "Confirmación de salida",
+      "message": "Saliste de Zona B — San Isidro. Duración total: 1h 30min.",
+      "channel": "IN_APP",
+      "status": "READ",
+      "createdAt": "2026-10-05T20:02:00.000Z",
+      "sentAt": "2026-10-05T20:02:00.000Z",
+      "readAt": "2026-10-05T20:06:00.000Z"
+    },
+    {
+      "id": 4,
+      "recipientId": 1,
+      "notificationTemplateId": 1,
+      "reservationId": null,
+      "parkingStayId": null,
+      "alertId": null,
+      "title": "Reserva confirmada",
+      "message": "Tu espacio en Zona A quedó reservado para las 6:30 PM.",
+      "channel": "IN_APP",
+      "status": "SENT",
+      "createdAt": "2026-10-06T17:50:00.000Z",
+      "sentAt": "2026-10-06T17:50:00.000Z",
+      "readAt": null
+    },
+    {
+      "id": 5,
+      "recipientId": 1,
+      "notificationTemplateId": 3,
+      "reservationId": null,
+      "parkingStayId": null,
+      "alertId": null,
+      "title": "Tiempo restante",
+      "message": "Te quedan 15 minutos de tu periodo reservado en Zona A — Espacio P-14.",
+      "channel": "IN_APP",
+      "status": "SENT",
+      "createdAt": "2026-10-06T18:15:00.000Z",
+      "sentAt": "2026-10-06T18:15:00.000Z",
+      "readAt": null
+    },
+    {
+      "id": 6,
+      "recipientId": 1,
+      "notificationTemplateId": 5,
+      "reservationId": null,
+      "parkingStayId": null,
+      "alertId": null,
+      "title": "Check-in exitoso",
+      "message": "Ingresaste a Zona A · Espacio P-14.",
+      "channel": "IN_APP",
+      "status": "SENT",
+      "createdAt": "2026-10-06T18:32:00.000Z",
+      "sentAt": "2026-10-06T18:32:00.000Z",
+      "readAt": null
     }
   ]
 }
