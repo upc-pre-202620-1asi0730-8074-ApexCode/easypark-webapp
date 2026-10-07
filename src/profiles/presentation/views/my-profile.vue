@@ -53,44 +53,55 @@ const personalInformation = computed(() => {
         <h1 class="page-title">{{ t('profiles.my-profile.title') }}</h1>
         <p class="page-subtitle">{{ t('profiles.my-profile.subtitle') }}</p>
       </div>
-      <pv-button :label="t('iam.account.sign-out')" severity="secondary" outlined @click="iamStore.signOut(router)"/>
     </div>
 
     <div v-if="!store.profileLoaded" class="panel" aria-busy="true">
       <p class="empty-state">{{ t('profiles.my-profile.loading') }}</p>
     </div>
 
-    <template v-else>
+    <div v-else class="split split--aside">
       <section class="panel identity" :aria-label="t('profiles.my-profile.identity')">
         <img v-if="profile?.photoUrl" :src="profile.photoUrl" alt="" class="identity__avatar"/>
         <span v-else class="identity__avatar" aria-hidden="true">{{ initials }}</span>
-        <div class="identity__text">
-          <p class="identity__name">{{ displayName }}</p>
-          <span class="status-badge status-badge--info">{{ roleLabel }}</span>
+        <p class="identity__name">{{ displayName }}</p>
+        <p class="identity__email">{{ iamStore.currentEmail }}</p>
+        <span class="status-badge status-badge--info">{{ roleLabel }}</span>
+
+        <div class="identity__actions">
+          <pv-button v-if="profile" :label="t('profiles.my-profile.edit')" icon="pi pi-pencil" fluid
+                     @click="profileDialogVisible = true"/>
+          <pv-button :label="t('iam.change-password.title')" icon="pi pi-key" severity="secondary" outlined fluid
+                     @click="passwordDialogVisible = true"/>
+          <pv-button :label="t('iam.account.sign-out')" icon="pi pi-sign-out" severity="danger" text fluid
+                     @click="iamStore.signOut(router)"/>
         </div>
       </section>
 
-      <section class="panel" aria-labelledby="personal-information-title">
-        <h2 id="personal-information-title" class="panel-title mb-4">{{ t('profiles.my-profile.personal-information') }}</h2>
-        <dl v-if="profile" class="information-grid">
-          <div v-for="row in personalInformation" :key="row.label" class="information-grid__item">
-            <dt>{{ t(row.label) }}</dt>
-            <dd>{{ row.value }}</dd>
+      <div class="stack">
+        <section class="panel" aria-labelledby="personal-information-title">
+          <div class="panel-header">
+            <div>
+              <h2 id="personal-information-title" class="panel-title">{{ t('profiles.my-profile.personal-information') }}</h2>
+              <p class="panel-description">{{ t('profiles.my-profile.personal-information-description') }}</p>
+            </div>
           </div>
-        </dl>
-        <div v-else class="profile-empty">
-          <p class="empty-state">{{ t('profiles.my-profile.empty') }}</p>
-          <pv-button :label="t('profiles.my-profile.complete')" @click="profileDialogVisible = true"/>
-        </div>
-      </section>
+          <dl v-if="profile" class="detail-grid">
+            <div v-for="row in personalInformation" :key="row.label">
+              <dt>{{ t(row.label) }}</dt>
+              <dd>{{ row.value }}</dd>
+            </div>
+          </dl>
+          <div v-else class="empty">
+            <span class="icon-chip icon-chip--lg icon-chip--muted" aria-hidden="true"><i class="pi pi-id-card"></i></span>
+            <p class="empty__text">{{ t('profiles.my-profile.empty') }}</p>
+            <pv-button class="empty__action" :label="t('profiles.my-profile.complete')" icon="pi pi-pencil"
+                       @click="profileDialogVisible = true"/>
+          </div>
+        </section>
 
-      <div class="panel panel-actions">
-        <pv-button :label="t('iam.change-password.title')" severity="secondary" outlined @click="passwordDialogVisible = true"/>
-        <pv-button v-if="profile" :label="t('profiles.my-profile.edit')" @click="profileDialogVisible = true"/>
+        <vehicle-list v-if="profile && store.isDriverProfile"/>
       </div>
-
-      <vehicle-list v-if="profile && store.isDriverProfile"/>
-    </template>
+    </div>
   </section>
 
   <profile-form-dialog v-model:visible="profileDialogVisible" :user-account-id="iamStore.currentUserId"
@@ -101,8 +112,10 @@ const personalInformation = computed(() => {
 <style scoped>
 .identity {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 8px;
+  text-align: center;
 }
 
 .identity__avatar {
@@ -110,21 +123,15 @@ const personalInformation = computed(() => {
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  width: 64px;
-  height: 64px;
+  width: 88px;
+  height: 88px;
+  margin-bottom: 8px;
   border-radius: 999px;
   background: #c7d2fe;
   color: #3730a3;
-  font-size: 20px;
+  font-size: 28px;
   font-weight: 700;
   object-fit: cover;
-}
-
-.identity__text {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 6px;
 }
 
 .identity__name {
@@ -132,62 +139,23 @@ const personalInformation = computed(() => {
   font-size: 18px;
   font-weight: 700;
   color: var(--ep-text);
+  overflow-wrap: anywhere;
 }
 
-.information-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: 20px;
-  margin: 0;
-}
-
-.information-grid__item {
-  padding: 12px 0 16px;
-  border-bottom: 1px solid var(--ep-border);
-}
-
-.information-grid__item:nth-last-child(-n + 2) {
-  border-bottom: 0;
-}
-
-.information-grid dt {
-  margin-bottom: 4px;
+.identity__email {
+  margin: -4px 0 4px;
   color: var(--ep-text-secondary);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
+  font-size: 13px;
+  overflow-wrap: anywhere;
 }
 
-.information-grid dd {
-  margin: 0;
-  color: var(--ep-text);
-  font-size: 14px;
-}
-
-.profile-empty {
+.identity__actions {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  padding-bottom: 8px;
-}
-
-@media (max-width: 767px) {
-  .information-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .information-grid__item:nth-last-child(2) {
-    border-bottom: 1px solid var(--ep-border);
-  }
-
-  .panel-actions {
-    justify-content: stretch;
-  }
-
-  .panel-actions > * {
-    flex: 1;
-  }
+  gap: 8px;
+  width: 100%;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--ep-border);
 }
 </style>
