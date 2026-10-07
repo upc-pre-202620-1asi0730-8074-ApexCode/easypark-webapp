@@ -18,12 +18,10 @@ import {SignInCommand} from "../../domain/model/sign-in.command.js";
 
 import AuthenticationCard from "../components/authentication-card.vue";
 
-import {easyParkUiLabels} from "../../../shared/presentation/easypark-ui-labels.js";
-
 const emailPattern =
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-const {t, locale} =
+const {t} =
     useI18n();
 
 const route =
@@ -34,10 +32,6 @@ const router =
 
 const store =
     useIamStore();
-
-const labels = computed(() =>
-    easyParkUiLabels(locale.value)
-);
 
 const form = reactive({
   email:
@@ -242,6 +236,7 @@ async function performSignIn() {
             :input-props="{
               autocomplete:
                 'current-password',
+
               'aria-describedby':
                 submitted &&
                 passwordError
@@ -277,22 +272,12 @@ async function performSignIn() {
             {{ t('iam.sign-in.remember') }}
           </label>
         </div>
-
-        <a
-            class="sign-in__forgot"
-            href="mailto:support@easypark.pe">
-
-          {{ labels.signIn.forgot }}
-        </a>
       </div>
 
       <pv-button
           type="submit"
-          :label="
-            t(
-                'iam.sign-in.submit'
-            )
-          "
+          :label="t('iam.sign-in.submit')"
+          icon="pi pi-sign-in"
           :loading="loading"
           fluid/>
     </form>
@@ -301,9 +286,13 @@ async function performSignIn() {
         class="sign-in__divider"
         aria-hidden="true">
 
+      <span class="sign-in__divider-line"></span>
+
       <span>
         {{ t('iam.sign-in.divider') }}
       </span>
+
+      <span class="sign-in__divider-line"></span>
     </div>
 
     <p class="sign-in__footer">
@@ -330,8 +319,7 @@ async function performSignIn() {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 14px;
-  margin: -4px 0 20px;
+  margin: 0 0 20px;
 }
 
 .sign-in__remember {
@@ -339,28 +327,19 @@ async function performSignIn() {
   align-items: center;
   gap: 8px;
   color: var(--ep-text-secondary);
-  font-size: 12px;
-}
-
-.sign-in__forgot {
-  color: var(--ep-primary);
-  font-size: 12px;
-  font-weight: 700;
-  text-decoration: none;
+  font-size: 13px;
 }
 
 .sign-in__divider {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin: 20px 0 16px;
+  margin: 24px 0 16px;
   color: var(--ep-text-tertiary);
-  font-size: 11px;
+  font-size: 12px;
 }
 
-.sign-in__divider::before,
-.sign-in__divider::after {
-  content: "";
+.sign-in__divider-line {
   flex: 1;
   height: 1px;
   background: var(--ep-border);
@@ -369,19 +348,12 @@ async function performSignIn() {
 .sign-in__footer {
   margin: 0;
   text-align: center;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--ep-text-secondary);
 }
 
 .sign-in__footer a {
   font-weight: 700;
   text-decoration: none;
-}
-
-@media (max-width: 420px) {
-  .sign-in__options {
-    align-items: flex-start;
-    flex-direction: column;
-  }
 }
 </style>

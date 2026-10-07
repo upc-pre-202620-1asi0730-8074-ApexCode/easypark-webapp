@@ -1,4 +1,4 @@
-{
+﻿{
   "layout": {
     "skip-to-content": "Saltar al contenido principal",
     "main-navigation": "Navegación principal",
@@ -66,6 +66,10 @@
       "errors": {
         "email-taken": "Este correo ya está registrado. Inicia sesión o usa otro correo.",
         "failed": "No pudimos crear tu cuenta. Inténtalo de nuevo en unos minutos."
+      },
+      "role-descriptions": {
+        "DRIVER": "Busco y reservo espacios",
+        "OPERATOR_ADMIN": "Administro un estacionamiento"
       }
     },
     "change-password": {
@@ -78,13 +82,32 @@
         "same-password": "La nueva contraseña debe ser distinta de la actual.",
         "session-expired": "Tu sesión expiró. Vuelve a iniciar sesión para cambiar tu contraseña.",
         "failed": "No pudimos actualizar tu contraseña. Inténtalo de nuevo en unos minutos."
-      }
+      },
+      "description": "Usa al menos 8 caracteres y evita repetir tu contraseña actual."
     },
     "account": {
       "menu": "Menú de la cuenta de {name}",
       "sign-in": "Iniciar sesión",
       "sign-up": "Regístrate",
       "sign-out": "Cerrar sesión"
+    },
+    "brand": {
+      "eyebrow": "Gestión de estacionamientos en tiempo real",
+      "tagline": "Menos vueltas buscando, más control al administrar.",
+      "features": {
+        "find": {
+          "title": "Encuentra y reserva",
+          "description": "Compara estacionamientos y asegura tu espacio antes de salir."
+        },
+        "control": {
+          "title": "Controla los accesos",
+          "description": "Registra ingresos y salidas y mira la ocupación al instante."
+        },
+        "insight": {
+          "title": "Decide con datos",
+          "description": "Alertas y reportes para operar cada estacionamiento."
+        }
+      }
     }
   },
   "profiles": {

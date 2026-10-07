@@ -1,4 +1,4 @@
-{
+﻿{
   "layout": {
     "skip-to-content": "Skip to main content",
     "main-navigation": "Main navigation",
@@ -66,6 +66,10 @@
       "errors": {
         "email-taken": "This e-mail address is already registered. Sign in or use another address.",
         "failed": "We could not create your account. Try again in a few minutes."
+      },
+      "role-descriptions": {
+        "DRIVER": "I look for and book spaces",
+        "OPERATOR_ADMIN": "I manage a parking facility"
       }
     },
     "change-password": {
@@ -78,13 +82,32 @@
         "same-password": "The new password must be different from the current one.",
         "session-expired": "Your session expired. Sign in again to change your password.",
         "failed": "We could not update your password. Try again in a few minutes."
-      }
+      },
+      "description": "Use at least 8 characters and avoid reusing your current password."
     },
     "account": {
       "menu": "Account menu of {name}",
       "sign-in": "Sign in",
       "sign-up": "Sign up",
       "sign-out": "Sign out"
+    },
+    "brand": {
+      "eyebrow": "Real-time parking management",
+      "tagline": "Less circling, more control.",
+      "features": {
+        "find": {
+          "title": "Find and book",
+          "description": "Compare facilities and secure your space before you leave."
+        },
+        "control": {
+          "title": "Control every access",
+          "description": "Record entries and exits and see occupancy instantly."
+        },
+        "insight": {
+          "title": "Decide with data",
+          "description": "Alerts and reports to run each facility."
+        }
+      }
     }
   },
   "profiles": {
