@@ -24,6 +24,7 @@ const NOTIFICATION_ICON_BY_TYPE = Object.freeze({
   [NotificationType.TIME_REMAINING]: 'pi-clock',
   [NotificationType.STAY_EXPIRED]: 'pi-exclamation-circle',
   [NotificationType.ALERT_RAISED]: 'pi-exclamation-triangle',
+  [NotificationType.CHECK_IN_CONFIRMED]: 'pi-check-circle',
 
 
 });
