@@ -3,24 +3,147 @@
     "skip-to-content": "Skip to main content",
     "main-navigation": "Main navigation",
     "open-menu": "Open navigation menu",
-    "language": "Language"
+    "language": "Language",
+    "home": "Home",
+    "about": "About EasyPark"
   },
   "common": {
     "cancel": "Cancel",
-    "save": "Save"
+    "save": "Save",
+    "retry": "Retry",
+    "view-all": "View all",
+    "loading": "Loading…"
   },
   "about": {
     "title": "About EasyPark",
-    "content": "EasyPark is a real-time parking management platform that connects drivers with available spaces and gives parking operators digital control of their facilities."
+    "content": "EasyPark is a real-time parking management platform that connects drivers with available spaces and gives parking operators digital control of their facilities.",
+    "eyebrow": "About the project",
+    "lead": "Less circling, more control.",
+    "drivers": {
+      "title": "For drivers",
+      "description": "Compare parking facilities, book your space ahead of time and get notified about your stay."
+    },
+    "operators": {
+      "title": "For operators",
+      "description": "Record entries and exits, organize your spaces and monitor occupancy without paper logs."
+    },
+    "realtime": {
+      "title": "In real time",
+      "description": "Availability, alerts and reports update with every recorded movement."
+    },
+    "how": {
+      "title": "How it works",
+      "step-1": {
+        "title": "The operator registers the spaces",
+        "description": "Each facility is created with its address, schedule, rate and spaces."
+      },
+      "step-2": {
+        "title": "The driver books",
+        "description": "They pick a facility, date, duration and vehicle, and get a confirmation."
+      },
+      "step-3": {
+        "title": "Entry and exit are recorded",
+        "description": "Access is validated with the plate or the reservation code and occupancy updates."
+      },
+      "step-4": {
+        "title": "Everything lands in reports",
+        "description": "Occupancy, movements, revenue and stay times per period."
+      }
+    },
+    "cta": {
+      "title": "Start using EasyPark",
+      "description": "Create your account as a driver or as a parking operator.",
+      "sign-up": "Create account",
+      "sign-in": "Sign in",
+      "home": "Go to home"
+    }
   },
   "home": {
     "title": "Welcome",
-    "content": "Welcome to EasyPark. Less driving around looking for a space, more control when managing one."
+    "content": "Welcome to EasyPark. Less driving around looking for a space, more control when managing one.",
+    "greeting": "Hi, {name}",
+    "greeting-anonymous": "Hi",
+    "driver": {
+      "subtitle": "Book your space and review your upcoming arrivals.",
+      "stats": {
+        "active": "Active reservations",
+        "unread": "Unread notifications",
+        "vehicles": "Registered vehicles",
+        "history": "Past reservations"
+      },
+      "next": {
+        "title": "Your next reservation",
+        "empty-title": "You have no upcoming reservations",
+        "empty-text": "Secure your space before you leave and stop circling for a spot.",
+        "manage": "View my reservations"
+      },
+      "actions": {
+        "title": "Quick actions",
+        "reserve": "Reserve a space",
+        "reserve-text": "Pick a facility, date and vehicle",
+        "reservations": "My reservations",
+        "reservations-text": "Review or cancel your reservations",
+        "vehicles": "My vehicles",
+        "vehicles-text": "Register or edit your plates"
+      },
+      "notifications": {
+        "title": "Recent notifications",
+        "empty": "Updates about your reservations and stays will show up here."
+      },
+      "vehicle": {
+        "title": "Default vehicle",
+        "empty": "Register a vehicle to be able to book.",
+        "register": "Register vehicle"
+      }
+    },
+    "operator": {
+      "subtitle": "Overview of your parking operations.",
+      "facility": "Parking facility",
+      "stats": {
+        "occupancy": "Current occupancy",
+        "occupancy-hint": "{occupied} of {total} spaces",
+        "available": "Available spaces",
+        "inside": "Vehicles inside",
+        "revenue": "Revenue today",
+        "alerts": "Active alerts"
+      },
+      "spots": {
+        "title": "Space status",
+        "description": "Current distribution by status",
+        "manage": "Manage spaces"
+      },
+      "activity": {
+        "title": "Latest movements",
+        "empty": "No movements have been recorded at this facility yet.",
+        "all": "View accesses"
+      },
+      "alerts": {
+        "title": "Active alerts",
+        "empty": "No active alerts. Everything is in order.",
+        "all": "View alerts"
+      },
+      "actions": {
+        "title": "Quick actions",
+        "access": "Record access",
+        "access-text": "Vehicle entry or exit",
+        "facilities": "Facilities",
+        "facilities-text": "Spaces, schedules and rates",
+        "reports": "Reports",
+        "reports-text": "Occupancy, movements and revenue"
+      },
+      "empty": {
+        "title": "You have no facilities yet",
+        "text": "Create your first facility to start recording accesses and tracking occupancy.",
+        "action": "Go to facilities"
+      }
+    }
   },
   "page-not-found": {
     "title": "Page Not Found",
     "content": "The path {unavailable-route} is not available.",
-    "go-home": "Go Home"
+    "go-home": "Go Home",
+    "code": "Error 404",
+    "back": "Go back"
   },
   "iam": {
     "roles": {
@@ -66,6 +189,10 @@
       "errors": {
         "email-taken": "This e-mail address is already registered. Sign in or use another address.",
         "failed": "We could not create your account. Try again in a few minutes."
+      },
+      "role-descriptions": {
+        "DRIVER": "I look for and book spaces",
+        "OPERATOR_ADMIN": "I manage a parking facility"
       }
     },
     "change-password": {
@@ -78,13 +205,32 @@
         "same-password": "The new password must be different from the current one.",
         "session-expired": "Your session expired. Sign in again to change your password.",
         "failed": "We could not update your password. Try again in a few minutes."
-      }
+      },
+      "description": "Use at least 8 characters and avoid reusing your current password."
     },
     "account": {
       "menu": "Account menu of {name}",
       "sign-in": "Sign in",
       "sign-up": "Sign up",
       "sign-out": "Sign out"
+    },
+    "brand": {
+      "eyebrow": "Real-time parking management",
+      "tagline": "Less circling, more control.",
+      "features": {
+        "find": {
+          "title": "Find and book",
+          "description": "Compare facilities and secure your space before you leave."
+        },
+        "control": {
+          "title": "Control every access",
+          "description": "Record entries and exits and see occupancy instantly."
+        },
+        "insight": {
+          "title": "Decide with data",
+          "description": "Alerts and reports to run each facility."
+        }
+      }
     }
   },
   "profiles": {
@@ -100,7 +246,8 @@
       "personal-information": "Personal information",
       "empty": "You have not registered your personal data yet. Complete it to start using EasyPark.",
       "complete": "Complete profile",
-      "edit": "Edit information"
+      "edit": "Edit information",
+      "personal-information-description": "These details identify your account within EasyPark."
     },
     "fields": {
       "first-name": "First name",
@@ -160,7 +307,8 @@
         "plate-taken": "This plate is already registered by another account.",
         "plate-already-yours": "You already registered this plate.",
         "failed": "We could not save the vehicle. Try again in a few minutes."
-      }
+      },
+      "description": "The default vehicle is suggested when you create a reservation."
     }
   },
   "parking-management": {
@@ -178,6 +326,12 @@
         "ACTIVE": "Active",
         "INACTIVE": "Inactive",
         "MAINTENANCE": "Under maintenance"
+      },
+      "open": "View spaces",
+      "summary": {
+        "total": "Registered facilities",
+        "active": "Active",
+        "average-rate": "Average hourly rate"
       }
     },
     "facility-detail": {
@@ -186,7 +340,14 @@
       "schedule": "Schedule",
       "rate": "Hourly rate",
       "occupancy": "Occupancy",
-      "not-found": "We couldn't find this facility."
+      "not-found": "We couldn't find this facility.",
+      "info-title": "Facility details",
+      "coordinates": "Coordinates",
+      "stats": {
+        "total": "Total spaces",
+        "available": "Available",
+        "occupied": "Occupied"
+      }
     },
     "facility-form": {
       "create-title": "New facility",
@@ -242,6 +403,14 @@
       "errors": {
         "code-taken": "A spot with that code already exists in this facility.",
         "failed": "We couldn't save the spot. Please try again in a few minutes."
+      },
+      "description": "Select a space to change its status or edit it.",
+      "level": "Level {level}",
+      "tile": "Space {code}, {status}. Open actions",
+      "views": {
+        "label": "Spaces view",
+        "map": "Map",
+        "list": "List"
       }
     }
   },
@@ -265,16 +434,32 @@
       "start": "Date and time",
       "duration": "Duration",
       "vehicle": "Vehicle",
-      "estimated-amount": "Estimated cost"
+      "estimated-amount": "Estimated cost",
+      "spot": "Space",
+      "code": "Code"
     },
     "form": {
       "confirm": "Confirm reservation",
-      "created": "Your reservation was created successfully."
+      "created": "Your reservation was created successfully.",
+      "details-title": "Reservation details",
+      "summary-title": "Summary",
+      "per-hour": "per hour",
+      "rate": "Hourly rate",
+      "free-spots": "Free: {count}",
+      "no-facilities": "There are no parking facilities available right now.",
+      "no-vehicles": "Register a vehicle to be able to book.",
+      "go-to-profile": "Go to my profile",
+      "note": "The final amount is calculated when your exit is recorded, based on the actual stay."
     },
     "list": {
       "loading": "Loading your reservations…",
       "empty": "You don't have any reservations yet.",
-      "unknown-facility": "Parking facility unavailable"
+      "unknown-facility": "Parking facility unavailable",
+      "empty-text": "Once you book a space, it will show up here with its status.",
+      "active": "Active and upcoming",
+      "active-empty": "You have no active reservations.",
+      "history": "History",
+      "history-empty": "You have no completed or cancelled reservations yet."
     },
     "status": {
       "PENDING": "Pending",
@@ -296,6 +481,9 @@
       "invalid-start": "Select a future date and time.",
       "not-cancellable": "This reservation can no longer be cancelled.",
       "failed": "We couldn't complete the operation. Please try again."
+    },
+    "validation": {
+      "required": "This field is required."
     }
   },
   "access-control": {
@@ -310,7 +498,8 @@
       "total": "Total spaces",
       "available": "Available",
       "occupied": "Occupied",
-      "active-stays": "Vehicles inside"
+      "active-stays": "Vehicles inside",
+      "occupancy": "Occupancy: {rate}%"
     },
     "fields": {
       "type": "Movement",
@@ -319,7 +508,8 @@
       "reservation-code": "Reservation code",
       "time": "Date and time",
       "status": "Status",
-      "parking-spot": "Parking spot"
+      "parking-spot": "Parking spot",
+      "facility": "Parking facility"
     },
     "types": {
       "ENTRY": "Entry",
@@ -339,17 +529,23 @@
     "form": {
       "title": "Register access",
       "register": "Register movement",
-      "optional": "Optional"
+      "optional": "Optional",
+      "description": "Validate the plate and record the movement.",
+      "plate-hint": "Format ABC-123 for cars or 1234-AB for motorcycles."
     },
     "movements": {
       "title": "Access history",
-      "empty": "There are no access movements registered yet."
+      "empty": "There are no access movements registered yet.",
+      "description": "Recorded entries and exits, newest first.",
+      "showing": "Showing {shown} of {total} movements",
+      "more": "Show more"
     },
     "stays": {
       "title": "Vehicles currently parked",
       "empty": "There are no vehicles currently parked.",
       "reassign": "Reassign space",
-      "reassign-title": "Reassign parking space"
+      "reassign-title": "Reassign parking space",
+      "description": "Vehicles with a recorded entry and no exit."
     },
     "validation": {
       "required": "This field is required."
@@ -401,7 +597,8 @@
       "status": "Status",
       "entry": "Entry",
       "exit": "Exit",
-      "duration": "Duration"
+      "duration": "Duration",
+      "facility": "Parking facility"
     },
     "summary": {
       "movements": "Movements",
@@ -414,7 +611,9 @@
       "export": "Export CSV"
     },
     "occupancy": {
-      "title": "Occupancy report"
+      "title": "Occupancy report",
+      "average": "Average occupancy for the period",
+      "measured": "Calculated on {date}"
     },
     "movements": {
       "title": "Movement report",
@@ -434,6 +633,10 @@
     "errors": {
       "invalid-period": "Select a valid date range.",
       "failed": "We couldn't generate the report. Please try again."
+    },
+    "empty-title": "You have not generated a report yet",
+    "filters": {
+      "title": "Report parameters"
     }
   },
   "monitoring-alerts": {
@@ -504,7 +707,8 @@
     },
     "groups": {
       "today": "Today",
-      "yesterday": "Yesterday"
+      "yesterday": "Yesterday",
+      "earlier": "Earlier"
     },
     "status": {
       "PENDING": "Pending",
@@ -532,6 +736,21 @@
     "messages": {
       "markedRead": "The notification was marked as read.",
       "allMarkedRead": "All notifications were marked as read."
+    },
+    "empty-unread": "You have no unread notifications.",
+    "filters": {
+      "label": "Filter notifications",
+      "all": "All",
+      "unread": "Unread"
+    },
+    "summary": {
+      "title": "Summary",
+      "unread": "Unread",
+      "total": "Received",
+      "hint": "Select an unread notification to mark it as read."
+    },
+    "legend": {
+      "title": "Notification types"
     }
   }
 }
