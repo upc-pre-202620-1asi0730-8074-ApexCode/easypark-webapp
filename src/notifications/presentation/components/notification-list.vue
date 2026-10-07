@@ -27,7 +27,7 @@ const NOTIFICATION_ICON_BY_TYPE = Object.freeze({
   [NotificationType.CHECK_IN_CONFIRMED]: 'pi pi-check-circle',
   [NotificationType.CHECK_OUT_CONFIRMED]: 'pi pi-car',
   [NotificationType.RESERVATION_CONFIRMED]: 'pi pi-calendar',
-
+  [NotificationType.RESERVATION_REMINDER]: 'pi pi-bell'
 
 
 });
