@@ -5,12 +5,12 @@ import {useI18n} from "vue-i18n";
 
 import LanguageSwitcher from "./language-switcher.vue";
 import AuthenticationSection from "../../../iam/presentation/components/authentication-section.vue";
+import {easyParkUiLabels} from "../easypark-ui-labels.js";
 
 import useIamStore from "../../../iam/application/iam.store.js";
 import useProfilesStore from "../../../profiles/application/profiles.store.js";
 
-const {t} = useI18n();
-
+const {t, locale} = useI18n();
 const route = useRoute();
 
 const iamStore = useIamStore();
@@ -18,55 +18,17 @@ const profilesStore = useProfilesStore();
 
 const drawer = ref(false);
 
+const labels = computed(() =>
+    easyParkUiLabels(locale.value)
+);
+
 const myProfileRoute = {
   name: 'profiles-my-profile'
 };
 
-const driverNavigation = [
-  {label: 'profiles.navigation.profile', to: myProfileRoute},
-  {label: 'reservations.navigation.reserve', to: {name: 'reservations-create'}},
-  {label: 'reservations.navigation.my-reservations', to: {name: 'reservations-my'}},
-  {label: 'notifications.navigation.inbox', to: {name: 'notifications-inbox'}}
-];
-
-const operatorNavigation = [
-  {
-    label: 'parking-management.navigation.facilities',
-    to: {
-      name: 'parking-management-facilities'
-    }
-  },
-  {
-    label: 'access-control.navigation.accesses',
-    to: {
-      name: 'access-control-accesses'
-    }
-  },
-  {
-    label: 'monitoring-alerts.navigation.alerts',
-    to: {
-      name: 'monitoring-alerts-alerts'
-    }
-  },
-  {
-    label: 'analytics-reporting.navigation.reports',
-    to: {
-      name: 'analytics-reporting-reports'
-    }
-  }
-];
-
-const accountItems = [
-  {
-    label: 'profiles.navigation.my-profile',
-    icon: 'pi pi-user',
-    route: myProfileRoute
-  }
-];
-
 watch(
     () => iamStore.currentUserId,
-    (userAccountId) => {
+    userAccountId => {
       if (userAccountId) {
         profilesStore.fetchProfile(
             userAccountId,
@@ -106,10 +68,58 @@ const navigationItems = computed(() => {
     return [];
   }
 
-  return iamStore.isOperator
-      ? operatorNavigation
-      : driverNavigation;
+  if (iamStore.isOperator) {
+    return [
+      {
+        label: labels.value.navigation.dashboard,
+        to: {name: 'home'}
+      },
+      {
+        label: t('access-control.navigation.accesses'),
+        to: {name: 'access-control-accesses'}
+      },
+      {
+        label: t('parking-management.navigation.facilities'),
+        to: {name: 'parking-management-facilities'}
+      },
+      {
+        label: t('monitoring-alerts.navigation.alerts'),
+        to: {name: 'monitoring-alerts-alerts'}
+      },
+      {
+        label: t('analytics-reporting.navigation.reports'),
+        to: {name: 'analytics-reporting-reports'}
+      }
+    ];
+  }
+
+  return [
+    {
+      label: labels.value.navigation.search,
+      to: {name: 'home'}
+    },
+    {
+      label: t('reservations.navigation.my-reservations'),
+      to: {name: 'reservations-my'}
+    },
+    {
+      label: t('notifications.navigation.inbox'),
+      to: {name: 'notifications-inbox'}
+    },
+    {
+      label: t('profiles.navigation.profile'),
+      to: myProfileRoute
+    }
+  ];
 });
+
+const accountItems = [
+  {
+    label: 'profiles.navigation.my-profile',
+    icon: 'pi pi-user',
+    route: myProfileRoute
+  }
+];
 
 function toggleDrawer() {
   drawer.value = !drawer.value;
@@ -127,7 +137,6 @@ function toggleDrawer() {
     <a
         class="skip-link"
         href="#main-content">
-
       {{ t('layout.skip-to-content') }}
     </a>
 
@@ -139,17 +148,12 @@ function toggleDrawer() {
             icon="pi pi-bars"
             text
             rounded
-            :aria-label="
-              t(
-                'layout.open-menu'
-              )
-            "
+            :aria-label="t('layout.open-menu')"
             @click="toggleDrawer"/>
 
         <router-link
             :to="{name: 'home'}"
             class="brand">
-
           <span
               class="brand-mark"
               aria-hidden="true">
@@ -157,11 +161,7 @@ function toggleDrawer() {
 
           <span>
             EasyPark
-
-            <template
-                v-if="
-                  iamStore.isOperator
-                ">
+            <template v-if="iamStore.isOperator">
               · Admin
             </template>
           </span>
@@ -170,25 +170,14 @@ function toggleDrawer() {
 
       <nav
           class="app-nav"
-          :aria-label="
-            t(
-              'layout.main-navigation'
-            )
-          ">
-
+          :aria-label="t('layout.main-navigation')">
         <router-link
-            v-for="
-              item
-              in navigationItems
-            "
+            v-for="item in navigationItems"
             :key="item.label"
             :to="item.to"
             class="app-nav__link"
-            active-class="
-              app-nav__link--active
-            ">
-
-          {{ t(item.label) }}
+            active-class="app-nav__link--active">
+          {{ item.label }}
         </router-link>
       </nav>
 
@@ -196,43 +185,24 @@ function toggleDrawer() {
         <language-switcher/>
 
         <authentication-section
-            :display-name="
-              displayName
-            "
-            :photo-url="
-              photoUrl
-            "
-            :items="
-              accountItems
-            "/>
+            :display-name="displayName"
+            :photo-url="photoUrl"
+            :items="accountItems"/>
       </div>
     </header>
 
     <pv-drawer
         v-model:visible="drawer"
-        :header="
-          t(
-            'layout.main-navigation'
-          )
-        ">
-
+        :header="t('layout.main-navigation')">
       <nav class="app-drawer-nav">
         <router-link
-            v-for="
-              item
-              in navigationItems
-            "
+            v-for="item in navigationItems"
             :key="item.label"
             :to="item.to"
             class="app-drawer-nav__link"
-            active-class="
-              app-nav__link--active
-            "
-            @click="
-              drawer = false
-            ">
-
-          {{ t(item.label) }}
+            active-class="app-nav__link--active"
+            @click="drawer = false">
+          {{ item.label }}
         </router-link>
       </nav>
     </pv-drawer>
@@ -240,7 +210,6 @@ function toggleDrawer() {
     <main
         id="main-content"
         class="app-main">
-
       <router-view/>
     </main>
   </template>
@@ -279,6 +248,7 @@ function toggleDrawer() {
 .app-nav {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 32px;
 }
 
@@ -296,7 +266,7 @@ function toggleDrawer() {
 
 .app-nav__link--active {
   color: var(--ep-primary);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .app-drawer-nav {
@@ -322,20 +292,26 @@ function toggleDrawer() {
   .app-header {
     padding: 16px 24px;
   }
+
+  .app-nav {
+    gap: 18px;
+  }
 }
 
-@media (max-width: 767px) {
-  .app-header {
-    padding: 12px 16px;
-    gap: 12px;
-  }
-
+@media (max-width: 900px) {
   .app-header__menu {
     display: inline-flex;
   }
 
   .app-nav {
     display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .app-header {
+    padding: 12px 16px;
+    gap: 12px;
   }
 }
 </style>
