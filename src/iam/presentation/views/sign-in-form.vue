@@ -82,9 +82,13 @@ async function performSignIn() {
           <label for="remember">{{ t('iam.sign-in.remember') }}</label>
         </div>
       </div>
-      <pv-button type="submit" :label="t('iam.sign-in.submit')" :loading="loading" fluid/>
+      <pv-button type="submit" :label="t('iam.sign-in.submit')" icon="pi pi-sign-in" :loading="loading" fluid/>
     </form>
-    <div class="sign-in__divider" aria-hidden="true"><span>{{ t('iam.sign-in.divider') }}</span></div>
+    <div class="sign-in__divider" aria-hidden="true">
+      <span class="sign-in__divider-line"></span>
+      <span>{{ t('iam.sign-in.divider') }}</span>
+      <span class="sign-in__divider-line"></span>
+    </div>
     <p class="sign-in__footer">
       {{ t('iam.sign-in.no-account') }}
       <router-link :to="{ name: 'iam-sign-up' }">{{ t('iam.sign-in.sign-up-link') }}</router-link>
@@ -97,7 +101,7 @@ async function performSignIn() {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: -4px 0 20px;
+  margin: 0 0 20px;
 }
 
 .sign-in__remember {
@@ -105,21 +109,19 @@ async function performSignIn() {
   align-items: center;
   gap: 8px;
   color: var(--ep-text-secondary);
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .sign-in__divider {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin: 20px 0 16px;
+  margin: 24px 0 16px;
   color: var(--ep-text-tertiary);
-  font-size: 11px;
+  font-size: 12px;
 }
 
-.sign-in__divider::before,
-.sign-in__divider::after {
-  content: "";
+.sign-in__divider-line {
   flex: 1;
   height: 1px;
   background: var(--ep-border);
@@ -128,7 +130,7 @@ async function performSignIn() {
 .sign-in__footer {
   margin: 0;
   text-align: center;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--ep-text-secondary);
 }
 
