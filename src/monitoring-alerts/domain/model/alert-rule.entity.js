@@ -1,14 +1,6 @@
-import {AlertType} from "./alert-type.js";
 
-/**
- * Configurable alert rule of a parking facility. It holds only configurable
- * rules: capacity thresholds and the maximum stay minutes. The uniqueness is
- * (parkingFacilityId, alertType): there are no two rules of the same type for
- * the same parking facility.
- *
- * Alert types produced by reacting to Access Control events (for example,
- * UNRECOGNIZED_PLATE or ACCESS_WITHOUT_RESERVATION) are not configured here.
- */
+import {AlertType} from './alert-type.js';
+
 export class AlertRule {
     constructor({
                     id = null,
@@ -29,7 +21,7 @@ export class AlertRule {
     }
 
     get isEnabled() {
-        return this.enabled;
+        return this.enabled === true;
     }
 
     enable() {
@@ -44,28 +36,37 @@ export class AlertRule {
         this.threshold = threshold;
     }
 
-    /**
-     * Devuelve las violaciones observadas para esta regla. Cada violación lleva la
-     * fuente que la originó para que la creación de alertas sea idempotente.
-     */
     evaluate(context) {
-        if (!this.enabled) return [];
+        if (!this.isEnabled) return [];
+
+        const threshold = Number(this.threshold);
+        if (this.threshold == null || !Number.isFinite(threshold)) {
+            return [];
+        }
 
         switch (this.type) {
             case AlertType.STAY_EXCEEDED:
-                return context
-                    .exceededStays(this.threshold)
-                    .map(
-                        ({stay, durationMinutes}) => ({
-                            parkingStayId: stay.id,
-                            accessMovementId: null,
-                            contextValue: durationMinutes
-                        })
-                    );
+                if (threshold < 0) return [];
+
+                return context.exceededStays(threshold).map(
+                    ({stay, durationMinutes}) => ({
+                        parkingStayId: stay.id,
+                        accessMovementId: null,
+                        contextValue: durationMinutes
+                    })
+                );
 
             case AlertType.CAPACITY_CRITICAL:
             case AlertType.CAPACITY_NEAR_LIMIT:
-                return context.occupancyRate >= this.threshold
+                if (
+                    threshold < 0 ||
+                    threshold > 1 ||
+                    context.totalSpots === 0
+                ) {
+                    return [];
+                }
+
+                return context.occupancyRate >= threshold
                     ? [{
                         parkingStayId: null,
                         accessMovementId: null,

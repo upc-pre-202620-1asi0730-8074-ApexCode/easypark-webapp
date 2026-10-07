@@ -1,7 +1,4 @@
-/**
- * Datos observados en un estacionamiento en un instante dado. Es la entrada de
- * las reglas de alerta: la regla decide, el contexto sólo expone lo medido.
- */
+
 export class MonitoringContext {
     constructor({
                     parkingFacilityId,
@@ -18,7 +15,9 @@ export class MonitoringContext {
     }
 
     get totalSpots() {
-        return this.spots.length;
+        return this.spots.filter(
+            spot => spot.status !== 'OUT_OF_SERVICE'
+        ).length;
     }
 
     get occupiedSpots() {
@@ -28,14 +27,14 @@ export class MonitoringContext {
     }
 
     get occupancyRate() {
-        if (!this.totalSpots) return 0;
+        if (this.totalSpots === 0) return 0;
 
         return this.occupiedSpots / this.totalSpots;
     }
 
     movementById(movementId) {
         return this.movements.find(
-            movement => movement.id === movementId
+            movement => String(movement.id) === String(movementId)
         ) ?? null;
     }
 
@@ -50,7 +49,8 @@ export class MonitoringContext {
                 )
             }))
             .filter(
-                entry => entry.durationMinutes > allowedStayMinutes
+                entry => Number.isFinite(entry.durationMinutes) &&
+                    entry.durationMinutes > allowedStayMinutes
             );
     }
 }
