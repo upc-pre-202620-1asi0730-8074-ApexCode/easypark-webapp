@@ -162,5 +162,87 @@
         "failed": "We could not save the vehicle. Try again in a few minutes."
       }
     }
+  },
+  "parking-management": {
+    "navigation": {
+      "facilities": "My facilities"
+    },
+    "facilities": {
+      "title": "My facilities",
+      "subtitle": "Manage your parking facilities and their spots",
+      "loading": "Loading your facilities…",
+      "new": "New facility",
+      "empty": "You haven't registered any facilities yet. Create the first one to start managing spots.",
+      "occupancy": "{occupied}/{total} occupied",
+      "status": {
+        "ACTIVE": "Active",
+        "INACTIVE": "Inactive",
+        "MAINTENANCE": "Under maintenance"
+      }
+    },
+    "facility-detail": {
+      "back": "Back to facilities",
+      "edit": "Edit facility",
+      "schedule": "Schedule",
+      "rate": "Hourly rate",
+      "occupancy": "Occupancy",
+      "not-found": "We couldn't find this facility."
+    },
+    "facility-form": {
+      "create-title": "New facility",
+      "edit-title": "Edit facility",
+      "created": "The facility was created.",
+      "updated": "The facility was updated.",
+      "failed": "We couldn't save the facility. Please try again in a few minutes."
+    },
+    "fields": {
+      "name": "Name",
+      "address": "Address",
+      "latitude": "Latitude",
+      "longitude": "Longitude",
+      "hourly-rate": "Hourly rate",
+      "open-time": "Opening time",
+      "close-time": "Closing time",
+      "spot-code": "Code",
+      "spot-level": "Level",
+      "spot-type": "Type"
+    },
+    "validation": {
+      "required": "This field is required.",
+      "positive-number": "Enter a number greater than 0."
+    },
+    "spots": {
+      "title": "Spots",
+      "register": "New spot",
+      "register-title": "New spot",
+      "edit-title": "Edit spot",
+      "empty": "You haven't registered any spots in this facility yet.",
+      "status": "Status",
+      "actions": "Actions",
+      "status-values": {
+        "AVAILABLE": "Available",
+        "OCCUPIED": "Occupied",
+        "RESERVED": "Reserved",
+        "OUT_OF_SERVICE": "Out of service"
+      },
+      "types": {
+        "CAR": "Car",
+        "SUV": "SUV",
+        "VAN": "Van",
+        "MOTORCYCLE": "Motorcycle"
+      },
+      "mark-occupied": "Mark occupied",
+      "mark-available": "Mark available",
+      "mark-out-of-service": "Out of service",
+      "return-to-service": "Return to service",
+      "edit": "Edit spot {code}",
+      "edit-tooltip": "Edit",
+      "registered": "The spot was registered.",
+      "updated": "The spot was updated.",
+      "errors": {
+        "code-taken": "A spot with that code already exists in this facility.",
+        "failed": "We couldn't save the spot. Please try again in a few minutes."
+      }
+    }
   }
 }
