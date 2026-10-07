@@ -86,5 +86,81 @@
       "sign-up": "Regístrate",
       "sign-out": "Cerrar sesión"
     }
+  },
+  "profiles": {
+    "navigation": {
+      "profile": "Perfil",
+      "my-profile": "Mi perfil"
+    },
+    "my-profile": {
+      "title": "Mi perfil",
+      "subtitle": "Consulta y administra tu información de cuenta",
+      "loading": "Cargando tu perfil…",
+      "identity": "Identidad",
+      "personal-information": "Información personal",
+      "empty": "Aún no registras tus datos personales. Complétalos para empezar a usar EasyPark.",
+      "complete": "Completar perfil",
+      "edit": "Editar información"
+    },
+    "fields": {
+      "first-name": "Nombre",
+      "last-name": "Apellidos",
+      "email": "Correo",
+      "phone": "Teléfono",
+      "role": "Rol",
+      "member-since": "Miembro desde",
+      "company-name": "Empresa",
+      "job-title": "Cargo",
+      "plate-number": "Placa",
+      "vehicle-type": "Tipo",
+      "color": "Color"
+    },
+    "validation": {
+      "required": "Este campo es obligatorio.",
+      "phone-invalid": "Ingresa un teléfono válido, por ejemplo +51 987 654 321."
+    },
+    "form": {
+      "create-title": "Completa tu perfil",
+      "edit-title": "Editar información",
+      "created": "Tu perfil fue guardado.",
+      "updated": "Tu información fue actualizada.",
+      "failed": "No pudimos guardar tu información. Inténtalo de nuevo en unos minutos."
+    },
+    "vehicle-types": {
+      "CAR": "Auto",
+      "SUV": "SUV",
+      "VAN": "Van",
+      "MOTORCYCLE": "Moto"
+    },
+    "vehicles": {
+      "title": "Mis vehículos",
+      "register": "Registrar vehículo",
+      "register-title": "Registrar vehículo",
+      "edit-title": "Editar vehículo",
+      "empty": "Aún no tienes vehículos registrados. Registra uno para poder reservar un espacio.",
+      "status": "Estado",
+      "actions": "Acciones",
+      "default": "Predeterminado",
+      "make-default": "Definir como predeterminado",
+      "default-updated": "{plate} es ahora tu vehículo predeterminado.",
+      "edit": "Editar vehículo {plate}",
+      "edit-tooltip": "Editar",
+      "remove": "Quitar",
+      "remove-aria": "Quitar vehículo {plate}",
+      "remove-header": "Quitar vehículo",
+      "remove-message": "¿Quitar {plate} de tus vehículos? Tus reservas anteriores conservarán su registro.",
+      "removed": "{plate} fue quitado de tus vehículos.",
+      "registered": "Tu vehículo fue registrado.",
+      "updated": "Tu vehículo fue actualizado.",
+      "plate-hint": "Formato ABC-123 para autos o 1234-AB para motos.",
+      "plate-locked": "La placa identifica al vehículo y no se puede cambiar.",
+      "color-placeholder": "Opcional",
+      "errors": {
+        "invalid-plate-number": "Ingresa una placa válida, por ejemplo ABC-123 o 1234-AB.",
+        "plate-taken": "Esta placa ya está registrada por otra cuenta.",
+        "plate-already-yours": "Ya registraste esta placa.",
+        "failed": "No pudimos guardar el vehículo. Inténtalo de nuevo en unos minutos."
+      }
+    }
   }
 }

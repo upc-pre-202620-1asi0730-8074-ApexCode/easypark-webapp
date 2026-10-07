@@ -18,5 +18,56 @@
       "createdAt": "2026-02-03T13:00:00.000Z",
       "lastLoginAt": null
     }
+  ],
+  "profiles": [
+    {
+      "id": 1,
+      "userAccountId": 1,
+      "firstName": "Camila",
+      "lastName": "Soto Reyes",
+      "phone": "+51 987 654 321",
+      "photoUrl": null,
+      "createdAt": "2026-03-12T15:21:00.000Z"
+    },
+    {
+      "id": 2,
+      "userAccountId": 2,
+      "firstName": "Diego",
+      "lastName": "Ramos Vega",
+      "phone": "+51 912 345 678",
+      "photoUrl": null,
+      "companyName": "Estacionamientos Miraflores S.A.C.",
+      "jobTitle": "Administrador de sede",
+      "createdAt": "2026-02-03T13:05:00.000Z"
+    }
+  ],
+  "vehicles": [
+    {
+      "id": 1,
+      "profileId": 1,
+      "plateNumber": "ABC-123",
+      "vehicleType": "CAR",
+      "color": "Gris",
+      "isDefault": true,
+      "createdAt": "2026-03-12T15:30:00.000Z"
+    },
+    {
+      "id": 2,
+      "profileId": 1,
+      "plateNumber": "B7K-482",
+      "vehicleType": "SUV",
+      "color": "Blanco",
+      "isDefault": false,
+      "createdAt": "2026-04-02T18:10:00.000Z"
+    },
+    {
+      "id": 3,
+      "profileId": null,
+      "plateNumber": "XYZ-987",
+      "vehicleType": null,
+      "color": null,
+      "isDefault": false,
+      "createdAt": "2026-05-20T09:45:00.000Z"
+    }
   ]
 }
