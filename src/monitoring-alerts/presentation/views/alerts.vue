@@ -63,55 +63,68 @@ watch(() => profilesStore.currentProfile?.id, async (profileId, _, onCleanup) =>
                  @click="rulesVisible = true"/>
     </div>
 
-    <div v-if="!store.facilitiesLoaded" class="panel">
+    <div v-if="!store.facilitiesLoaded" class="panel" aria-busy="true">
       <p class="empty-state">{{ t('monitoring-alerts.loading') }}</p>
     </div>
     <div v-else-if="!store.facilities.length" class="panel">
-      <p class="empty-state">{{ store.errors.length
-          ? t('monitoring-alerts.errors.failed') : t('monitoring-alerts.no-facilities') }}</p>
+      <div class="empty">
+        <span class="icon-chip icon-chip--lg icon-chip--muted" aria-hidden="true"><i class="pi pi-building"></i></span>
+        <p class="empty__text">{{ store.errors.length
+            ? t('monitoring-alerts.errors.failed') : t('monitoring-alerts.no-facilities') }}</p>
+      </div>
     </div>
     <template v-else>
-      <div class="alerts-summary">
-        <article class="panel alerts-summary__card">
-          <span>{{ t('monitoring-alerts.summary.active') }}</span>
-          <strong class="alerts-summary__active">{{ store.activeAlerts.length }}</strong>
+      <div class="stat-grid stat-grid--3">
+        <article class="stat-card">
+          <span class="icon-chip icon-chip--danger" aria-hidden="true"><i class="pi pi-exclamation-triangle"></i></span>
+          <div class="stat-card__body">
+            <span class="stat-card__label">{{ t('monitoring-alerts.summary.active') }}</span>
+            <strong class="stat-card__value stat-card__value--danger">{{ store.activeAlerts.length }}</strong>
+          </div>
         </article>
-        <article class="panel alerts-summary__card">
-          <span>{{ t('monitoring-alerts.summary.resolved-today') }}</span>
-          <strong class="alerts-summary__resolved">{{ store.resolvedToday.length }}</strong>
+        <article class="stat-card">
+          <span class="icon-chip icon-chip--success" aria-hidden="true"><i class="pi pi-check-circle"></i></span>
+          <div class="stat-card__body">
+            <span class="stat-card__label">{{ t('monitoring-alerts.summary.resolved-today') }}</span>
+            <strong class="stat-card__value stat-card__value--success">{{ store.resolvedToday.length }}</strong>
+          </div>
         </article>
-        <article class="panel alerts-summary__card">
-          <span>{{ labels.average }}</span>
-          <strong>{{ store.averageResolutionMinutes == null ? '—' :
-              `${store.averageResolutionMinutes} ${labels.minutes}` }}</strong>
+        <article class="stat-card">
+          <span class="icon-chip icon-chip--info" aria-hidden="true"><i class="pi pi-stopwatch"></i></span>
+          <div class="stat-card__body">
+            <span class="stat-card__label">{{ labels.average }}</span>
+            <strong class="stat-card__value">{{ store.averageResolutionMinutes == null ? '—' :
+                `${store.averageResolutionMinutes} ${labels.minutes}` }}</strong>
+          </div>
         </article>
       </div>
 
-      <div class="alerts-filters">
-        <label class="alerts-filters__control">
-          <span class="sr-only">{{ labels.state }}</span>
+      <div class="filter-bar">
+        <label class="field-inline">
+          <span class="form-label">{{ labels.state }}</span>
           <pv-select v-model="statusFilter" :options="statusOptions" option-label="label"
                      option-value="value" :aria-label="labels.state"/>
         </label>
-        <label class="alerts-filters__control">
-          <span class="sr-only">{{ labels.zone }}</span>
+        <label class="field-inline">
+          <span class="form-label">{{ labels.zone }}</span>
           <pv-select v-model="selectedFacilityId" :options="facilityOptions" option-label="label"
                      option-value="value" :aria-label="labels.zone"/>
         </label>
-        <label class="alerts-filters__control">
-          <span class="sr-only">{{ labels.type }}</span>
+        <label class="field-inline">
+          <span class="form-label">{{ labels.type }}</span>
           <pv-select v-model="typeFilter" :options="typeOptions" option-label="label"
                      option-value="value" :aria-label="labels.type"/>
         </label>
       </div>
 
-      <div v-if="!store.monitoringDataLoaded" class="panel">
+      <div v-if="!store.monitoringDataLoaded" class="panel" aria-busy="true">
         <p class="empty-state">{{ t('monitoring-alerts.loading') }}</p>
       </div>
       <template v-else>
-        <div v-if="store.errors.length" class="panel" role="alert">
-          <p class="monitoring-error">{{ labels.unavailable }}</p>
-          <pv-button :label="labels.retry" severity="secondary" text icon="pi pi-refresh"
+        <div v-if="store.errors.length" class="panel monitoring-error" role="alert">
+          <span class="icon-chip icon-chip--sm icon-chip--danger" aria-hidden="true"><i class="pi pi-exclamation-circle"></i></span>
+          <p class="monitoring-error__text">{{ labels.unavailable }}</p>
+          <pv-button :label="labels.retry" severity="secondary" outlined size="small" icon="pi pi-refresh"
                      @click="store.selectFacility(store.selectedFacilityId)"/>
         </div>
         <alert-list :items="filteredAlerts"/>
@@ -123,17 +136,17 @@ watch(() => profilesStore.currentProfile?.id, async (profileId, _, onCleanup) =>
 </template>
 
 <style scoped>
-.alerts-summary {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-bottom:20px}
-.alerts-summary__card {display:flex;flex-direction:column;gap:10px}
-.alerts-summary__card span {font-size:12px;color:var(--ep-text-secondary)}
-.alerts-summary__card strong {font-size:26px;color:var(--ep-text)}
-.alerts-summary__card .alerts-summary__active {color:#dc2626}
-.alerts-summary__card .alerts-summary__resolved {color:#16a34a}
-.alerts-filters {display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px}
-.alerts-filters__control {min-width:145px;max-width:300px}
-.alerts-filters__control :deep(.p-select) {width:100%}
-.monitoring-error {color:#b91c1c;margin-bottom:8px}
-.sr-only {position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-@media(max-width:800px){.alerts-summary {grid-template-columns:1fr;gap:12px}}
-@media(max-width:600px){.alerts-filters__control {flex:1 1 100%;max-width:none}}
+.monitoring-error {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.monitoring-error__text {
+  flex: 1;
+  margin: 0;
+  color: var(--ep-danger-text);
+  font-size: 13px;
+  font-weight: 500;
+}
 </style>
