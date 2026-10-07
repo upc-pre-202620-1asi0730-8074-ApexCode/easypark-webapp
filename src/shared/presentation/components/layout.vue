@@ -23,22 +23,10 @@ const myProfileRoute = {
 };
 
 const driverNavigation = [
-  {
-    label: 'profiles.navigation.profile',
-    to: myProfileRoute
-  },
-  {
-    label: 'reservations.navigation.reserve',
-    to: {
-      name: 'reservations-create'
-    }
-  },
-  {
-    label: 'reservations.navigation.my-reservations',
-    to: {
-      name: 'reservations-my'
-    }
-  }
+  {label: 'profiles.navigation.profile', to: myProfileRoute},
+  {label: 'reservations.navigation.reserve', to: {name: 'reservations-create'}},
+  {label: 'reservations.navigation.my-reservations', to: {name: 'reservations-my'}},
+  {label: 'notifications.navigation.inbox', to: {name: 'notifications-inbox'}}
 ];
 
 const operatorNavigation = [

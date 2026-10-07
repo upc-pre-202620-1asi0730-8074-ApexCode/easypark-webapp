@@ -489,5 +489,49 @@
       "already-resolved": "Esta alerta ya fue resuelta.",
       "failed": "No pudimos completar la operación. Inténtalo nuevamente."
     }
+  },
+  "notifications": {
+    "navigation": {
+      "inbox": "Notificaciones"
+    },
+    "title": "Notificaciones",
+    "subtitle": "Mantente al día con tus reservas y permanencia",
+    "loading": "Cargando notificaciones…",
+    "empty": "No tienes notificaciones por ahora.",
+    "unreadCount": "{count} sin leer",
+    "actions": {
+      "markAllRead": "Marcar todas como leídas"
+    },
+    "groups": {
+      "today": "Hoy",
+      "yesterday": "Ayer"
+    },
+    "status": {
+      "PENDING": "Pendiente",
+      "SENT": "Enviada",
+      "READ": "Leída",
+      "FAILED": "Fallida"
+    },
+    "types": {
+      "RESERVATION_CONFIRMED": "Reserva confirmada",
+      "RESERVATION_REMINDER": "Recordatorio de reserva",
+      "TIME_REMAINING": "Tiempo restante",
+      "STAY_EXPIRED": "Permanencia vencida",
+      "CHECK_IN_CONFIRMED": "Check-in exitoso",
+      "CHECK_OUT_CONFIRMED": "Confirmación de salida",
+      "ALERT_RAISED": "Alerta de permanencia"
+    },
+    "channels": {
+      "IN_APP": "Aplicación",
+      "EMAIL": "Correo electrónico"
+    },
+    "errors": {
+      "already-read": "Esta notificación ya fue leída.",
+      "failed": "No pudimos completar la operación. Inténtalo nuevamente."
+    },
+    "messages": {
+      "markedRead": "La notificación fue marcada como leída.",
+      "allMarkedRead": "Todas las notificaciones fueron marcadas como leídas."
+    }
   }
 }
