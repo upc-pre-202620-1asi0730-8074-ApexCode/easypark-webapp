@@ -78,6 +78,10 @@ function colorOf(alert) {
   return {HIGH: 'danger', MEDIUM: 'warning', LOW: 'info'}[alert.severity] ?? 'info';
 }
 
+function severityTone(alert) {
+  return {HIGH: 'danger', MEDIUM: 'warning', LOW: 'info'}[alert.severity] ?? 'info';
+}
+
 async function resolve(alert) {
   const id = String(alert.id);
   if (pendingIds.value.has(id)) return;
@@ -100,49 +104,134 @@ async function resolve(alert) {
 </script>
 
 <template>
-  <section class="panel alert-list">
-    <h2 class="panel-title">{{ t('monitoring-alerts.list.title') }}</h2>
-    <p v-if="!props.items.length" class="empty-state">{{ labels.noAlerts }}</p>
+  <section class="panel alert-list" aria-labelledby="alert-list-title">
+    <div class="panel-header">
+      <h2 id="alert-list-title" class="panel-title">
+        {{ t('monitoring-alerts.list.title') }}
+        <span class="status-badge status-badge--muted alert-list__count">{{ props.items.length }}</span>
+      </h2>
+    </div>
+    <div v-if="!props.items.length" class="empty">
+      <span class="icon-chip icon-chip--lg icon-chip--muted" aria-hidden="true"><i class="pi pi-bell-slash"></i></span>
+      <p class="empty__text">{{ labels.noAlerts }}</p>
+    </div>
     <ul v-else class="alert-list__items">
-      <li v-for="alert in props.items" :key="alert.id" class="alert-list__item">
-        <span class="alert-list__icon" :class="`alert-list__icon--${colorOf(alert)}`" aria-hidden="true">
+      <li v-for="alert in props.items" :key="alert.id" class="alert-list__item"
+          :class="{ 'alert-list__item--active': alert.isActive }">
+        <span class="icon-chip" :class="`icon-chip--${colorOf(alert)}`" aria-hidden="true">
           <i :class="iconOf(alert)"></i>
         </span>
         <div class="alert-list__content">
           <strong>{{ alertTitle(alert) }}</strong>
           <small>{{ alertDetails(alert) }}</small>
         </div>
+        <span class="alert-list__severity">
+          <span class="status-dot" :class="`status-dot--${severityTone(alert)}`" aria-hidden="true"></span>
+          {{ t(`monitoring-alerts.severity.${alert.severity}`) }}
+        </span>
         <span class="status-badge alert-list__status" :class="`status-badge--${colorOf(alert)}`">
           {{ t(`monitoring-alerts.status.${alert.status}`) }}
         </span>
-        <pv-button v-if="alert.isActive"
-                   :label="t('monitoring-alerts.list.resolve')"
-                   severity="secondary" outlined size="small"
-                   :loading="pendingIds.has(String(alert.id))"
-                   :disabled="pendingIds.has(String(alert.id))"
-                   @click="resolve(alert)"/>
+        <span class="alert-list__action">
+          <pv-button v-if="alert.isActive"
+                     :label="t('monitoring-alerts.list.resolve')"
+                     icon="pi pi-check"
+                     severity="secondary" outlined size="small"
+                     :loading="pendingIds.has(String(alert.id))"
+                     :disabled="pendingIds.has(String(alert.id))"
+                     @click="resolve(alert)"/>
+        </span>
       </li>
     </ul>
   </section>
 </template>
 
 <style scoped>
-.alert-list__items {list-style:none;margin:18px 0 0;padding:0}
-.alert-list__item {display:flex;align-items:center;gap:14px;padding:16px 0;border-top:1px solid var(--ep-border)}
-.alert-list__icon {width:40px;height:40px;flex:0 0 40px;display:grid;place-items:center;border-radius:10px}
-.alert-list__icon--danger {background:#fee2e2;color:#dc2626}
-.alert-list__icon--warning {background:#fef3c7;color:#d97706}
-.alert-list__icon--success {background:#dcfce7;color:#16a34a}
-.alert-list__icon--info {background:#dbeafe;color:#2563eb}
-.alert-list__icon--muted {background:#f3f4f6;color:#64748b}
-.alert-list__content {display:flex;flex-direction:column;gap:5px;flex:1;min-width:0}
-.alert-list__content strong {font-size:13px;color:var(--ep-text);overflow-wrap:anywhere}
-.alert-list__content small {font-size:12px;color:var(--ep-text-secondary)}
-.alert-list__status {white-space:nowrap}
-.alert-list__status.status-badge--muted {background:#f3f4f6;color:#64748b}
-@media(max-width:700px) {
-  .alert-list__item {flex-wrap:wrap}
-  .alert-list__content {flex-basis:calc(100% - 56px)}
-  .alert-list__status {margin-left:54px}
+.alert-list__count {
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+.alert-list__items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.alert-list__item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border: 1px solid var(--ep-border);
+  border-radius: 12px;
+}
+
+.alert-list__item--active {
+  border-color: var(--ep-border-strong);
+  background: var(--ep-page);
+}
+
+.alert-list__content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.alert-list__content strong {
+  color: var(--ep-text);
+  font-size: 13px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.alert-list__content small {
+  color: var(--ep-text-secondary);
+  font-size: 12px;
+}
+
+.alert-list__severity {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: 64px;
+  color: var(--ep-text-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.alert-list__status {
+  justify-content: center;
+  min-width: 84px;
+}
+
+.alert-list__action {
+  display: flex;
+  justify-content: flex-end;
+  width: 112px;
+}
+
+@media (max-width: 767px) {
+  .alert-list__item {
+    flex-wrap: wrap;
+  }
+
+  .alert-list__content {
+    flex-basis: calc(100% - 56px);
+  }
+
+  .alert-list__severity {
+    margin-left: 54px;
+  }
+
+  .alert-list__action {
+    flex: 1;
+  }
 }
 </style>
