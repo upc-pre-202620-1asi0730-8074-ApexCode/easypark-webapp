@@ -1,493 +1,493 @@
-{
-  "layout": {
-    "skip-to-content": "Skip to main content",
-    "main-navigation": "Main navigation",
-    "open-menu": "Open navigation menu",
-    "language": "Language"
-  },
-  "common": {
-    "cancel": "Cancel",
-    "save": "Save"
-  },
-  "about": {
-    "title": "About EasyPark",
-    "content": "EasyPark is a real-time parking management platform that connects drivers with available spaces and gives parking operators digital control of their facilities."
-  },
-  "home": {
-    "title": "Welcome",
-    "content": "Welcome to EasyPark. Less driving around looking for a space, more control when managing one."
-  },
-  "page-not-found": {
-    "title": "Page Not Found",
-    "content": "The path {unavailable-route} is not available.",
-    "go-home": "Go Home"
-  },
-  "iam": {
-    "roles": {
-      "DRIVER": "Driver",
-      "OPERATOR_ADMIN": "Administrator",
-      "OPERATOR_STAFF": "Operations staff"
-    },
-    "fields": {
-      "role": "I am a",
-      "email": "E-mail address",
-      "email-placeholder": "name{'@'}example.com",
-      "password": "Password",
-      "confirm-password": "Confirm password"
-    },
-    "validation": {
-      "email-required": "Enter your e-mail address.",
-      "email-invalid": "Enter a valid e-mail address, for example name{'@'}example.com.",
-      "password-required": "Enter your password.",
-      "password-length": "Use at least {length} characters.",
-      "password-mismatch": "The passwords do not match."
-    },
-    "sign-in": {
-      "title": "Sign in",
-      "subtitle": "Access your driver or administrator account",
-      "remember": "Remember me",
-      "submit": "Sign in",
-      "divider": "or",
-      "no-account": "Don't have an account yet?",
-      "sign-up-link": "Sign up here",
-      "registered": "Your account was created. You can sign in now.",
-      "errors": {
-        "invalid-credentials": "The e-mail address or the password is incorrect.",
-        "inactive-account": "This account is not active. Contact EasyPark support.",
-        "failed": "We could not sign you in. Try again in a few minutes."
-      }
-    },
-    "sign-up": {
-      "title": "Create your account",
-      "subtitle": "Sign up as a driver or as a parking administrator",
-      "submit": "Create account",
-      "has-account": "Already have an account?",
-      "sign-in-link": "Sign in",
-      "errors": {
-        "email-taken": "This e-mail address is already registered. Sign in or use another address.",
-        "failed": "We could not create your account. Try again in a few minutes."
-      }
-    },
-    "change-password": {
-      "title": "Change password",
-      "current": "Current password",
-      "new": "New password",
-      "success": "Your password was updated.",
-      "errors": {
-        "wrong-current-password": "The current password is incorrect.",
-        "same-password": "The new password must be different from the current one.",
-        "session-expired": "Your session expired. Sign in again to change your password.",
-        "failed": "We could not update your password. Try again in a few minutes."
-      }
-    },
-    "account": {
-      "menu": "Account menu of {name}",
-      "sign-in": "Sign in",
-      "sign-up": "Sign up",
-      "sign-out": "Sign out"
-    }
-  },
-  "profiles": {
-    "navigation": {
-      "profile": "Profile",
-      "my-profile": "My profile"
-    },
-    "my-profile": {
-      "title": "My profile",
-      "subtitle": "Review and manage your account information",
-      "loading": "Loading your profile…",
-      "identity": "Identity",
-      "personal-information": "Personal information",
-      "empty": "You have not registered your personal data yet. Complete it to start using EasyPark.",
-      "complete": "Complete profile",
-      "edit": "Edit information"
-    },
-    "fields": {
-      "first-name": "First name",
-      "last-name": "Last name",
-      "email": "E-mail",
-      "phone": "Phone",
-      "role": "Role",
-      "member-since": "Member since",
-      "company-name": "Company",
-      "job-title": "Job title",
-      "plate-number": "Plate",
-      "vehicle-type": "Type",
-      "color": "Color"
-    },
-    "validation": {
-      "required": "This field is required.",
-      "phone-invalid": "Enter a valid phone number, for example +51 987 654 321."
-    },
-    "form": {
-      "create-title": "Complete your profile",
-      "edit-title": "Edit information",
-      "created": "Your profile was saved.",
-      "updated": "Your information was updated.",
-      "failed": "We could not save your information. Try again in a few minutes."
-    },
-    "vehicle-types": {
-      "CAR": "Car",
-      "SUV": "SUV",
-      "VAN": "Van",
-      "MOTORCYCLE": "Motorcycle"
-    },
-    "vehicles": {
-      "title": "My vehicles",
-      "register": "Register vehicle",
-      "register-title": "Register vehicle",
-      "edit-title": "Edit vehicle",
-      "empty": "You have no vehicles registered yet. Register one to book a parking space.",
-      "status": "Status",
-      "actions": "Actions",
-      "default": "Default",
-      "make-default": "Set as default",
-      "default-updated": "{plate} is now your default vehicle.",
-      "edit": "Edit vehicle {plate}",
-      "edit-tooltip": "Edit",
-      "remove": "Remove",
-      "remove-aria": "Remove vehicle {plate}",
-      "remove-header": "Remove vehicle",
-      "remove-message": "Remove {plate} from your vehicles? Your past reservations will keep their record.",
-      "removed": "{plate} was removed from your vehicles.",
-      "registered": "Your vehicle was registered.",
-      "updated": "Your vehicle was updated.",
-      "plate-hint": "Format ABC-123 for cars or 1234-AB for motorcycles.",
-      "plate-locked": "The plate identifies the vehicle and cannot be changed.",
-      "color-placeholder": "Optional",
-      "errors": {
-        "invalid-plate-number": "Enter a valid plate, for example ABC-123 or 1234-AB.",
-        "plate-taken": "This plate is already registered by another account.",
-        "plate-already-yours": "You already registered this plate.",
-        "failed": "We could not save the vehicle. Try again in a few minutes."
-      }
-    }
-  },
-  "parking-management": {
-    "navigation": {
-      "facilities": "My facilities"
-    },
-    "facilities": {
-      "title": "My facilities",
-      "subtitle": "Manage your parking facilities and their spots",
-      "loading": "Loading your facilities…",
-      "new": "New facility",
-      "empty": "You haven't registered any facilities yet. Create the first one to start managing spots.",
-      "occupancy": "{occupied}/{total} occupied",
-      "status": {
-        "ACTIVE": "Active",
-        "INACTIVE": "Inactive",
-        "MAINTENANCE": "Under maintenance"
-      }
-    },
-    "facility-detail": {
-      "back": "Back to facilities",
-      "edit": "Edit facility",
-      "schedule": "Schedule",
-      "rate": "Hourly rate",
-      "occupancy": "Occupancy",
-      "not-found": "We couldn't find this facility."
-    },
-    "facility-form": {
-      "create-title": "New facility",
-      "edit-title": "Edit facility",
-      "created": "The facility was created.",
-      "updated": "The facility was updated.",
-      "failed": "We couldn't save the facility. Please try again in a few minutes."
-    },
-    "fields": {
-      "name": "Name",
-      "address": "Address",
-      "latitude": "Latitude",
-      "longitude": "Longitude",
-      "hourly-rate": "Hourly rate",
-      "open-time": "Opening time",
-      "close-time": "Closing time",
-      "spot-code": "Code",
-      "spot-level": "Level",
-      "spot-type": "Type"
-    },
-    "validation": {
-      "required": "This field is required.",
-      "positive-number": "Enter a number greater than 0."
-    },
-    "spots": {
-      "title": "Spots",
-      "register": "New spot",
-      "register-title": "New spot",
-      "edit-title": "Edit spot",
-      "empty": "You haven't registered any spots in this facility yet.",
-      "status": "Status",
-      "actions": "Actions",
-      "status-values": {
-        "AVAILABLE": "Available",
-        "OCCUPIED": "Occupied",
-        "RESERVED": "Reserved",
-        "OUT_OF_SERVICE": "Out of service"
-      },
-      "types": {
-        "CAR": "Car",
-        "SUV": "SUV",
-        "VAN": "Van",
-        "MOTORCYCLE": "Motorcycle"
-      },
-      "mark-occupied": "Mark occupied",
-      "mark-available": "Mark available",
-      "mark-out-of-service": "Out of service",
-      "return-to-service": "Return to service",
-      "edit": "Edit spot {code}",
-      "edit-tooltip": "Edit",
-      "registered": "The spot was registered.",
-      "updated": "The spot was updated.",
-      "errors": {
-        "code-taken": "A spot with that code already exists in this facility.",
-        "failed": "We couldn't save the spot. Please try again in a few minutes."
-      }
-    }
-  },
-  "reservations": {
-    "navigation": {
-      "reserve": "Reserve",
-      "my-reservations": "My reservations"
-    },
-    "create": {
-      "title": "Reserve a space",
-      "subtitle": "Choose the parking facility, time and vehicle for your reservation",
-      "loading": "Loading available parking facilities…",
-      "action": "New reservation"
-    },
-    "my-reservations": {
-      "title": "My reservations",
-      "subtitle": "Review and manage your parking reservations"
-    },
-    "fields": {
-      "facility": "Parking facility",
-      "start": "Date and time",
-      "duration": "Duration",
-      "vehicle": "Vehicle",
-      "estimated-amount": "Estimated cost"
-    },
-    "form": {
-      "confirm": "Confirm reservation",
-      "created": "Your reservation was created successfully."
-    },
-    "list": {
-      "loading": "Loading your reservations…",
-      "empty": "You don't have any reservations yet.",
-      "unknown-facility": "Parking facility unavailable"
-    },
-    "status": {
-      "PENDING": "Pending",
-      "CONFIRMED": "Confirmed",
-      "ACTIVE": "Active",
-      "COMPLETED": "Completed",
-      "CANCELLED": "Cancelled",
-      "EXPIRED": "Expired"
-    },
-    "cancel": {
-      "button": "Cancel reservation",
-      "title": "Cancel reservation",
-      "message": "Do you want to cancel reservation {code}?",
-      "accept": "Yes, cancel",
-      "success": "The reservation was cancelled."
-    },
-    "errors": {
-      "no-availability": "There are no available spaces for the selected vehicle.",
-      "invalid-start": "Select a future date and time.",
-      "not-cancellable": "This reservation can no longer be cancelled.",
-      "failed": "We couldn't complete the operation. Please try again."
-    }
-  },
-  "access-control": {
-    "navigation": {
-      "accesses": "Accesses"
-    },
-    "title": "Access control",
-    "subtitle": "Register vehicle entries and exits and monitor current occupancy",
-    "loading": "Loading access information…",
-    "no-facilities": "You don't have any parking facilities available.",
-    "summary": {
-      "total": "Total spaces",
-      "available": "Available",
-      "occupied": "Occupied",
-      "active-stays": "Vehicles inside"
-    },
-    "fields": {
-      "type": "Movement",
-      "method": "Registration method",
-      "plate": "Plate",
-      "reservation-code": "Reservation code",
-      "time": "Date and time",
-      "status": "Status",
-      "parking-spot": "Parking spot"
-    },
-    "types": {
-      "ENTRY": "Entry",
-      "EXIT": "Exit"
-    },
-    "methods": {
-      "MANUAL": "Manual",
-      "QR_CODE": "QR code",
-      "IOT_SENSOR": "IoT sensor"
-    },
-    "status": {
-      "IN_PROGRESS": "In progress",
-      "COMPLETED": "Completed",
-      "UNDER_REVIEW": "Under review",
-      "REJECTED": "Rejected"
-    },
-    "form": {
-      "title": "Register access",
-      "register": "Register movement",
-      "optional": "Optional"
-    },
-    "movements": {
-      "title": "Access history",
-      "empty": "There are no access movements registered yet."
-    },
-    "stays": {
-      "title": "Vehicles currently parked",
-      "empty": "There are no vehicles currently parked.",
-      "reassign": "Reassign space",
-      "reassign-title": "Reassign parking space"
-    },
-    "validation": {
-      "required": "This field is required."
-    },
-    "messages": {
-      "entry-recorded": "Vehicle entry was registered.",
-      "exit-recorded": "Vehicle exit was registered.",
-      "under-review": "The vehicle was registered for review.",
-      "reassigned": "The vehicle was reassigned successfully."
-    },
-    "errors": {
-      "invalid-plate-number": "Enter a valid plate, for example ABC-123.",
-      "vehicle-already-inside": "This vehicle already has an active entry.",
-      "no-active-reservation": "There is no active reservation for this vehicle.",
-      "no-availability": "There are no available spaces for this vehicle.",
-      "no-active-stay": "This vehicle does not have an active entry.",
-      "invalid-space": "The selected space is not available.",
-      "failed": "We couldn't complete the operation. Please try again."
-    }
-  },
-  "analytics-reporting": {
-    "navigation": {
-      "reports": "Reports"
-    },
-    "title": "Reports and analytics",
-    "subtitle": "Analyze occupancy, vehicle movements and parking stays",
-    "loading": "Loading analytics information…",
-    "no-facilities": "You don't have any parking facilities available.",
-    "select-period": "Select a report type and period to generate the report.",
-    "empty": "There is no information available for the selected period.",
-    "types": {
-      "OCCUPANCY": "Occupancy",
-      "MOVEMENTS": "Movements",
-      "REVENUE": "Revenue",
-      "STAY_TIME": "Stay times"
-    },
-    "fields": {
-      "report-type": "Report type",
-      "start-date": "Start date",
-      "end-date": "End date",
-      "entries": "Entries",
-      "exits": "Exits",
-      "average-stay": "Average stay",
-      "revenue": "Revenue",
-      "date": "Date and time",
-      "plate": "Plate",
-      "movement": "Movement",
-      "method": "Registration method",
-      "status": "Status",
-      "entry": "Entry",
-      "exit": "Exit",
-      "duration": "Duration"
-    },
-    "summary": {
-      "movements": "Movements",
-      "occupancy": "Average occupancy",
-      "stays": "Parking stays",
-      "revenue": "Revenue"
-    },
-    "actions": {
-      "generate": "Generate report",
-      "export": "Export CSV"
-    },
-    "occupancy": {
-      "title": "Occupancy report"
-    },
-    "movements": {
-      "title": "Movement report",
-      "empty": "There are no movements for the selected period."
-    },
-    "stays": {
-      "title": "Stay times",
-      "empty": "There are no parking stays for the selected period."
-    },
-    "movement-types": {
-      "ENTRY": "Entry",
-      "EXIT": "Exit"
-    },
-    "messages": {
-      "generated": "The report was generated successfully."
-    },
-    "errors": {
-      "invalid-period": "Select a valid date range.",
-      "failed": "We couldn't generate the report. Please try again."
-    }
-  },
-  "monitoring-alerts": {
-    "navigation": {
-      "alerts": "Alerts"
-    },
-    "title": "Monitoring and alerts",
-    "subtitle": "Track occupancy and handle alerts across your parking facilities",
-    "loading": "Loading monitoring information…",
-    "no-facilities": "You don't have any parking facilities available.",
-    "filter": {
-      "zone": "Zone"
-    },
-    "summary": {
-      "active": "Active alerts",
-      "resolved-today": "Resolved today"
-    },
-    "fields": {
-      "time": "Date and time",
-      "type": "Type",
-      "severity": "Severity",
-      "value": "Value",
-      "status": "Status",
-      "resolution-time": "Resolution time",
-      "minutes": "min"
-    },
-    "types": {
-      "CAPACITY_CRITICAL": "Critical capacity",
-      "CAPACITY_NEAR_LIMIT": "Capacity near limit",
-      "STAY_EXCEEDED": "Stay exceeded",
-      "UNRECOGNIZED_PLATE": "Unrecognized plate",
-      "ACCESS_WITHOUT_RESERVATION": "Access without reservation"
-    },
-    "severity": {
-      "HIGH": "High",
-      "MEDIUM": "Medium",
-      "LOW": "Low"
-    },
-    "status": {
-      "ACTIVE": "Active",
-      "RESOLVED": "Resolved",
-      "DISMISSED": "Dismissed"
-    },
-    "list": {
-      "title": "Alerts",
-      "empty": "There are no alerts registered for this facility.",
-      "resolve": "Resolve"
-    },
-    "messages": {
-      "resolved": "The alert was resolved."
-    },
-    "errors": {
-      "already-resolved": "This alert has already been resolved.",
-      "failed": "We couldn't complete the operation. Please try again."
-    }
-  }
+﻿{
+    "layout":  {
+                   "skip-to-content":  "Skip to main content",
+                   "main-navigation":  "Main navigation",
+                   "open-menu":  "Open navigation menu",
+                   "language":  "Language"
+               },
+    "common":  {
+                   "cancel":  "Cancel",
+                   "save":  "Save"
+               },
+    "about":  {
+                  "title":  "About EasyPark",
+                  "content":  "EasyPark is a real-time parking management platform that connects drivers with available spaces and gives parking operators digital control of their facilities."
+              },
+    "home":  {
+                 "title":  "Welcome",
+                 "content":  "Welcome to EasyPark. Less driving around looking for a space, more control when managing one."
+             },
+    "page-not-found":  {
+                           "title":  "Page Not Found",
+                           "content":  "The path {unavailable-route} is not available.",
+                           "go-home":  "Go Home"
+                       },
+    "iam":  {
+                "roles":  {
+                              "DRIVER":  "Driver",
+                              "OPERATOR_ADMIN":  "Administrator",
+                              "OPERATOR_STAFF":  "Operations staff"
+                          },
+                "fields":  {
+                               "role":  "I am a",
+                               "email":  "E-mail address",
+                               "email-placeholder":  "name{\u0027@\u0027}example.com",
+                               "password":  "Password",
+                               "confirm-password":  "Confirm password"
+                           },
+                "validation":  {
+                                   "email-required":  "Enter your e-mail address.",
+                                   "email-invalid":  "Enter a valid e-mail address, for example name{\u0027@\u0027}example.com.",
+                                   "password-required":  "Enter your password.",
+                                   "password-length":  "Use at least {length} characters.",
+                                   "password-mismatch":  "The passwords do not match."
+                               },
+                "sign-in":  {
+                                "title":  "Sign in",
+                                "subtitle":  "Access your driver or administrator account",
+                                "remember":  "Remember me",
+                                "submit":  "Sign in",
+                                "divider":  "or",
+                                "no-account":  "Don\u0027t have an account yet?",
+                                "sign-up-link":  "Sign up here",
+                                "registered":  "Your account was created. You can sign in now.",
+                                "errors":  {
+                                               "invalid-credentials":  "The e-mail address or the password is incorrect.",
+                                               "inactive-account":  "This account is not active. Contact EasyPark support.",
+                                               "failed":  "We could not sign you in. Try again in a few minutes."
+                                           }
+                            },
+                "sign-up":  {
+                                "title":  "Create your account",
+                                "subtitle":  "Sign up as a driver or as a parking administrator",
+                                "submit":  "Create account",
+                                "has-account":  "Already have an account?",
+                                "sign-in-link":  "Sign in",
+                                "errors":  {
+                                               "email-taken":  "This e-mail address is already registered. Sign in or use another address.",
+                                               "failed":  "We could not create your account. Try again in a few minutes."
+                                           }
+                            },
+                "change-password":  {
+                                        "title":  "Change password",
+                                        "current":  "Current password",
+                                        "new":  "New password",
+                                        "success":  "Your password was updated.",
+                                        "errors":  {
+                                                       "wrong-current-password":  "The current password is incorrect.",
+                                                       "same-password":  "The new password must be different from the current one.",
+                                                       "session-expired":  "Your session expired. Sign in again to change your password.",
+                                                       "failed":  "We could not update your password. Try again in a few minutes."
+                                                   }
+                                    },
+                "account":  {
+                                "menu":  "Account menu of {name}",
+                                "sign-in":  "Sign in",
+                                "sign-up":  "Sign up",
+                                "sign-out":  "Sign out"
+                            }
+            },
+    "profiles":  {
+                     "navigation":  {
+                                        "profile":  "Profile",
+                                        "my-profile":  "My profile"
+                                    },
+                     "my-profile":  {
+                                        "title":  "My profile",
+                                        "subtitle":  "Review and manage your account information",
+                                        "loading":  "Loading your profileâ€¦",
+                                        "identity":  "Identity",
+                                        "personal-information":  "Personal information",
+                                        "empty":  "You have not registered your personal data yet. Complete it to start using EasyPark.",
+                                        "complete":  "Complete profile",
+                                        "edit":  "Edit information"
+                                    },
+                     "fields":  {
+                                    "first-name":  "First name",
+                                    "last-name":  "Last name",
+                                    "email":  "E-mail",
+                                    "phone":  "Phone",
+                                    "role":  "Role",
+                                    "member-since":  "Member since",
+                                    "company-name":  "Company",
+                                    "job-title":  "Job title",
+                                    "plate-number":  "Plate",
+                                    "vehicle-type":  "Type",
+                                    "color":  "Color"
+                                },
+                     "validation":  {
+                                        "required":  "This field is required.",
+                                        "phone-invalid":  "Enter a valid phone number, for example +51 987 654 321."
+                                    },
+                     "form":  {
+                                  "create-title":  "Complete your profile",
+                                  "edit-title":  "Edit information",
+                                  "created":  "Your profile was saved.",
+                                  "updated":  "Your information was updated.",
+                                  "failed":  "We could not save your information. Try again in a few minutes."
+                              },
+                     "vehicle-types":  {
+                                           "CAR":  "Car",
+                                           "SUV":  "SUV",
+                                           "VAN":  "Van",
+                                           "MOTORCYCLE":  "Motorcycle"
+                                       },
+                     "vehicles":  {
+                                      "title":  "My vehicles",
+                                      "register":  "Register vehicle",
+                                      "register-title":  "Register vehicle",
+                                      "edit-title":  "Edit vehicle",
+                                      "empty":  "You have no vehicles registered yet. Register one to book a parking space.",
+                                      "status":  "Status",
+                                      "actions":  "Actions",
+                                      "default":  "Default",
+                                      "make-default":  "Set as default",
+                                      "default-updated":  "{plate} is now your default vehicle.",
+                                      "edit":  "Edit vehicle {plate}",
+                                      "edit-tooltip":  "Edit",
+                                      "remove":  "Remove",
+                                      "remove-aria":  "Remove vehicle {plate}",
+                                      "remove-header":  "Remove vehicle",
+                                      "remove-message":  "Remove {plate} from your vehicles? Your past reservations will keep their record.",
+                                      "removed":  "{plate} was removed from your vehicles.",
+                                      "registered":  "Your vehicle was registered.",
+                                      "updated":  "Your vehicle was updated.",
+                                      "plate-hint":  "Format ABC-123 for cars or 1234-AB for motorcycles.",
+                                      "plate-locked":  "The plate identifies the vehicle and cannot be changed.",
+                                      "color-placeholder":  "Optional",
+                                      "errors":  {
+                                                     "invalid-plate-number":  "Enter a valid plate, for example ABC-123 or 1234-AB.",
+                                                     "plate-taken":  "This plate is already registered by another account.",
+                                                     "plate-already-yours":  "You already registered this plate.",
+                                                     "failed":  "We could not save the vehicle. Try again in a few minutes."
+                                                 }
+                                  }
+                 },
+    "parking-management":  {
+                               "navigation":  {
+                                                  "facilities":  "Zones and spaces"
+                                              },
+                               "facilities":  {
+                                                  "title":  "My facilities",
+                                                  "subtitle":  "Manage your parking facilities and their spots",
+                                                  "loading":  "Loading your facilitiesâ€¦",
+                                                  "new":  "New facility",
+                                                  "empty":  "You haven\u0027t registered any facilities yet. Create the first one to start managing spots.",
+                                                  "occupancy":  "{occupied}/{total} occupied",
+                                                  "status":  {
+                                                                 "ACTIVE":  "Active",
+                                                                 "INACTIVE":  "Inactive",
+                                                                 "MAINTENANCE":  "Under maintenance"
+                                                             }
+                                              },
+                               "facility-detail":  {
+                                                       "back":  "Back to facilities",
+                                                       "edit":  "Edit facility",
+                                                       "schedule":  "Schedule",
+                                                       "rate":  "Hourly rate",
+                                                       "occupancy":  "Occupancy",
+                                                       "not-found":  "We couldn\u0027t find this facility."
+                                                   },
+                               "facility-form":  {
+                                                     "create-title":  "New facility",
+                                                     "edit-title":  "Edit facility",
+                                                     "created":  "The facility was created.",
+                                                     "updated":  "The facility was updated.",
+                                                     "failed":  "We couldn\u0027t save the facility. Please try again in a few minutes."
+                                                 },
+                               "fields":  {
+                                              "name":  "Name",
+                                              "address":  "Address",
+                                              "latitude":  "Latitude",
+                                              "longitude":  "Longitude",
+                                              "hourly-rate":  "Hourly rate",
+                                              "open-time":  "Opening time",
+                                              "close-time":  "Closing time",
+                                              "spot-code":  "Code",
+                                              "spot-level":  "Level",
+                                              "spot-type":  "Type"
+                                          },
+                               "validation":  {
+                                                  "required":  "This field is required.",
+                                                  "positive-number":  "Enter a number greater than 0."
+                                              },
+                               "spots":  {
+                                             "title":  "Spots",
+                                             "register":  "New spot",
+                                             "register-title":  "New spot",
+                                             "edit-title":  "Edit spot",
+                                             "empty":  "You haven\u0027t registered any spots in this facility yet.",
+                                             "status":  "Status",
+                                             "actions":  "Actions",
+                                             "status-values":  {
+                                                                   "AVAILABLE":  "Available",
+                                                                   "OCCUPIED":  "Occupied",
+                                                                   "RESERVED":  "Reserved",
+                                                                   "OUT_OF_SERVICE":  "Out of service"
+                                                               },
+                                             "types":  {
+                                                           "CAR":  "Car",
+                                                           "SUV":  "SUV",
+                                                           "VAN":  "Van",
+                                                           "MOTORCYCLE":  "Motorcycle"
+                                                       },
+                                             "mark-occupied":  "Mark occupied",
+                                             "mark-available":  "Mark available",
+                                             "mark-out-of-service":  "Out of service",
+                                             "return-to-service":  "Return to service",
+                                             "edit":  "Edit spot {code}",
+                                             "edit-tooltip":  "Edit",
+                                             "registered":  "The spot was registered.",
+                                             "updated":  "The spot was updated.",
+                                             "errors":  {
+                                                            "code-taken":  "A spot with that code already exists in this facility.",
+                                                            "failed":  "We couldn\u0027t save the spot. Please try again in a few minutes."
+                                                        }
+                                         }
+                           },
+    "reservations":  {
+                         "navigation":  {
+                                            "reserve":  "Reserve",
+                                            "my-reservations":  "My reservations"
+                                        },
+                         "create":  {
+                                        "title":  "Reserve a space",
+                                        "subtitle":  "Choose the parking facility, time and vehicle for your reservation",
+                                        "loading":  "Loading available parking facilitiesâ€¦",
+                                        "action":  "New reservation"
+                                    },
+                         "my-reservations":  {
+                                                 "title":  "My reservations",
+                                                 "subtitle":  "Review and manage your parking reservations"
+                                             },
+                         "fields":  {
+                                        "facility":  "Parking facility",
+                                        "start":  "Date and time",
+                                        "duration":  "Duration",
+                                        "vehicle":  "Vehicle",
+                                        "estimated-amount":  "Estimated cost"
+                                    },
+                         "form":  {
+                                      "confirm":  "Confirm reservation",
+                                      "created":  "Your reservation was created successfully."
+                                  },
+                         "list":  {
+                                      "loading":  "Loading your reservationsâ€¦",
+                                      "empty":  "You don\u0027t have any reservations yet.",
+                                      "unknown-facility":  "Parking facility unavailable"
+                                  },
+                         "status":  {
+                                        "PENDING":  "Pending",
+                                        "CONFIRMED":  "Confirmed",
+                                        "ACTIVE":  "Active",
+                                        "COMPLETED":  "Completed",
+                                        "CANCELLED":  "Cancelled",
+                                        "EXPIRED":  "Expired"
+                                    },
+                         "cancel":  {
+                                        "button":  "Cancel reservation",
+                                        "title":  "Cancel reservation",
+                                        "message":  "Do you want to cancel reservation {code}?",
+                                        "accept":  "Yes, cancel",
+                                        "success":  "The reservation was cancelled."
+                                    },
+                         "errors":  {
+                                        "no-availability":  "There are no available spaces for the selected vehicle.",
+                                        "invalid-start":  "Select a future date and time.",
+                                        "not-cancellable":  "This reservation can no longer be cancelled.",
+                                        "failed":  "We couldn\u0027t complete the operation. Please try again."
+                                    }
+                     },
+    "access-control":  {
+                           "navigation":  {
+                                              "accesses":  "Accesses"
+                                          },
+                           "title":  "Access control",
+                           "subtitle":  "Register vehicle entries and exits and monitor current occupancy",
+                           "loading":  "Loading access informationâ€¦",
+                           "no-facilities":  "You don\u0027t have any parking facilities available.",
+                           "summary":  {
+                                           "total":  "Total spaces",
+                                           "available":  "Available",
+                                           "occupied":  "Occupied",
+                                           "active-stays":  "Vehicles inside"
+                                       },
+                           "fields":  {
+                                          "type":  "Movement",
+                                          "method":  "Registration method",
+                                          "plate":  "Plate",
+                                          "reservation-code":  "Reservation code",
+                                          "time":  "Date and time",
+                                          "status":  "Status",
+                                          "parking-spot":  "Parking spot"
+                                      },
+                           "types":  {
+                                         "ENTRY":  "Entry",
+                                         "EXIT":  "Exit"
+                                     },
+                           "methods":  {
+                                           "MANUAL":  "Manual",
+                                           "QR_CODE":  "QR code",
+                                           "IOT_SENSOR":  "IoT sensor"
+                                       },
+                           "status":  {
+                                          "IN_PROGRESS":  "In progress",
+                                          "COMPLETED":  "Completed",
+                                          "UNDER_REVIEW":  "Under review",
+                                          "REJECTED":  "Rejected"
+                                      },
+                           "form":  {
+                                        "title":  "Register access",
+                                        "register":  "Register movement",
+                                        "optional":  "Optional"
+                                    },
+                           "movements":  {
+                                             "title":  "Access history",
+                                             "empty":  "There are no access movements registered yet."
+                                         },
+                           "stays":  {
+                                         "title":  "Vehicles currently parked",
+                                         "empty":  "There are no vehicles currently parked.",
+                                         "reassign":  "Reassign space",
+                                         "reassign-title":  "Reassign parking space"
+                                     },
+                           "validation":  {
+                                              "required":  "This field is required."
+                                          },
+                           "messages":  {
+                                            "entry-recorded":  "Vehicle entry was registered.",
+                                            "exit-recorded":  "Vehicle exit was registered.",
+                                            "under-review":  "The vehicle was registered for review.",
+                                            "reassigned":  "The vehicle was reassigned successfully."
+                                        },
+                           "errors":  {
+                                          "invalid-plate-number":  "Enter a valid plate, for example ABC-123.",
+                                          "vehicle-already-inside":  "This vehicle already has an active entry.",
+                                          "no-active-reservation":  "There is no active reservation for this vehicle.",
+                                          "no-availability":  "There are no available spaces for this vehicle.",
+                                          "no-active-stay":  "This vehicle does not have an active entry.",
+                                          "invalid-space":  "The selected space is not available.",
+                                          "failed":  "We couldn\u0027t complete the operation. Please try again."
+                                      }
+                       },
+    "analytics-reporting":  {
+                                "navigation":  {
+                                                   "reports":  "Reports"
+                                               },
+                                "title":  "Reports and analytics",
+                                "subtitle":  "Analyze occupancy, vehicle movements and parking stays",
+                                "loading":  "Loading analytics informationâ€¦",
+                                "no-facilities":  "You don\u0027t have any parking facilities available.",
+                                "select-period":  "Select a report type and period to generate the report.",
+                                "empty":  "There is no information available for the selected period.",
+                                "types":  {
+                                              "OCCUPANCY":  "Occupancy",
+                                              "MOVEMENTS":  "Movements",
+                                              "REVENUE":  "Revenue",
+                                              "STAY_TIME":  "Stay times"
+                                          },
+                                "fields":  {
+                                               "report-type":  "Report type",
+                                               "start-date":  "Start date",
+                                               "end-date":  "End date",
+                                               "entries":  "Entries",
+                                               "exits":  "Exits",
+                                               "average-stay":  "Average stay",
+                                               "revenue":  "Revenue",
+                                               "date":  "Date and time",
+                                               "plate":  "Plate",
+                                               "movement":  "Movement",
+                                               "method":  "Registration method",
+                                               "status":  "Status",
+                                               "entry":  "Entry",
+                                               "exit":  "Exit",
+                                               "duration":  "Duration"
+                                           },
+                                "summary":  {
+                                                "movements":  "Movements",
+                                                "occupancy":  "Average occupancy",
+                                                "stays":  "Parking stays",
+                                                "revenue":  "Revenue"
+                                            },
+                                "actions":  {
+                                                "generate":  "Generate report",
+                                                "export":  "Export CSV"
+                                            },
+                                "occupancy":  {
+                                                  "title":  "Occupancy report"
+                                              },
+                                "movements":  {
+                                                  "title":  "Movement report",
+                                                  "empty":  "There are no movements for the selected period."
+                                              },
+                                "stays":  {
+                                              "title":  "Stay times",
+                                              "empty":  "There are no parking stays for the selected period."
+                                          },
+                                "movement-types":  {
+                                                       "ENTRY":  "Entry",
+                                                       "EXIT":  "Exit"
+                                                   },
+                                "messages":  {
+                                                 "generated":  "The report was generated successfully."
+                                             },
+                                "errors":  {
+                                               "invalid-period":  "Select a valid date range.",
+                                               "failed":  "We couldn\u0027t generate the report. Please try again."
+                                           }
+                            },
+    "monitoring-alerts":  {
+                              "navigation":  {
+                                                 "alerts":  "Alerts"
+                                             },
+                              "title":  "Monitoring and alerts",
+                              "subtitle":  "Track occupancy and handle alerts across your parking facilities",
+                              "loading":  "Loading monitoring informationâ€¦",
+                              "no-facilities":  "You don\u0027t have any parking facilities available.",
+                              "filter":  {
+                                             "zone":  "Zone"
+                                         },
+                              "summary":  {
+                                              "active":  "Active alerts",
+                                              "resolved-today":  "Resolved today"
+                                          },
+                              "fields":  {
+                                             "time":  "Date and time",
+                                             "type":  "Type",
+                                             "severity":  "Severity",
+                                             "value":  "Value",
+                                             "status":  "Status",
+                                             "resolution-time":  "Resolution time",
+                                             "minutes":  "min"
+                                         },
+                              "types":  {
+                                            "CAPACITY_CRITICAL":  "Critical capacity",
+                                            "CAPACITY_NEAR_LIMIT":  "Capacity near limit",
+                                            "STAY_EXCEEDED":  "Stay exceeded",
+                                            "UNRECOGNIZED_PLATE":  "Unrecognized plate",
+                                            "ACCESS_WITHOUT_RESERVATION":  "Access without reservation"
+                                        },
+                              "severity":  {
+                                               "HIGH":  "High",
+                                               "MEDIUM":  "Medium",
+                                               "LOW":  "Low"
+                                           },
+                              "status":  {
+                                             "ACTIVE":  "Active",
+                                             "RESOLVED":  "Resolved",
+                                             "DISMISSED":  "Dismissed"
+                                         },
+                              "list":  {
+                                           "title":  "Alerts",
+                                           "empty":  "There are no alerts registered for this facility.",
+                                           "resolve":  "Resolve"
+                                       },
+                              "messages":  {
+                                               "resolved":  "The alert was resolved."
+                                           },
+                              "errors":  {
+                                             "already-resolved":  "This alert has already been resolved.",
+                                             "failed":  "We couldn\u0027t complete the operation. Please try again."
+                                         }
+                          }
 }

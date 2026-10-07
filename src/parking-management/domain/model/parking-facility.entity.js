@@ -1,7 +1,22 @@
-import {FacilityStatus} from "./facility-status.js";
+
+import {FacilityStatus} from './facility-status.js';
+import {SpotStatus} from './spot-status.js';
 
 export class ParkingFacility {
-    constructor({id = null, operatorProfileId, name, address, latitude = null, longitude = null, hourlyRate, openTime = '00:00', closeTime = '23:59', status = FacilityStatus.ACTIVE, createdAt, spots = []}) {
+    constructor({
+                    id = null,
+                    operatorProfileId,
+                    name,
+                    address,
+                    latitude = null,
+                    longitude = null,
+                    hourlyRate,
+                    openTime = '00:00',
+                    closeTime = '23:59',
+                    status = FacilityStatus.ACTIVE,
+                    createdAt,
+                    spots = []
+                }) {
         this.id = id;
         this.operatorProfileId = operatorProfileId;
         this.name = name;
@@ -21,15 +36,45 @@ export class ParkingFacility {
     }
 
     get availableSpots() {
-        return this.spots.filter(spot => spot.isAvailable).length;
+        return this.spots.filter(
+            spot => spot.status === SpotStatus.AVAILABLE
+        ).length;
+    }
+
+    get occupiedSpots() {
+        return this.spots.filter(
+            spot => spot.status === SpotStatus.OCCUPIED
+        ).length;
+    }
+
+    get reservedSpots() {
+        return this.spots.filter(
+            spot => spot.status === SpotStatus.RESERVED
+        ).length;
+    }
+
+    get maintenanceSpots() {
+        return this.spots.filter(
+            spot => spot.status === SpotStatus.OUT_OF_SERVICE
+        ).length;
     }
 
     get occupancyRate() {
-        return this.totalSpots === 0 ? 0 : Math.round(((this.totalSpots - this.availableSpots) / this.totalSpots) * 100);
+        if (this.totalSpots === 0) return 0;
+
+        return Math.round(
+            this.occupiedSpots / this.totalSpots * 100
+        );
     }
 
     get isActive() {
         return this.status === FacilityStatus.ACTIVE;
+    }
+
+    get isFull() {
+        return this.isActive &&
+            this.totalSpots > 0 &&
+            this.availableSpots === 0;
     }
 
     addSpot(spot) {
