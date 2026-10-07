@@ -1,3 +1,4 @@
+
 export class ResolveAlertCommand {
     constructor({
                     alertId,
@@ -6,6 +7,6 @@ export class ResolveAlertCommand {
                 }) {
         this.alertId = alertId;
         this.resolvedBy = resolvedBy;
-        this.note = note || null;
+        this.note = note?.trim() || null;
     }
 }

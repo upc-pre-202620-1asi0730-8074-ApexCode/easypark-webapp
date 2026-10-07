@@ -1,4 +1,5 @@
-import {Alert} from "../domain/model/alert.entity.js";
+
+import {Alert} from '../domain/model/alert.entity.js';
 
 export class AlertAssembler {
     static toEntityFromResource(resource) {
@@ -19,9 +20,8 @@ export class AlertAssembler {
     }
 
     static toEntitiesFromResponse(response) {
-        if (response.status !== 200) {
-            console.error(`${response.status}, ${response.statusText}`);
-            return [];
+        if (response.status !== 200 || !Array.isArray(response.data)) {
+            throw new Error('Invalid alerts response');
         }
 
         return response.data.map(resource =>
@@ -31,7 +31,7 @@ export class AlertAssembler {
 
     static toResourceFromEntity(alert) {
         return {
-            ...(alert.id !== null ? {id: alert.id} : {}),
+            ...(alert.id != null ? {id: alert.id} : {}),
             parkingFacilityId: alert.parkingFacilityId,
             alertType: alert.type,
             severity: alert.severity,

@@ -1,9 +1,7 @@
 const carPlatePattern = /^([A-Z0-9]{3})-?([0-9]{3})$/;
 const motorcyclePlatePattern = /^([0-9]{4})-?([A-Z]{2})$/;
 
-/**
- * Objeto de valor de la placa peruana. Siempre se conserva normalizada (ABC-123 para autos, 1234-AB para motos), porque es el dato con el que el personal identifica un vehículo.
- */
+
 export class PlateNumber {
     constructor(value) {
         const normalized = PlateNumber.normalize(value);

@@ -19,9 +19,7 @@ const facilityId = computed(() => Number(route.params.facilityId));
 const operatorProfileId = computed(() => profilesStore.currentProfile?.id ?? null);
 const facility = computed(() => store.currentFacility);
 
-/**
- * Asegura las instalaciones del operador (por si se entra directo a esta URL) y selecciona la actual.
- */
+
 watch([operatorProfileId, facilityId], async ([id]) => {
   if (!id) return;
   if (!store.facilitiesLoaded) await store.fetchFacilities(id);

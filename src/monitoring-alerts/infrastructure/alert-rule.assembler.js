@@ -1,4 +1,5 @@
-import {AlertRule} from "../domain/model/alert-rule.entity.js";
+
+import {AlertRule} from '../domain/model/alert-rule.entity.js';
 
 export class AlertRuleAssembler {
     static toEntityFromResource(resource) {
@@ -14,9 +15,8 @@ export class AlertRuleAssembler {
     }
 
     static toEntitiesFromResponse(response) {
-        if (response.status !== 200) {
-            console.error(`${response.status}, ${response.statusText}`);
-            return [];
+        if (response.status !== 200 || !Array.isArray(response.data)) {
+            throw new Error('Invalid alert rules response');
         }
 
         return response.data.map(resource =>
@@ -26,7 +26,7 @@ export class AlertRuleAssembler {
 
     static toResourceFromEntity(rule) {
         return {
-            ...(rule.id !== null ? {id: rule.id} : {}),
+            ...(rule.id != null ? {id: rule.id} : {}),
             parkingFacilityId: rule.parkingFacilityId,
             alertType: rule.type,
             severity: rule.severity,

@@ -370,6 +370,72 @@
       "failed": "We couldn't complete the operation. Please try again."
     }
   },
+  "analytics-reporting": {
+    "navigation": {
+      "reports": "Reports"
+    },
+    "title": "Reports and analytics",
+    "subtitle": "Analyze occupancy, vehicle movements and parking stays",
+    "loading": "Loading analytics information…",
+    "no-facilities": "You don't have any parking facilities available.",
+    "select-period": "Select a report type and period to generate the report.",
+    "empty": "There is no information available for the selected period.",
+    "types": {
+      "OCCUPANCY": "Occupancy",
+      "MOVEMENTS": "Movements",
+      "REVENUE": "Revenue",
+      "STAY_TIME": "Stay times"
+    },
+    "fields": {
+      "report-type": "Report type",
+      "start-date": "Start date",
+      "end-date": "End date",
+      "entries": "Entries",
+      "exits": "Exits",
+      "average-stay": "Average stay",
+      "revenue": "Revenue",
+      "date": "Date and time",
+      "plate": "Plate",
+      "movement": "Movement",
+      "method": "Registration method",
+      "status": "Status",
+      "entry": "Entry",
+      "exit": "Exit",
+      "duration": "Duration"
+    },
+    "summary": {
+      "movements": "Movements",
+      "occupancy": "Average occupancy",
+      "stays": "Parking stays",
+      "revenue": "Revenue"
+    },
+    "actions": {
+      "generate": "Generate report",
+      "export": "Export CSV"
+    },
+    "occupancy": {
+      "title": "Occupancy report"
+    },
+    "movements": {
+      "title": "Movement report",
+      "empty": "There are no movements for the selected period."
+    },
+    "stays": {
+      "title": "Stay times",
+      "empty": "There are no parking stays for the selected period."
+    },
+    "movement-types": {
+      "ENTRY": "Entry",
+      "EXIT": "Exit"
+    },
+    "messages": {
+      "generated": "The report was generated successfully."
+    },
+    "errors": {
+      "invalid-period": "Select a valid date range.",
+      "failed": "We couldn't generate the report. Please try again."
+    }
+  },
   "monitoring-alerts": {
     "navigation": {
       "alerts": "Alerts"

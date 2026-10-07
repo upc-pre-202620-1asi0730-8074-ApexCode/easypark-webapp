@@ -1,9 +1,5 @@
-const alerts =
-    () => import('./views/alerts.vue');
 
-const adminRoles = [
-    'OPERATOR_ADMIN'
-];
+const alerts = () => import('./views/alerts.vue');
 
 const monitoringAlertsRoutes = [
     {
@@ -12,7 +8,7 @@ const monitoringAlertsRoutes = [
         component: alerts,
         meta: {
             title: 'Monitoring and Alerts',
-            roles: adminRoles
+            roles: ['OPERATOR_ADMIN']
         }
     }
 ];

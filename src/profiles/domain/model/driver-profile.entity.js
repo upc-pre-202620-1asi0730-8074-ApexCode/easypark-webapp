@@ -14,9 +14,7 @@ export class DriverProfile extends Profile {
         return this.vehicles.some(vehicle => vehicle.plateNumber.equals(plateNumber));
     }
 
-    /**
-     * Agrega un vehículo al conductor; el primero que se registra queda como predeterminado.
-     */
+
     addVehicle(vehicle) {
         vehicle.isDefault = this.vehicles.length === 0;
         this.vehicles.push(vehicle);
@@ -34,9 +32,7 @@ export class DriverProfile extends Profile {
         return changed;
     }
 
-    /**
-     * Quita un vehículo y, si era el predeterminado, promueve al siguiente. La placa queda sin propietario porque las reservas y accesos pasados la referencian.
-     */
+
     removeVehicle(vehicleId) {
         const index = this.vehicles.findIndex(vehicle => vehicle.id === vehicleId);
         if (index < 0) return { removed: null, changed: [] };

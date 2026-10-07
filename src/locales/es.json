@@ -370,6 +370,72 @@
       "failed": "No pudimos completar la operación. Inténtalo nuevamente."
     }
   },
+  "analytics-reporting": {
+    "navigation": {
+      "reports": "Reportes"
+    },
+    "title": "Reportes y analítica",
+    "subtitle": "Analiza la ocupación, los movimientos de vehículos y las permanencias",
+    "loading": "Cargando información analítica…",
+    "no-facilities": "No tienes estacionamientos disponibles.",
+    "select-period": "Selecciona un tipo de reporte y un periodo para generar el reporte.",
+    "empty": "No existe información disponible para el periodo seleccionado.",
+    "types": {
+      "OCCUPANCY": "Ocupación",
+      "MOVEMENTS": "Movimientos",
+      "REVENUE": "Ingresos",
+      "STAY_TIME": "Tiempos de permanencia"
+    },
+    "fields": {
+      "report-type": "Tipo de reporte",
+      "start-date": "Fecha inicial",
+      "end-date": "Fecha final",
+      "entries": "Ingresos",
+      "exits": "Salidas",
+      "average-stay": "Permanencia promedio",
+      "revenue": "Ingresos",
+      "date": "Fecha y hora",
+      "plate": "Placa",
+      "movement": "Movimiento",
+      "method": "Método de registro",
+      "status": "Estado",
+      "entry": "Ingreso",
+      "exit": "Salida",
+      "duration": "Duración"
+    },
+    "summary": {
+      "movements": "Movimientos",
+      "occupancy": "Ocupación promedio",
+      "stays": "Permanencias",
+      "revenue": "Ingresos"
+    },
+    "actions": {
+      "generate": "Generar reporte",
+      "export": "Exportar CSV"
+    },
+    "occupancy": {
+      "title": "Reporte de ocupación"
+    },
+    "movements": {
+      "title": "Reporte de movimientos",
+      "empty": "No existen movimientos para el periodo seleccionado."
+    },
+    "stays": {
+      "title": "Tiempos de permanencia",
+      "empty": "No existen permanencias para el periodo seleccionado."
+    },
+    "movement-types": {
+      "ENTRY": "Ingreso",
+      "EXIT": "Salida"
+    },
+    "messages": {
+      "generated": "El reporte fue generado correctamente."
+    },
+    "errors": {
+      "invalid-period": "Selecciona un rango de fechas válido.",
+      "failed": "No pudimos generar el reporte. Inténtalo nuevamente."
+    }
+  },
   "monitoring-alerts": {
     "navigation": {
       "alerts": "Alertas"

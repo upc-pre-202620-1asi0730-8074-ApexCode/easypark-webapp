@@ -2,19 +2,25 @@
 import {computed, ref, watch} from "vue";
 import {useRoute} from "vue-router";
 import {useI18n} from "vue-i18n";
+
 import LanguageSwitcher from "./language-switcher.vue";
 import AuthenticationSection from "../../../iam/presentation/components/authentication-section.vue";
+
 import useIamStore from "../../../iam/application/iam.store.js";
 import useProfilesStore from "../../../profiles/application/profiles.store.js";
 
 const {t} = useI18n();
+
 const route = useRoute();
+
 const iamStore = useIamStore();
 const profilesStore = useProfilesStore();
 
 const drawer = ref(false);
 
-const myProfileRoute = {name: 'profiles-my-profile'};
+const myProfileRoute = {
+  name: 'profiles-my-profile'
+};
 
 const driverNavigation = [
   {label: 'profiles.navigation.profile', to: myProfileRoute},
@@ -26,16 +32,27 @@ const driverNavigation = [
 const operatorNavigation = [
   {
     label: 'parking-management.navigation.facilities',
-    to: {name: 'parking-management-facilities'}
+    to: {
+      name: 'parking-management-facilities'
+    }
   },
   {
     label: 'access-control.navigation.accesses',
-    to: {name: 'access-control-accesses'}
+    to: {
+      name: 'access-control-accesses'
+    }
   },
   {
     label: 'monitoring-alerts.navigation.alerts',
-    to: {name: 'monitoring-alerts-alerts'},
-    roles: ['OPERATOR_ADMIN']
+    to: {
+      name: 'monitoring-alerts-alerts'
+    }
+  },
+  {
+    label: 'analytics-reporting.navigation.reports',
+    to: {
+      name: 'analytics-reporting-reports'
+    }
   }
 ];
 
@@ -59,35 +76,39 @@ watch(
         profilesStore.clear();
       }
     },
-    {immediate: true}
+    {
+      immediate: true
+    }
 );
 
 const displayName = computed(
-    () => profilesStore.currentProfile?.shortName ?? ''
+    () =>
+        profilesStore.currentProfile
+            ?.shortName ?? ''
 );
 
 const photoUrl = computed(
-    () => profilesStore.currentProfile?.photoUrl ?? ''
+    () =>
+        profilesStore.currentProfile
+            ?.photoUrl ?? ''
 );
 
 const isStandalone = computed(
-    () => route.matched.some(
-        record => record.meta['standalone']
-    )
+    () =>
+        route.matched.some(
+            record =>
+                record.meta['standalone']
+        )
 );
 
 const navigationItems = computed(() => {
-  if (!iamStore.isSignedIn) return [];
+  if (!iamStore.isSignedIn) {
+    return [];
+  }
 
-  const items = iamStore.isOperator
+  return iamStore.isOperator
       ? operatorNavigation
       : driverNavigation;
-
-  return items.filter(
-      item =>
-          !item.roles ||
-          item.roles.includes(iamStore.currentRole)
-  );
 });
 
 function toggleDrawer() {
@@ -97,6 +118,7 @@ function toggleDrawer() {
 
 <template>
   <pv-toast position="top-right"/>
+
   <pv-confirm-dialog/>
 
   <router-view v-if="isStandalone"/>
@@ -105,6 +127,7 @@ function toggleDrawer() {
     <a
         class="skip-link"
         href="#main-content">
+
       {{ t('layout.skip-to-content') }}
     </a>
 
@@ -116,12 +139,17 @@ function toggleDrawer() {
             icon="pi pi-bars"
             text
             rounded
-            :aria-label="t('layout.open-menu')"
+            :aria-label="
+              t(
+                'layout.open-menu'
+              )
+            "
             @click="toggleDrawer"/>
 
         <router-link
             :to="{name: 'home'}"
             class="brand">
+
           <span
               class="brand-mark"
               aria-hidden="true">
@@ -129,7 +157,11 @@ function toggleDrawer() {
 
           <span>
             EasyPark
-            <template v-if="iamStore.isOperator">
+
+            <template
+                v-if="
+                  iamStore.isOperator
+                ">
               · Admin
             </template>
           </span>
@@ -138,14 +170,24 @@ function toggleDrawer() {
 
       <nav
           class="app-nav"
-          :aria-label="t('layout.main-navigation')">
+          :aria-label="
+            t(
+              'layout.main-navigation'
+            )
+          ">
 
         <router-link
-            v-for="item in navigationItems"
+            v-for="
+              item
+              in navigationItems
+            "
             :key="item.label"
             :to="item.to"
             class="app-nav__link"
-            active-class="app-nav__link--active">
+            active-class="
+              app-nav__link--active
+            ">
+
           {{ t(item.label) }}
         </router-link>
       </nav>
@@ -154,24 +196,42 @@ function toggleDrawer() {
         <language-switcher/>
 
         <authentication-section
-            :display-name="displayName"
-            :photo-url="photoUrl"
-            :items="accountItems"/>
+            :display-name="
+              displayName
+            "
+            :photo-url="
+              photoUrl
+            "
+            :items="
+              accountItems
+            "/>
       </div>
     </header>
 
     <pv-drawer
         v-model:visible="drawer"
-        :header="t('layout.main-navigation')">
+        :header="
+          t(
+            'layout.main-navigation'
+          )
+        ">
 
       <nav class="app-drawer-nav">
         <router-link
-            v-for="item in navigationItems"
+            v-for="
+              item
+              in navigationItems
+            "
             :key="item.label"
             :to="item.to"
             class="app-drawer-nav__link"
-            active-class="app-nav__link--active"
-            @click="drawer = false">
+            active-class="
+              app-nav__link--active
+            "
+            @click="
+              drawer = false
+            ">
+
           {{ t(item.label) }}
         </router-link>
       </nav>
@@ -180,6 +240,7 @@ function toggleDrawer() {
     <main
         id="main-content"
         class="app-main">
+
       <router-view/>
     </main>
   </template>

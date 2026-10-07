@@ -16,7 +16,7 @@
       "role": "OPERATOR_ADMIN",
       "status": "ACTIVE",
       "createdAt": "2026-02-03T13:00:00.000Z",
-      "lastLoginAt": "2026-10-06T04:01:35.488Z"
+      "lastLoginAt": "2026-10-07T01:35:50.327Z"
     }
   ],
   "profiles": [
@@ -117,6 +117,8 @@
   "reservations": [],
   "access-movements": [],
   "parking-stays": [],
+  "reports": [],
+  "occupancy-metrics": [],
   "alert-rules": [
     {
       "id": 1,
@@ -166,13 +168,13 @@
       "parkingFacilityId": 1,
       "alertType": "CAPACITY_CRITICAL",
       "severity": "HIGH",
-      "status": "ACTIVE",
+      "status": "RESOLVED",
       "contextValue": 0.95,
       "parkingStayId": null,
       "accessMovementId": null,
       "createdAt": "2026-10-05T09:40:00.000Z",
-      "resolvedAt": null,
-      "resolvedBy": null,
+      "resolvedAt": "2026-10-07T01:37:20.192Z",
+      "resolvedBy": 2,
       "note": null
     },
     {
