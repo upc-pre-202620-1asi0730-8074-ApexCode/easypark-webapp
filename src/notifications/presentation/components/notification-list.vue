@@ -5,11 +5,12 @@ import {useToast} from "primevue/usetoast";
 import useNotificationsStore from "../../application/notifications.store.js";
 import {MarkNotificationReadCommand} from "../../domain/model/mark-notification-read.command.js";
 import {
-  NOTIFICATION_TONE_BY_TYPE,
-  NotificationType
-} from "../../domain/model/notification-type.js";
+  formatNotificationTime,
+  notificationIcon,
+  notificationTone
+} from "../notification-icons.js";
 
-defineProps({
+const props = defineProps({
   title: {
     type: String,
     required: true
@@ -17,19 +18,14 @@ defineProps({
   notifications: {
     type: Array,
     required: true
+  },
+  /**
+   * Groups older than yesterday mix several days, so each row also shows its date.
+   */
+  showDate: {
+    type: Boolean,
+    default: false
   }
-});
-
-const NOTIFICATION_ICON_BY_TYPE = Object.freeze({
-  [NotificationType.TIME_REMAINING]: 'pi pi-clock',
-  [NotificationType.STAY_EXPIRED]: 'pi pi-exclamation-circle',
-  [NotificationType.ALERT_RAISED]: 'pi pi-exclamation-triangle',
-  [NotificationType.CHECK_IN_CONFIRMED]: 'pi pi-check-circle',
-  [NotificationType.CHECK_OUT_CONFIRMED]: 'pi pi-car',
-  [NotificationType.RESERVATION_CONFIRMED]: 'pi pi-calendar',
-  [NotificationType.RESERVATION_REMINDER]: 'pi pi-bell'
-
-
 });
 
 const {t, locale} = useI18n();
@@ -47,46 +43,23 @@ function typeOf(notification) {
   return templateOf(notification)?.type ?? null;
 }
 
-function toneOf(notification) {
-  const type = typeOf(notification);
-
-  return type
-      ? NOTIFICATION_TONE_BY_TYPE[type] ?? 'info'
-      : 'info';
-}
-
-function iconOf(notification) {
-  const type = typeOf(notification);
-
-  return type
-      ? NOTIFICATION_ICON_BY_TYPE[type] ?? 'pi pi-bell'
-      : 'pi pi-bell';
-}
-
-
 function formatTime(value) {
-  if (!value) return '—';
+  const time = formatNotificationTime(value, locale.value);
 
-  const parts = new Intl.DateTimeFormat(
+  if (!props.showDate || !value) return time;
+
+  const date = new Intl.DateTimeFormat(
       locale.value,
-      {
-        hour: 'numeric',
-        minute: '2-digit',
-        hour12: true
-      }
-  ).formatToParts(new Date(value));
+      {day: 'numeric', month: 'short'}
+  ).format(new Date(value));
 
-  const partOf = type =>
-      parts.find(part => part.type === type)?.value ?? '';
-
-  const dayPeriod = partOf('dayPeriod')
-      .replace(/[.\s]/g, '')
-      .toUpperCase();
-
-  return `${partOf('hour')}:${partOf('minute')} ${dayPeriod}`;
+  return `${date} · ${time}`;
 }
 
-
+/**
+ * A screen reader cannot perceive the unread state from the title weight and
+ * the dot alone: type, status and channel are announced as one hidden line.
+ */
 function metadataOf(notification) {
   const type = typeOf(notification);
 
@@ -150,10 +123,10 @@ async function onItemClick(notification) {
           @keydown.enter.prevent="onItemClick(notification)">
 
         <span
-            class="notification-item__icon"
-            :class="`notification-item__icon--${toneOf(notification)}`"
+            class="icon-chip"
+            :class="`icon-chip--${notificationTone(typeOf(notification))}`"
             aria-hidden="true">
-          <i :class="iconOf(notification)"/>
+          <i :class="notificationIcon(typeOf(notification))"></i>
         </span>
 
         <div class="notification-item__body">
@@ -166,11 +139,19 @@ async function onItemClick(notification) {
           </p>
         </div>
 
-        <time
-            class="notification-item__time"
-            :datetime="notification.createdAt">
-          {{ formatTime(notification.createdAt) }}
-        </time>
+        <div class="notification-item__meta">
+          <time
+              class="notification-item__time"
+              :datetime="notification.createdAt">
+            {{ formatTime(notification.createdAt) }}
+          </time>
+
+          <span
+              v-if="notification.isUnread"
+              class="status-dot status-dot--info"
+              aria-hidden="true">
+          </span>
+        </div>
 
         <span class="sr-only">
           {{ metadataOf(notification) }}
@@ -186,9 +167,7 @@ async function onItemClick(notification) {
 }
 
 .notification-group__title {
-  margin: 0;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--ep-border);
+  margin: 0 0 8px;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -197,55 +176,36 @@ async function onItemClick(notification) {
 }
 
 .notification-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .notification-item {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: start;
+  display: flex;
+  align-items: flex-start;
   gap: 14px;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--ep-border);
-}
-
-.notification-item:last-child {
-  border-bottom: none;
-  padding-bottom: 4px;
+  padding: 14px 16px;
+  border: 1px solid var(--ep-border);
+  border-radius: 12px;
+  background: var(--ep-surface);
 }
 
 .notification-item--unread {
+  border-color: #bfdbfe;
+  background: var(--ep-primary-tint);
   cursor: pointer;
 }
 
-.notification-item__icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  font-size: 16px;
-}
-
-.notification-item__icon--info {
-  color: var(--ep-primary);
-  background: var(--ep-primary-soft);
-}
-
-.notification-item__icon--success {
-  color: var(--ep-success-text);
-  background: var(--ep-success-bg);
-}
-
-.notification-item__icon--warning {
-  color: var(--ep-warning-text);
-  background: var(--ep-warning-bg);
+.notification-item--unread:hover {
+  border-color: var(--ep-primary);
 }
 
 .notification-item__body {
+  flex: 1;
   min-width: 0;
 }
 
@@ -270,21 +230,17 @@ async function onItemClick(notification) {
   color: var(--ep-text-secondary);
 }
 
+.notification-item__meta {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
 .notification-item__time {
   font-size: 12px;
   color: var(--ep-text-secondary);
   white-space: nowrap;
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
 }
 </style>

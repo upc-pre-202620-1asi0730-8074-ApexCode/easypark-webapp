@@ -99,41 +99,93 @@ async function save() {
 
 <template>
   <pv-dialog v-model:visible="isVisible" :header="labels.rulesTitle" modal :style="{width:'min(560px, 96vw)'}">
-    <form class="rule-dialog" @submit.prevent="save">
-      <label for="rule-facility" class="form-label">{{ labels.facility }}</label>
-      <pv-select input-id="rule-facility" v-model="selectedFacility" :options="facilities"
-                 option-label="label" option-value="value" class="rule-dialog__field"/>
-      <div v-for="type in types" :key="type" class="rule-dialog__row">
-        <div class="rule-dialog__name">
-          <label :for="`rule-${type}`" class="form-label">{{ ruleLabel(type) }}</label>
-          <label class="rule-dialog__enabled">
-            <pv-checkbox v-model="form[type].enabled" binary/>
-            {{ labels.enabled }}
-          </label>
+    <form id="alert-rules-form" class="rule-dialog" @submit.prevent="save">
+      <div class="form-field">
+        <label for="rule-facility" class="form-label">{{ labels.facility }}</label>
+        <pv-select input-id="rule-facility" v-model="selectedFacility" :options="facilities"
+                   option-label="label" option-value="value" class="rule-dialog__field"/>
+      </div>
+      <div class="rule-dialog__rules">
+        <div v-for="type in types" :key="type" class="rule-dialog__row"
+             :class="{ 'rule-dialog__row--disabled': !form[type].enabled }">
+          <div class="rule-dialog__name">
+            <label :for="`rule-${type}`" class="form-label">{{ ruleLabel(type) }}</label>
+            <label class="rule-dialog__enabled">
+              <pv-checkbox v-model="form[type].enabled" binary/>
+              {{ labels.enabled }}
+            </label>
+          </div>
+          <pv-input-number :input-id="`rule-${type}`" v-model="form[type].threshold"
+                           :min="0" :max="type === AlertType.STAY_EXCEEDED ? 100000 : 100"
+                           :min-fraction-digits="0" :max-fraction-digits="0"
+                           class="rule-dialog__number"/>
         </div>
-        <pv-input-number :input-id="`rule-${type}`" v-model="form[type].threshold"
-                         :min="0" :max="type === AlertType.STAY_EXCEEDED ? 100000 : 100"
-                         :min-fraction-digits="0" :max-fraction-digits="0"
-                         class="rule-dialog__number"/>
       </div>
-      <p v-if="errorMessage" class="rule-dialog__error" role="alert">{{ errorMessage }}</p>
-      <div class="rule-dialog__actions">
-        <pv-button :label="labels.cancel" severity="secondary" text type="button"
-                   :disabled="busy" @click="isVisible = false"/>
-        <pv-button :label="labels.saveRules" icon="pi pi-check" type="submit" :loading="busy"/>
-      </div>
+      <pv-message v-if="errorMessage" severity="error" role="alert">{{ errorMessage }}</pv-message>
     </form>
+    <template #footer>
+      <pv-button :label="labels.cancel" severity="secondary" outlined type="button"
+                 :disabled="busy" @click="isVisible = false"/>
+      <pv-button :label="labels.saveRules" icon="pi pi-check" type="submit" form="alert-rules-form" :loading="busy"/>
+    </template>
   </pv-dialog>
 </template>
 
 <style scoped>
-.rule-dialog {display:flex;flex-direction:column;gap:12px}
-.rule-dialog__field {width:100%}
-.rule-dialog__row {display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px solid var(--ep-border)}
-.rule-dialog__name {display:flex;flex-direction:column;gap:10px}
-.rule-dialog__enabled {display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ep-text-secondary)}
-.rule-dialog__number {width:128px;flex:0 0 128px}
-.rule-dialog__error {color:#dc2626;font-size:13px}
-.rule-dialog__actions {display:flex;justify-content:flex-end;gap:10px;margin-top:8px}
-@media(max-width:500px){.rule-dialog__number {width:100px;flex-basis:100px}}
+.rule-dialog {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.rule-dialog__field {
+  width: 100%;
+}
+
+.rule-dialog__rules {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.rule-dialog__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid var(--ep-border);
+  border-radius: 12px;
+}
+
+.rule-dialog__row--disabled {
+  background: var(--ep-page);
+}
+
+.rule-dialog__name {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rule-dialog__enabled {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--ep-text-secondary);
+}
+
+.rule-dialog__number {
+  width: 128px;
+  flex: 0 0 128px;
+}
+
+@media (max-width: 500px) {
+  .rule-dialog__number {
+    width: 100px;
+    flex-basis: 100px;
+  }
+}
 </style>
