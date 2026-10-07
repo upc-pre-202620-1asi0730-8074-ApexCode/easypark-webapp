@@ -22,6 +22,7 @@ defineProps({
 
 const NOTIFICATION_ICON_BY_TYPE = Object.freeze({
   [NotificationType.TIME_REMAINING]: 'pi-clock',
+  [NotificationType.STAY_EXPIRED]: 'pi-exclamation-circle',
 
 });
 
