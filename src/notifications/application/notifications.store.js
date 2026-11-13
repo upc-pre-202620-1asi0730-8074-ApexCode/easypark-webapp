@@ -245,10 +245,7 @@ const useNotificationsStore = defineStore('notifications', () => {
         ].sort(sortByNewestFirst);
     }
 
-    /**
-     * One candidate per rule that fired, each carrying exactly one source
-     * foreign key so the dedupe key stays total across collections.
-     */
+
     function buildCandidates(context) {
         const onlySource = (type, source) => ({
             type,

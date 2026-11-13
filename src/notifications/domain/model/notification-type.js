@@ -8,7 +8,6 @@ export const NotificationType = Object.freeze({
     ALERT_RAISED: 'ALERT_RAISED'
 });
 
-
 export const NOTIFICATION_TONE_BY_TYPE = Object.freeze({
     [NotificationType.RESERVATION_CONFIRMED]: 'info',
     [NotificationType.RESERVATION_REMINDER]: 'info',

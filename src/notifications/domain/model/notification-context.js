@@ -5,6 +5,7 @@ import {AlertType} from "../../../monitoring-alerts/domain/model/alert-type.js";
 
 import {NotificationPayload} from "./notification-payload.js";
 
+
 export const TIME_REMAINING_NOTICE_MINUTES = 30;
 export const RESERVATION_REMINDER_WINDOW_MINUTES = 60;
 
@@ -54,7 +55,11 @@ export class NotificationContext {
         ) ?? null;
     }
 
-
+    /**
+     * Stays of the driver: reached through `entryMovementId` → movement
+     * `vehicleId` ∈ the driver's vehicles. Every stay rule below is scoped by
+     * this set, never by a bare id from another collection.
+     */
     driverStays() {
         const vehicleIds = this.driverVehicleIds();
 
@@ -102,7 +107,6 @@ export class NotificationContext {
         return this.driverStays().filter(stay => !stay.isOpen);
     }
 
-
     driverAlerts() {
         const stayIds = new Set(
             this.driverStays().map(stay => stay.id)
@@ -124,6 +128,7 @@ export class NotificationContext {
 
         return rule?.threshold ?? 480;
     }
+
 
     openStaysApproachingLimit() {
         const allowed = this.allowedStayMinutes();
@@ -161,8 +166,7 @@ export class NotificationContext {
             ? null
             : this.alerts.find(item => item.id === alertId) ?? null;
 
-        // Display values of an alert travel through its stay; the payload
-        // foreign key stays `alertId` alone so the source remains unambiguous.
+
         const stayForDisplay = stay ?? (alert
             ? this.stays.find(item => item.id === alert.parkingStayId) ?? null
             : null);

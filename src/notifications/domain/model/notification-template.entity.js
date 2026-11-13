@@ -2,6 +2,7 @@ import {Notification} from "./notification.entity.js";
 import {NotificationChannel} from "./notification-channel.js";
 import {NotificationStatus} from "./notification-status.js";
 
+
 export class NotificationTemplate {
     constructor({
                     id = null,
