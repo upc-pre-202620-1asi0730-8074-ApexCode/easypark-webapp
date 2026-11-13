@@ -3,16 +3,16 @@ import {useI18n} from "vue-i18n";
 import LanguageSwitcher from "../../../shared/presentation/components/language-switcher.vue";
 
 defineProps({
-  title: { type: String, required: true },
-  subtitle: { type: String, required: true }
+  title: {type: String, required: true},
+  subtitle: {type: String, required: true}
 });
 
-const { t } = useI18n();
+const {t} = useI18n();
 
 const features = [
-  { key: 'find', icon: 'pi pi-map-marker' },
-  { key: 'control', icon: 'pi pi-arrow-right-arrow-left' },
-  { key: 'insight', icon: 'pi pi-chart-bar' }
+  {key: 'find', icon: 'pi pi-map-marker'},
+  {key: 'control', icon: 'pi pi-arrow-right-arrow-left'},
+  {key: 'insight', icon: 'pi pi-chart-bar'}
 ];
 </script>
 
@@ -20,42 +20,93 @@ const features = [
   <div class="authentication-page">
     <aside class="authentication-brand">
       <span class="authentication-brand__logo">
-        <span class="authentication-brand__mark" aria-hidden="true"></span>
+        <span
+            class="authentication-brand__mark"
+            aria-hidden="true">
+        </span>
+
         <span>EasyPark</span>
       </span>
 
       <div class="authentication-brand__pitch">
-        <p class="authentication-brand__eyebrow">{{ t('iam.brand.eyebrow') }}</p>
-        <p class="authentication-brand__tagline">{{ t('iam.brand.tagline') }}</p>
+        <p class="authentication-brand__eyebrow">
+          {{ t('iam.brand.eyebrow') }}
+        </p>
+
+        <p class="authentication-brand__tagline">
+          {{ t('iam.brand.tagline') }}
+        </p>
 
         <ul class="authentication-brand__features">
-          <li v-for="feature in features" :key="feature.key" class="authentication-brand__feature">
-            <span class="authentication-brand__icon" aria-hidden="true"><i :class="feature.icon"></i></span>
+          <li
+              v-for="feature in features"
+              :key="feature.key"
+              class="authentication-brand__feature">
+
+            <span
+                class="authentication-brand__icon"
+                aria-hidden="true">
+
+              <i :class="feature.icon"></i>
+            </span>
+
             <span class="authentication-brand__feature-text">
-              <strong>{{ t(`iam.brand.features.${feature.key}.title`) }}</strong>
-              <span>{{ t(`iam.brand.features.${feature.key}.description`) }}</span>
+              <strong>
+                {{
+                  t(
+                      `iam.brand.features.${feature.key}.title`
+                  )
+                }}
+              </strong>
+
+              <span>
+                {{
+                  t(
+                      `iam.brand.features.${feature.key}.description`
+                  )
+                }}
+              </span>
             </span>
           </li>
         </ul>
       </div>
 
-      <p class="authentication-brand__footer">© 2026 EasyPark</p>
+      <p class="authentication-brand__footer">
+        © 2026 EasyPark
+      </p>
     </aside>
 
     <main class="authentication-main">
       <div class="authentication-main__top">
         <span class="brand authentication-main__brand">
-          <span class="brand-mark" aria-hidden="true"></span>
+          <span
+              class="brand-mark"
+              aria-hidden="true">
+          </span>
+
           <span>EasyPark</span>
         </span>
+
         <language-switcher/>
       </div>
 
-      <section class="authentication-card" aria-labelledby="authentication-title">
+      <section
+          class="authentication-card"
+          aria-labelledby="authentication-title">
+
         <header class="authentication-card__header">
-          <h1 id="authentication-title" class="authentication-card__title">{{ title }}</h1>
-          <p class="authentication-card__subtitle">{{ subtitle }}</p>
+          <h1
+              id="authentication-title"
+              class="authentication-card__title">
+
+            {{ title }}
+          </h1>
+
+          <p class="authentication-card__subtitle">
+            {{ subtitle }}
+          </p>
         </header>
+
         <slot/>
       </section>
     </main>
@@ -65,7 +116,9 @@ const features = [
 <style scoped>
 .authentication-page {
   display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  grid-template-columns:
+      minmax(0, 5fr)
+      minmax(0, 6fr);
   min-height: 100vh;
   background: var(--ep-surface);
 }
@@ -76,7 +129,12 @@ const features = [
   justify-content: space-between;
   gap: 40px;
   padding: 48px 56px;
-  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  background:
+      linear-gradient(
+          135deg,
+          #2563eb,
+          #1d4ed8
+      );
   color: #ffffff;
 }
 
@@ -192,7 +250,11 @@ const features = [
   border: 1px solid var(--ep-border);
   border-radius: 16px;
   background: var(--ep-surface);
-  box-shadow: var(--ep-shadow-md);
+  box-shadow:
+      var(
+          --ep-shadow-md,
+          0 16px 36px rgba(15, 23, 42, 0.12)
+      );
 }
 
 .authentication-card__header {
@@ -215,7 +277,8 @@ const features = [
 
 @media (max-width: 1023px) {
   .authentication-page {
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns:
+        minmax(0, 1fr);
   }
 
   .authentication-brand {
