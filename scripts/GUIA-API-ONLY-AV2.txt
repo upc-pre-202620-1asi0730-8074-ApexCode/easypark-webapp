@@ -1,0 +1,18 @@
+EasyPark - Guia para despues de instalar los cambios
+
+1) Esta rama se basa en main o develop (opcion -BaseBranch); no mezcla automaticamente features divergentes.
+2) Solo la API de Render puede guardar usuarios, reservas, accesos, alertas y reportes.
+3) La sesion se conserva SOLO EN MEMORIA: refrescar la pagina requiere volver a ingresar.
+4) Configurar CORS EN RENDER (no en Firebase) con la variable:
+   Cors__AllowedOrigins=https://easypark-5ffb2.web.app,https://easypark-5ffb2.firebaseapp.com,http://localhost:5173
+5) Verificar en el navegador (F12 -> Network) POST /authentication/sign-in,
+   POST /reservations, PUT /reservations/{id}, POST /access-movements y PUT /parking-stays/{id}.
+6) La base de datos MYSQL es responsabilidad del backend (ConnectionStrings__DefaultConnection).
+7) NO se modifico ni desplego el backend. Su API publica debe devolver /health/ready con database=connected.
+8) Esta version elimina las escrituras de reservas/accesos por mÃºltiples llamadas del navegador.
+9) Pendiente de QA manual: IAM, roles, perfiles, vehiculos, estacionamientos,
+   alertas, notificaciones, analitica, idiomas, responsive y persistencia real.
+10) Si toda la QA pasa, haz commit/push de ESTA RAMA, PR a develop y despues a main.
+    No borres las otras ramas sin revisarlas ni fusiones cambios divergentes a ciegas.
+11) El backend debe encargarse de generar notificaciones; el frontend ya no las simula.
+    Analitica: la creacion de reportes/metricas usa el input minimo que acepta el API.

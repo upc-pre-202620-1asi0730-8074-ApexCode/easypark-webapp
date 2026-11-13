@@ -1,28 +1,15 @@
-const sessionKey = 'easypark.session';
+let activeSession = null;
 
-/**
- * Guarda la sesión en localStorage si la persona eligió «Recordarme»; en caso contrario, en sessionStorage hasta cerrar la pestaña.
- */
+// La sesion solo existe en memoria. NO se usa localStorage, sessionStorage, indexedDB ni JSON.
+// No persiste al refrescar la pagina; volver a autenticarse es intencional.
 export class SessionRepository {
-    static save(session, remember) {
-        this.clear();
-        const storage = remember ? localStorage : sessionStorage;
-        storage.setItem(sessionKey, JSON.stringify(session));
+    static save(session, _remember = false) {
+        activeSession = session ? {...session} : null;
     }
-
     static load() {
-        const stored = localStorage.getItem(sessionKey) ?? sessionStorage.getItem(sessionKey);
-        if (!stored) return null;
-        try {
-            return JSON.parse(stored);
-        } catch {
-            this.clear();
-            return null;
-        }
+        return activeSession ? {...activeSession} : null;
     }
-
     static clear() {
-        localStorage.removeItem(sessionKey);
-        sessionStorage.removeItem(sessionKey);
+        activeSession = null;
     }
 }
