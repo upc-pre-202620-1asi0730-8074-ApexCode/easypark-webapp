@@ -116,9 +116,12 @@ export class AnalyticsReportingApi extends BaseApi {
     }
 
     createReport(resource) {
-        return this.#reportsEndpoint.create(
-            resource
-        );
+        return this.#reportsEndpoint.create({
+            parkingFacilityId: resource.parkingFacilityId,
+            reportType: resource.reportType,
+            periodStart: resource.periodStart,
+            periodEnd: resource.periodEnd
+        });
     }
 
     getMetricsByFacilityId(
@@ -130,8 +133,6 @@ export class AnalyticsReportingApi extends BaseApi {
     }
 
     createOccupancyMetric(resource) {
-        return this.#occupancyMetricsEndpoint.create(
-            resource
-        );
+        return this.#occupancyMetricsEndpoint.create({parkingFacilityId: resource.parkingFacilityId});
     }
 }

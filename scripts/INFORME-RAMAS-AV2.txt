@@ -1,0 +1,24 @@
+Auditoria de ramas EasyPark - 20261113-161419
+Rama de trabajo: feature/api-only-integration-av2
+Base elegida: origin/main
+Respaldo local: backup/easypark-api-only-before-20261113-161419
+Diferencia main...develop (commits unicos en cada lado): 16	29
+
+IMPORTANTE: No se han fusionado ramas feature ni se han borrado ramas.
+  backup/easypark-api-only-before-20261113-161419   826a0b3 feat(env): update production API URL for EasyPark service
+* feature/api-only-integration-av2                  826a0b3 feat(env): update production API URL for EasyPark service
+  main                                              826a0b3 [origin/main] feat(env): update production API URL for EasyPark service
+  remotes/origin/HEAD                               -> origin/main
+  remotes/origin/chore/deployment-configuration     8d2f5b9 chore: prepare API for production deployment
+  remotes/origin/chore/firebase-hosting             b722891 chore: ignore Firebase cache
+  remotes/origin/develop                            b722891 chore: ignore Firebase cache
+  remotes/origin/feature/access-control             0383bc5 fix(access-control): clean test data and locale integration
+  remotes/origin/feature/analytics-reporting        146d213 feat(analytics-reporting): implement analytics and reporting bounded context
+  remotes/origin/feature/iam                        71803b9 merge: sync remote iam changes
+  remotes/origin/feature/monitoring-and-alerts      d23b294 Merge branch 'develop' into feature/monitoring-and-alerts
+  remotes/origin/feature/notifications              06ea7a9 feat(alerts): enhance alert list and rule dialog UI with improved accessibility and styling
+  remotes/origin/feature/parking-management         2e47ddf Merge branch 'develop' into feature/parking-management
+  remotes/origin/feature/parking-management-mockups 484ee0a fix(i18n): clean up locale formatting
+  remotes/origin/feature/profiles-and-vehicles      6859173 add: new change
+  remotes/origin/feature/reservations               90206ea feat(reservations): implement reservations bounded context
+  remotes/origin/main                               826a0b3 feat(env): update production API URL for EasyPark service
